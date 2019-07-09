@@ -1,0 +1,83 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+}
+
+// .normal {
+//   font-family: Georgia, sans-serif;
+//   margin-top: 3em;
+//   text-align: center;
+// }
+
+// .title {
+//   font-size: 2.5rem;
+//   font-weight: normal;
+//   letter-spacing: -1px;
+// }
+
+// .welcome {
+//   height: 328px;
+//   // background: url(../assets/yay.jpg) no-repeat center 0;
+//   background-size: 388px 328px;
+// }
+
+// .list {
+//   font-size: 1.2em;
+//   margin-top: 1.8em;
+//   list-style: none;
+//   line-height: 1.5em;
+// }
+
+// .list code {
+//   background: #f7f7f7;
+// }
+
+
+
+
+:global{
+  .login{
+    width: 100%;
+    height: 100%;
+    background:#000080;
+    box-sizing: border-box;
+  }
+
+  .login-form {
+    // width: 360px;
+    // max-width: 600px; 
+    min-width: 360px; 
+    background: #fff;
+    padding:26px 16px;
+    border-radius: 8px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    .ant-form-item-control-wrapper{
+      .ant-form-item-control{
+        line-height: 16px;
+      }
+    }
+  }
+  
+  .login-form-forgot {
+    float: right;
+  }
+
+  .login-form-button {
+    width: 100%;
+    height:40px;
+    margin-top:26px;
+    // bottom:0;
+  }
+}

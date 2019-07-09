@@ -1,5 +1,8 @@
 import dva from 'dva';
+// 引入全局样式
 import './index.css';
+// 引入andt样式
+import 'antd/dist/antd.css';
 
 // 1. Initialize
 const app = dva();
@@ -7,8 +10,9 @@ const app = dva();
 // 2. Plugins
 // app.use({});
 
+
 // 3. Model
-// app.model(require('./models/example').default);
+app.model(require('./models/login').default);
 
 // 4. Router
 app.router(require('./router').default);
