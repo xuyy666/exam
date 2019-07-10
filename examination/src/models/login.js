@@ -24,7 +24,7 @@ export default {
           // 调用同步的reduce的改变登录状态
           yield put({
               type:"updateLogin",// type是reducers里方法
-              payload: data.code == 1  // 相当于里面的执行
+              payload: data.code === 1  // 相当于里面的执行
           })
       }
     
