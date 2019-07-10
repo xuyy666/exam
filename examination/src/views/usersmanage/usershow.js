@@ -1,15 +1,15 @@
 import React from 'react'; // useState
 import { connect } from 'dva';
 
-function Question(){
+function Usershow(){
   return (
       <div>
-          用户管理
+          用户展示
       </div>
   )
 }
 
-Question.propTypes = {
+Usershow.propTypes = {
 
 };
-export default connect()(Question);
+export default connect()(Usershow);

@@ -1,15 +1,15 @@
 import React from 'react'; // useState
 import { connect } from 'dva';
 
-function Question(){
+function Addexam(){
   return (
       <div>
-          阅卷管理
+          添加考试
       </div>
   )
 }
 
-Question.propTypes = {
+Addexam.propTypes = {
 
 };
-export default connect()(Question);
+export default connect()(Addexam);

@@ -1,7 +1,7 @@
 import React from 'react'; // useState
 import { connect } from 'dva';
 
-function Question(){
+function Grademanage(){
   return (
       <div>
           班级管理
@@ -9,7 +9,7 @@ function Question(){
   )
 }
 
-Question.propTypes = {
+Grademanage.propTypes = {
 
 };
-export default connect()(Question);
+export default connect()(Grademanage);
