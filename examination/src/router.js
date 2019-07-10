@@ -8,7 +8,7 @@ function RouterConfig({ history }) {
       <Switch>
         <Route path="/index" component={IndexPage} />
         <Route path="/login" component={LoginPage} />
-        <Redirect from="/" to="/login" />
+        {/* <Redirect from="/" to="/index" /> */}
       </Switch>
     </Router>
   );
