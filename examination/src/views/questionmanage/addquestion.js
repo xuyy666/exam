@@ -4,10 +4,8 @@ import styles from './addquestion.scss';
 import { Input, Select,Button } from 'antd';
 import Editor from 'for-editor'
 function Addquestion(props) {
-    
-    // state ={
-    //  this.setState({})
-    // }
+   
+    //实现markdown 效果
     const [content, setvalue] = useState(undefined);
     // const [title, setvalue1] = useState(1);// 初始值 为1 当change事件改变的时候变为2
     const change = (value) => { // 传入什么值写什么值  或者改变后的值
@@ -21,20 +19,22 @@ function Addquestion(props) {
         props.getAllQuest();
         props.getexamType(); // 获取所有的考试类型
         props.getAllCourses() // 获取所有的课程
+        props.getAllQuestype() // 获取所有的试题类型
     }, [])
+
     function handleChange(value) {
         console.log(`selected ${value}`);
     }
-    const { data, getAllCours } = props;
-    // const getAllCours= props.getAllCours.data;
-
+    
+    const { data,getAllCours, getAllQuestions } = props;
     //getAllCourses
-    console.log('===========', data)
-    console.log('--------',getAllCours)
-    // console.log(getAllCours)
     const { Option } = Select;
     console.log(props)
     // const { size } = state;
+    const clicksubmit =()=>{
+
+    }
+
     return (
         <div className={styles.addquestion}>
             <h2>添加试题</h2>
@@ -66,16 +66,16 @@ function Addquestion(props) {
                        <h4>请选择课程类型:</h4>
                         <Select defaultValue="javaScript上" style={{ width: 200 }} onChange={handleChange}>
                             {
-                                getAllCours && getAllCours.map((item,index)=><Option value={item.subject_text} key={item.subject_id}>{item.subject_text}</Option>    
+                                 getAllCours && getAllCours.map((item,index)=><Option value={item.subject_text} key={item.subject_id}>{item.subject_text}</Option>    
                                )
                             }
                         </Select>
                   </div> 
                   <div className={styles.select}>
                        <h4>请选择题目类型:</h4>
-                        <Select defaultValue="" style={{ width: 200 }} onChange={handleChange}>
+                        <Select defaultValue="简答题" style={{ width: 200 }} onChange={handleChange}>
                             {
-                                data && data.map((item,index)=><Option value={item.exam_name} key={item.exam_id}>{item.exam_name}</Option>    
+                                getAllQuestions.map((item,index)=><Option key={item.questions_type_id} value={item.questions_type_text}>{item.questions_type_text}</Option>    
                                )
                             }
                         </Select>
@@ -87,7 +87,7 @@ function Addquestion(props) {
                 </div>
 
                 <div className={styles.submit}>
-                    <Button type="primary" className={styles.btn}>
+                    <Button type="primary" className={styles.btn} onClick={clicksubmit}>
                         提交
                     </Button>
                 </div>
@@ -103,11 +103,12 @@ Addquestion.propTypes = {
 
 };
 const mapState = (state) => {
-    console.log(state)
+    // console.log(state)
     return {
         ...state.getAllQuestions,
         ...state.examType.examTypes,
-        ...state.getallcourse
+        ...state.getallcourse,
+        ...state
     }
 }
 const mapDispatch = (dispatch) => ({
@@ -131,14 +132,24 @@ const mapDispatch = (dispatch) => ({
         })
     },
     getAllCourses(payload){
-        dispatch({   //
+        dispatch({   // 获取所有的课程
             type:"getallcourse/getAllCourses",
+            payload
+        })
+    },  
+    getAllQuestype(payload){
+        dispatch({  // 获取所有的试题类型
+            type:"getallcourse/getAllQuestype",
             payload
         })
     }
 })
 export default connect(mapState, mapDispatch)(Addquestion);
 
+
+ // state ={
+ //  this.setState({})
+ // }
 /* <div className="ant-form-item-control-wrapper">
 <div className="ant-form-item-control">
     <span className="ant-form-item-children">
@@ -151,5 +162,65 @@ export default connect(mapState, mapDispatch)(Addquestion);
             </div>
         </div>
     </span>
+</div>
+</div> */
+
+
+/* <div className={styles.addquestion}>
+<h2>添加试题</h2>
+<div className={styles.addquestionwrap}>
+    <div className={styles.title}>
+        <h3>题目信息</h3>
+        <p>题干</p>
+        <p>题干{title}</p> 
+        
+        <Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />
+    </div>
+
+    <div className={styles.marked}>
+        <h3>题目主题</h3>
+        <Editor value={content} onChange={change} style={{ height: "260px", margin: "0 10px" }}></Editor>
+    </div>
+
+    <div className={styles.types}>
+       <div className={styles.select}>
+           <h4>请选择考试类型:</h4>
+            <Select defaultValue="周考一" style={{ width: 200 }} onChange={handleChange}>
+                {
+                    data && data.map((item,index)=><Option value={item.exam_name} key={item.exam_id}>{item.exam_name}</Option>    
+                   )
+                }
+            </Select>
+      </div> 
+      <div className={styles.select}>
+           <h4>请选择课程类型:</h4>
+            <Select defaultValue="javaScript上" style={{ width: 200 }} onChange={handleChange}>
+                {
+                     getAllCours && getAllCours.map((item,index)=><Option value={item.subject_text} key={item.subject_id}>{item.subject_text}</Option>    
+                   )
+                }
+            </Select>
+      </div> 
+      <div className={styles.select}>
+           <h4>请选择题目类型:</h4>
+            <Select defaultValue="简答题" style={{ width: 200 }} onChange={handleChange}>
+                {
+                    getAllQuestions.map((item,index)=><Option key={item.questions_type_id} value={item.questions_type_text}>{item.questions_type_text}</Option>    
+                   )
+                }
+            </Select>
+      </div> 
+    </div>
+    <div className={styles.marked}>
+        <h3>答案信息</h3>
+        <Editor value={content} onChange={change} style={{ height: "260px", margin: "0 10px" }}></Editor>
+    </div>
+
+    <div className={styles.submit}>
+        <Button type="primary" className={styles.btn} onClick={clicksubmit}>
+            提交
+        </Button>
+    </div>
+    
 </div>
 </div> */
