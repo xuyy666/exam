@@ -28,7 +28,16 @@
         flex-direction:column;
         .classType{
             flex:5;
-            // background: #fcc;
+            h1{
+                display:inline;
+                padding:10px 20px;
+                font-size:20px;
+            }
+            span{
+                display:inline-block;
+                padding:20px 20px;
+                font-size:18px;
+            }
         }
         .examType{
             flex:5;

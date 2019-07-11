@@ -1,21 +1,37 @@
 import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import styles from './IndexPage.scss';
-
 function LoginPage(props) {
   console.log('props...', props)
   // 模拟componentDidMount
-  useEffect(() => {
-    console.log('执行useEffect')
-    props.login({ user_name: "chenmanjie", user_pwd: "Chenmanjie123!" });
+  // useEffect(() => {
+  //   console.log('执行useEffect')
+  //   props.login({ user_name: "chenmanjie", user_pwd: "Chenmanjie123!" });
+  // }, [])
 
-  }, [])
+  //判断是否登录成功
+   useEffect(() => {
+      if(props.isLogin === 1){
+          message.success('登录成功');
+          let path = '/index';
+          if(props.location.search){ // ?redirect=%2F
+            //  path = decodeURIComponent(props.location.search.split('=')[1]);
+             path = decodeURIComponent(props.location.search.slice(1).split('=')[1]);
+          }
+          console.log('path...',path)
+          props.history.push(path)
+          // props.history.push('/index')
+      }else if(props.isLogin === 0){
+          message.success('用户名或密码错误');
+      }
+   },)
 
-  let login =()=>{
-    console.log(props);
-    props.history.push('/index')
-  }
+  // 点击登录页面
+  // let login = () => {
+  //   console.log(props);
+  //   props.history.push('/index')
+  // }
 
   // 处理表单提交
   let handleSubmit = () => {
@@ -54,7 +70,7 @@ function LoginPage(props) {
               { required: true, message: 'Please input your username!' },
               { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]*$/
                 , message: 'Please input your correct username!' },
-            ],
+              ],
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -68,10 +84,10 @@ function LoginPage(props) {
           <a className="login-form-forgot" href="">
             忘记密码
             </a>
-          <Button type="primary" htmlType="submit" className="login-form-button" onClick={login}>
-               登录
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            登录
           </Button>
-          
+
         </Form.Item>
       </Form>
     </div>
@@ -97,8 +113,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapState, mapDispatchToProps)(Form.create()(LoginPage));
-
-
+// onClick={login}
+//  /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]*$/
+// /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[#@*&.])[a-zA-Z\d#@*&.]*$/
 /* <div className={styles.normal}>
       <h1 className={styles.title}>Yay! Welcome to dva!</h1>
       <div className={styles.welcome} />

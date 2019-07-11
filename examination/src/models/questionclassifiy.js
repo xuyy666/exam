@@ -2,24 +2,23 @@ import {questionclassifiy} from '../services/index.js'
 
 export default {
     // 命名空间
-    namespace: 'questionclassifiy',
+    namespace: 'question',
    // 模块的管理
     state: {
-      isQuestionclassifiy:false
+      isQuestionclassifiy:[],
     },
   
  
   
   // 异步操作
     effects: {  // generator
-      *questionclassifiy({ payload , type },{call,put}){
+      *questionclassifiy({},{call,put}){
           let data = yield call(questionclassifiy);
-          console.log('data...',data) 
-
+          // console.log('data...',data) 
           // 调用同步的reduce的改变登录状态
           yield put({
               type:"updateQuestionclassifiy",// type是reducers里方法
-              payload: data.code === 1  // 相当于里面的执行
+              payload: data.data // 相当于里面的执行
           })
       }
     

@@ -12,9 +12,38 @@ body {
 }
 :global {
   .questionclassifiyPage {
+    position: relative;
     width: 100%;
     height: 100%;
     background: #f0f2f5;
+    .mark{
+      width:100%;height:100%;
+      background:rgba(0,0,0,.6);
+      position: absolute;
+      left:0;top:0;
+      display:none;
+    }
+    .questionclassifiyShow{
+      position: absolute;
+      left:50px;
+      top:40%;
+      width: 80%;
+      height: 200px;
+      background:#ccc;
+      line-height:200px;
+      .input,#username{
+        margin:20px 20px;
+        height:60px;
+        width:80%;
+      }
+      .btn{
+         width:100px;height:45px;
+         background:#00f;
+         border-radius: 3%;
+         color:#fff;
+         font-size:25px;
+      }
+    }
     .head {
       width: 100%;
       height: 90px;
@@ -46,11 +75,32 @@ body {
           font-size: 25px;
         }
       }
-      .ant-table-body {
-        height: 660px;
-      }
-      .ant-table-row .ant-table-row-level-0 {
-        height: 60px;
+      .secbox{
+        width:90%;height:500px;
+        border:1px solid #ccc;
+        margin-left:10px;
+        ul{
+          width:100%;height:60px;
+          background:#ccc;
+          li{
+            height:65px;
+            border-bottom:1px solid #ccc;
+            line-height:65px;
+            font-size:25px;
+            span{
+              width:30%;
+              display:inline-block;
+              padding-left:20px;
+            }
+          }
+          p{
+            line-height:60px;
+            span{
+              width:30%;
+              display:inline-block;
+            }
+          }
+        }
       }
     }
   }
