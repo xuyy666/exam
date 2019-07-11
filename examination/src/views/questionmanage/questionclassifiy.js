@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input} from 'antd';
 import './questionclassifiy.scss'
 
 function Question(props){
@@ -11,7 +11,6 @@ function Question(props){
     let {isQuestionclassifiy} = props.question
     const { getFieldDecorator } = props.form;
   return (
-      
       <div className="questionclassifiyPage">
         <div className="mark">
         <Form.Item className="questionclassifiyShow">

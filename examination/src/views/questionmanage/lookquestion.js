@@ -3,8 +3,6 @@ import { connect } from 'dva';
 import {Button,Select} from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
-
-
 function Question(props){
   useEffect(()=>{
     //  console.log(props)
@@ -15,10 +13,6 @@ console.log(props)
   let {isLookquestion}=props.look
   let {isLookquestionExam}=props.look
    console.log(isLookquestionExam)
-
-   function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
   return (
       <div className="lookquestion">
         <h1> 查看试题</h1>
@@ -41,10 +35,7 @@ console.log(props)
                       </Option>   
                     ))
                 }
-               
               </Select>
-              
-           
                考试类型:
                <Select defaultValue="组件化">
                 {
@@ -54,9 +45,7 @@ console.log(props)
                       </Option>   
                     ))
                 }
-               
               </Select>
-
                 <Button className="btn">查询</Button>
                 </div>
            </div>
