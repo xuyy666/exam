@@ -13,6 +13,9 @@ const app = dva();
 
 // 3. Model
 app.model(require('./models/login').default);
+app.model(require('./models/addquestion').default)  //添加试题
+app.model(require('./models/getexamtype').default)  // 获取所有的考试类型
+app.model(require('./models/getallcourses').default) // 获取所有的课程
 
 // 4. Router
 app.router(require('./router').default);

@@ -1,0 +1,98 @@
+// :global{
+
+// }
+
+// :global{
+//   .addquestion{
+//       width: 100%;
+//       height: 100%;
+//       background: pink;
+//   }
+// }
+
+
+
+:local {
+  .addquestion {
+    width: 100%;
+    height: 100%;
+    // overflow: auto;
+    background: #eee;
+
+    h2 {
+      // margin-left: 10px;
+      padding: 10px;
+    }
+
+    .addquestionwrap {
+      width: 98%;
+      height: 98%;
+      background: pink;
+      margin: 10px auto;
+      padding: 10px 6px;
+      border-radius: 5px;
+
+      .title {
+        width: 97%;
+        height: 130px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+
+        .input {
+          width: 100%;
+          // text-align: center;
+          // margin:0 auto;
+        }
+      }
+
+      .marked {
+        h3 {
+          padding: 6px 0 0 10px;
+        }
+        width: 100%;
+        height:310px;
+        // background: blue;
+        // padding: 20px;
+        // margin-top: 10px;
+
+        // overflow: hidden;
+        .ant-form-item-control-wrapper {
+          width: 80%;
+          height: 260px;
+          background: pink;
+
+          .for-container {
+            width: 100%;
+            height: 10px;
+          }
+        }
+      }
+
+      .types {
+        width: 97%;
+        height: 100%;
+        // background: blue;
+        margin: 10px auto;
+
+        // padding:30px 0 0 0;
+        .select {
+          // margin-top:50px;
+          width: 100%;
+          height: 80px;
+
+        }
+      }
+
+      .submit {
+        width: 97%;
+        height: 200px;
+        margin: 0 auto;
+        .btn{
+          width: 100px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}

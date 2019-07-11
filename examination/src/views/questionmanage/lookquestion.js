@@ -12,4 +12,10 @@ function Question(){
 Question.propTypes = {
 
 };
-export default connect()(Question);
+const mapState = (state)=>{
+  return {}
+}
+const mapDispatch=(dispatch)=>({
+
+})
+export default connect(mapState,mapDispatch)(Question);
