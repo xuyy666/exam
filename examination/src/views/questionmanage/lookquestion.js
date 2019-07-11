@@ -16,9 +16,9 @@ console.log(props)
   let {isLookquestionExam}=props.look
    console.log(isLookquestionExam)
 
-   function handleChange(value) {
-    console.log(`selected ${value}`);
-  }
+  //  function handleChange(value) {
+  //   console.log(`selected ${value}`);
+  // }
   return (
       <div className="lookquestion">
         <h1> 查看试题</h1>
@@ -69,6 +69,7 @@ console.log(props)
 Question.propTypes = {
 
 };
+
 const mapState = (state) => {
   console.log(state)
   return {
@@ -95,3 +96,12 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapState, mapDispatchToProps)(Question);
+
+// const mapState = (state)=>{
+//   return {}
+// }
+// const mapDispatch=(dispatch)=>({
+
+// })
+// export default connect(mapState,mapDispatch)(Question);
+
