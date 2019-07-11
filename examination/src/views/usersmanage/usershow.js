@@ -1,9 +1,9 @@
 import React from 'react'; // useState
 import { connect } from 'dva';
-
+import './usershow.scss'
 function Usershow(){
   return (
-      <div>
+      <div className="usershow">
           用户展示
       </div>
   )

@@ -52,7 +52,8 @@ function LoginPage(props) {
             validateTrigger: "onBlur",
             rules: [
               { required: true, message: 'Please input your username!' },
-              { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[#@*&.])[a-zA-Z\d#@*&.]*$/, message: 'Please input your correct username!' },
+              { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]*$/
+                , message: 'Please input your correct username!' },
             ],
           })(
             <Input

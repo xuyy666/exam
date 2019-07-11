@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+:global {
+  .questionclassifiyPage {
+    width: 100%;
+    height: 100%;
+    background: #f0f2f5;
+    .head {
+      width: 100%;
+      height: 90px;
+      h1 {
+        line-height: 90px;
+        padding-left: 30px;
+      }
+    }
+    .sec {
+      background: #fff;
+      width: 90%;
+      height: 700px;
+      margin-left: 30px;
+      border-radius: 3%;
+      p {
+        width: 100%;
+        height: 90px;
+        line-height: 90px;
+        padding-left: 40px;
+        button {
+          width: 200px;
+          height: 60px;
+          background: #00d;
+          color: #fff;
+          text-align: center;
+          border-radius: 5%;
+          line-height: 60px;
+          border: none;
+          font-size: 25px;
+        }
+      }
+      .ant-table-body {
+        height: 660px;
+      }
+      .ant-table-row .ant-table-row-level-0 {
+        height: 60px;
+      }
+    }
+  }
+}

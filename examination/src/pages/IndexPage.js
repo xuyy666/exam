@@ -34,18 +34,8 @@ function IndexPage() {
       </div>
       <div className={styles.content}>
         <div className={styles.left}>
-          <div>
-            {/* <li>试题管理</li>
-            <li><NavLink to="/index/addquestion">添加试题</NavLink></li> */}
-
-            {/* <li><NavLink to="/index/usersmanage">用户管理</NavLink></li>
-             <li><NavLink to="/index/exammanage">考试管理</NavLink></li>
-             <li><NavLink to="/index/grademanage">班级管理</NavLink></li>
-             <li><NavLink to="/index/markingmanage">阅卷管理</NavLink></li> */}
-          </div>
-
           <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible>
+            <Sider>
               <div className="logo" />
               <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                 <SubMenu
