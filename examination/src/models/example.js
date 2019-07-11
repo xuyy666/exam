@@ -11,6 +11,7 @@ export default {
  // 订阅
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
+      
     },
   },
 

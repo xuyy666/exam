@@ -1,5 +1,7 @@
 import axios from 'axios'
-import {getToken} from "../utils/"
+
+import {getToken} from '../utils/index.js'
+
 // create an axios instance
 const service = axios.create({  // 前端的接口
   baseURL:'http://169.254.12.254:7001/',
