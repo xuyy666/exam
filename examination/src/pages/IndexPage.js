@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import { Route, NavLink } from 'dva/router';
 import styles from './IndexPage.scss';
 import Addquestion from '../views/questionmanage/addquestion'//试题管理 添加试题

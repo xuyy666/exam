@@ -12,7 +12,7 @@ export default {
   
   // 异步操作
     effects: {  // generator
-      *questionclassifiy({ },{call,put}){
+      *questionclassifiy({ payload , type },{call,put}){
           let data = yield call(questionclassifiy);
           console.log('data...',data) 
 
