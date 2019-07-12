@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    font-size:14px;
     text-decoration: none;
     box-sizing: border-box;
   }
@@ -31,30 +32,28 @@
             h1{
                 display:inline;
                 padding:10px 20px;
-                font-size:20px;
             }
             span{
                 display:inline-block;
                 padding:20px 20px;
-                font-size:18px;
             }
         }
         .examType{
             flex:5;
-            //background: #f58;
-            p{
+            // background: #f58;
+            .p{
                 width:100%;
                 height:50px;
                 line-height:100px;
-                padding:10px 5px;
+                padding:10px 20px;
                 .btn{
                     background:#00f;
                     width:100px;
                     height:45px;
                     border:none;
                     color:#fff;
-                    font-size:20px;
                     margin-left:20px;
+                    padding:10px 20px;
                 }
             }
            

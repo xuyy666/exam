@@ -8,11 +8,15 @@ function Question(props){
     //  console.log(props)
      props.lookquestion()
      props.lookquestionExam()
+     props.lookquestionMenu()
+     props.lookquestionDetail()
   },[])
 console.log(props)
   let {isLookquestion}=props.look
   let {isLookquestionExam}=props.look
-   console.log(isLookquestionExam)
+  let {isLookquestionMenu}=props.look
+  let {isLookquestionDetail}=props.look
+  //  console.log(isLookquestionExam)
   //  function handleChange(value) {
   //   console.log(`selected ${value}`);
   // }
@@ -29,12 +33,13 @@ console.log(props)
               }
            </div>
            <div className="examType">
-             <div className="p">考试类型:  
-             <Select defaultValue="组件化">
+             <div className="p">
+               考试类型:  
+             <Select defaultValue="简答题">
                 {
-                    isLookquestionExam.map((item,index)=>(
-                      <Option key={index}>
-                         {item.questions_type_text}
+                    isLookquestionMenu.map((item)=>(
+                      <Option key={item.exam_id}>
+                         {item.exam_name}
                       </Option>   
                     ))
                 }
@@ -42,8 +47,8 @@ console.log(props)
                考试类型:
                <Select defaultValue="组件化">
                 {
-                    isLookquestionExam.map((item,index)=>(
-                      <Option key={index}>
+                    isLookquestionExam.map((item)=>(
+                      <Option key={item.questions_type_id}>
                          {item.questions_type_text}
                       </Option>   
                     ))
@@ -53,7 +58,18 @@ console.log(props)
                 </div>
            </div>
          </div>
-         <div className="loopSec"></div>
+         <div className="loopSec">
+          <ul>
+            <li>
+              <h4>机器人归为</h4>
+              <p>
+                 <Button type="primary" style={{background:'#7ecef4',color:'#2aafee'}}>Primary</Button>
+                 <Button type="primary" style={{background:'#b57ef4',color:'#612aee'}}>Primary</Button>
+                 <Button type="primary" style={{background:'#f4d17e',color:'#ee862a'}}>Primary</Button>
+              </p>
+            </li>
+          </ul>
+         </div>
       </div>
   )
 }
@@ -68,6 +84,7 @@ const mapState = (state) => {
     ...state,
     ...state.isLookquestion,
     ...state.isLookquestionExam,
+    ...state.isLookquestionMenu,
     // ...state.isQuestionclassifiy
   }
 }
@@ -82,6 +99,16 @@ const mapDispatchToProps = (dispatch) => {
     lookquestionExam: payload => {
       dispatch({
         type: "look/lookquestionExam",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+      })
+    },
+    lookquestionMenu: payload => {
+      dispatch({
+        type: "look/lookquestionMenu",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+      })
+    },
+    lookquestionDetail: payload => {
+      dispatch({
+        type: "look/lookquestionDetail",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
       })
     }
   }
