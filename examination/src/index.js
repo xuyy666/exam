@@ -13,8 +13,8 @@ const app = dva();
 
 // 3. Model
 app.model(require('./models/login').default);
-app.model(require('./models/questionclassifiy').default);
-app.model(require('./models/lookquestion').default);
+app.model(require('./models/questionclassifiy').default);//试题分类
+app.model(require('./models/lookquestion').default);// 试题分类 添加试题类型
 // app.model(require('./models/lookquestion').default);
 
 app.model(require('./models/addquestion').default)  // 添加试题

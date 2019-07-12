@@ -1,73 +1,115 @@
 * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-size:14px;
-    text-decoration: none;
-    box-sizing: border-box;
-  }
-  html,
-  body {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+:global {
+  .lookquestion {
     width: 100%;
     height: 100%;
-  }
-  :global {
-   .lookquestion{
-    width: 100%;
-    height: 100%;
-    display:flex;
-    flex-direction:column;
+    display: flex;
+    flex-direction: column;
     background: #f0f2f5;
-    h1{
-        padding:20px 30px;
-    }
-    .loopBox{
-        width:90%;height:300px;
-        background:#fff;
-        margin-left:20px;
-        display:flex;
-        flex-direction:column;
-        .classType{
-            flex:5;
-            h1{
-                display:inline;
-                padding:10px 20px;
-            }
-            span{
-                display:inline-block;
-                padding:20px 20px;
-            }
+    overflow: auto;
+    .lookquestionAll {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      h1 {
+        padding: 20px 30px;
+      }
+      .loopBox {
+        width: 90%;
+        height: 300px;
+        background: #fff;
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        .classType {
+          flex: 5;
+          h1 {
+            display: inline;
+            padding: 10px 20px;
+          }
+          span {
+            display: inline-block;
+            padding: 20px 20px;
+          }
         }
-        .examType{
-            flex:5;
-            // background: #f58;
-            .p{
-                width:100%;
-                height:50px;
-                line-height:100px;
-                padding:10px 20px;
-                .btn{
-                    background:#00f;
-                    width:100px;
-                    height:45px;
-                    border:none;
-                    color:#fff;
-                    margin-left:20px;
-                    padding:10px 20px;
+        .examType {
+          flex: 5;
+          // background: #f58;
+          .p {
+            width: 100%;
+            height: 50px;
+            line-height: 100px;
+            padding: 10px 20px;
+            .btn {
+              background: #00f;
+              width: 100px;
+              height: 45px;
+              border: none;
+              color: #fff;
+              margin-left: 20px;
+              padding: 10px 20px;
+            }
+          }
+        }
+      }
+
+      .loopSec {
+        font-size: 14px;
+        margin-top: 50px;
+        flex: 1;
+        // overflow: auto;
+        width: 90%;
+        height: 100%;
+        background: #fff;
+        margin-left: 20px;
+        ul {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          // background:#ccc;
+          li {
+            width: 90%;
+            height: 170px;
+            background: #fff;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-top: 10px;
+            display: flex;
+            div {
+              width: 600px;
+              display: flex;
+              flex-direction: column;
+              p {
+                width: 70%;
+                // background:#f00;
+                display: flex;
+                button {
+                  padding-left: 20px;
+                  margin-left: 5px;
                 }
+              }
             }
-           
+            .bianji {
+              flex: 1;
+              line-height: 160px;
+              color: #00f;
+            }
+          }
         }
-       
+      }
     }
-    .loopSec{
-        margin-top:50px;
-        flex:1;
-        overflow:auto;
-        width:90%;height:500px;
-        background:#fff;
-        margin-left:20px;
-    }
-   }
   }
-  
+}

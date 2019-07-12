@@ -1,6 +1,7 @@
 export * from './login.js';
 
 export * from './questionclassifiy.js';//试题分类
+export * from './questionclassifiyAdd.js';//试题分类
 export * from './lookquestion.js';//查看试卷 课程类型
 export * from './lookquestionExam.js';//查看试题 考试类型
 export * from './lookquestionMenu.js'//查看试题 题目类型

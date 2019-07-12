@@ -1,76 +1,89 @@
-import React,{useEffect} from 'react'; // useState
+import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import {Button,Select} from 'antd';
+import { Button, Select } from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
-function Question(props){
-  useEffect(()=>{
+function Question(props) {
+  useEffect(() => {
     //  console.log(props)
-     props.lookquestion()
-     props.lookquestionExam()
-     props.lookquestionMenu()
-     props.lookquestionDetail()
-  },[])
-console.log(props)
-  let {isLookquestion}=props.look
-  let {isLookquestionExam}=props.look
-  let {isLookquestionMenu}=props.look
-  let {isLookquestionDetail}=props.look
+    props.lookquestion()
+    props.lookquestionExam()
+    props.lookquestionMenu()
+    props.lookquestionDetail()
+  }, [])
+  console.log(props)
+  let { isLookquestion } = props.look
+  let { isLookquestionExam } = props.look
+  let { isLookquestionMenu } = props.look
+  let { isLookquestionDetail } = props.look
   //  console.log(isLookquestionExam)
   //  function handleChange(value) {
   //   console.log(`selected ${value}`);
   // }
   return (
-      <div className="lookquestion">
+    <div className="lookquestion">
+      <div className="lookquestionAll">
         <h1> 查看试题</h1>
-         <div className="loopBox">
-           <div className="classType">
-             <h1> 课程类型：</h1>
-              {
-                isLookquestion.map((item,index)=>(
-                 <span key={index}>{item.subject_text}</span>
-                ))
-              }
-           </div>
-           <div className="examType">
-             <div className="p">
-               考试类型:  
+
+        <div className="loopBox">
+          <div className="classType">
+            <h1> 课程类型：</h1>
+            {
+              isLookquestion.map((item, index) => (
+                <span key={index}>{item.subject_text}</span>
+              ))
+            }
+          </div>
+          <div className="examType">
+            <div className="p">
+              考试类型:
              <Select defaultValue="简答题">
                 {
-                    isLookquestionMenu.map((item)=>(
-                      <Option key={item.exam_id}>
-                         {item.exam_name}
-                      </Option>   
-                    ))
+                  isLookquestionMenu.map((item) => (
+                    <Option key={item.exam_id}>
+                      {item.exam_name}
+                    </Option>
+                  ))
                 }
               </Select>
-               考试类型:
+              考试类型:
                <Select defaultValue="组件化">
                 {
-                    isLookquestionExam.map((item)=>(
-                      <Option key={item.questions_type_id}>
-                         {item.questions_type_text}
-                      </Option>   
-                    ))
+                  isLookquestionExam.map((item) => (
+                    <Option key={item.questions_type_id}>
+                      {item.questions_type_text}
+                    </Option>
+                  ))
                 }
               </Select>
-                <Button className="btn">查询</Button>
-                </div>
-           </div>
-         </div>
-         <div className="loopSec">
+              <Button className="btn">查询</Button>
+            </div>
+          </div>
+        </div>
+        <div className="loopSec">
           <ul>
-            <li>
-              <h4>机器人归为</h4>
-              <p>
-                 <Button type="primary" style={{background:'#7ecef4',color:'#2aafee'}}>Primary</Button>
-                 <Button type="primary" style={{background:'#b57ef4',color:'#612aee'}}>Primary</Button>
-                 <Button type="primary" style={{background:'#f4d17e',color:'#ee862a'}}>Primary</Button>
-              </p>
-            </li>
+            {
+              isLookquestionDetail.map((item, index) => (
+                <li key={index}>
+                  <div>
+                    <h4>{item.title}</h4>
+                    <p>
+                      <Button type="primary" style={{ background: '#7ecef4', color: '#2aafee' }}>{item.subject_text}</Button>
+                      <Button type="primary" style={{ background: '#b57ef4', color: '#612aee' }}>{item.questions_type_text}</Button>
+                      <Button type="primary" style={{ background: '#f4d17e', color: '#ee862a' }}>{item.exam_name}</Button>
+                    </p>
+                    <p>
+                      {item.user_name}发布
+                </p>
+                  </div>
+                  <div className="bianji">编辑</div>
+                </li>
+              ))
+            }
           </ul>
-         </div>
+        </div>
       </div>
+    </div>
   )
 }
 
@@ -85,6 +98,7 @@ const mapState = (state) => {
     ...state.isLookquestion,
     ...state.isLookquestionExam,
     ...state.isLookquestionMenu,
+    ...state.isLookquestionDetail,
     // ...state.isQuestionclassifiy
   }
 }
