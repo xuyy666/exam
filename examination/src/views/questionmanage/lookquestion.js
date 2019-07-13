@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Button, Select } from 'antd';
+import { Button, Select,Route,Menu,Layout} from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
 function Question(props) {
@@ -20,6 +20,12 @@ function Question(props) {
   //  function handleChange(value) {
   //   console.log(`selected ${value}`);
   // }
+   function classType(id){
+     console.log(id)
+     if(id){
+       
+     }
+   }
   return (
     <div className="lookquestion">
       <div className="lookquestionAll">
@@ -29,8 +35,8 @@ function Question(props) {
           <div className="classType">
             <h1> 课程类型：</h1>
             {
-              isLookquestion.map((item, index) => (
-                <span key={index}>{item.subject_text}</span>
+              isLookquestion.map((item) => (
+                <span key={item.subject_id} onClick={classType(item.subject_id)}>{item.subject_text}</span>
               ))
             }
           </div>
@@ -73,6 +79,7 @@ function Question(props) {
                       <Button type="primary" style={{ background: '#f4d17e', color: '#ee862a' }}>{item.exam_name}</Button>
                     </p>
                     <p>
+                 
                       {item.user_name}发布
                 </p>
                   </div>

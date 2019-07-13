@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Table, Input, Button, Form, Modal, message } from 'antd';
+import { Table, Input, Button, Form, Modal, message, Icon } from 'antd'; //Breadcrumb
 import './questionclassifiy.scss';
 function Question(props) {
   const columns = [
@@ -44,6 +44,7 @@ function Question(props) {
   }
   return (
     <div className="questionclassifiyPage">
+      
       <Modal
         visible={showModal}
         title="请填入试题类型"
