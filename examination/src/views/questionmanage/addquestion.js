@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import styles from './addquestion.scss';
-import { Form, Input, Select, Button, Modal, message } from 'antd';
+import { Form, Input, Select, Button, Modal, message, notification } from 'antd';
 import Editor from 'for-editor'// 实现markdown效果
 function Addquestion(props) {
     //实现 markdown 效果
@@ -18,7 +18,7 @@ function Addquestion(props) {
         props.getexamType(); // 获取所有的考试类型
         props.getAllCourses() // 获取所有的课程
         props.getAllQuestype(); // 获取所有的试题类型
-        props.addUser();  // 获取当前用户信息
+        props.addUser();     // 获取当前用户信息
     }, [])
 
     // console.log('-----------------',props.userInfo)
@@ -27,10 +27,10 @@ function Addquestion(props) {
     }
 
     const { data, getAllCours, getAllQuestions, userInfo } = props;
-    console.log('================',userInfo.user_id)
+    console.log('================', userInfo.user_id)
     //getAllCourses
     const { Option } = Select;
- 
+
     //  添加用户信息  设置用户信息
     let [addInfor, setAddInfor] = useState({}); // userInfor
     // form 提交功能
@@ -40,39 +40,52 @@ function Addquestion(props) {
             if (!err) {
                 console.log('Received values of form: ', values);
                 setAddInfor({
-                    "questions_type_id":values.questionTypes,// questionTypes
-                    "questions_stem":values.iptvalue,  //
-                    "subject_id":values.courseType,
-                    "exam_id":values.examType,
-                    "user_id":userInfo.user_id,  // 用户id
-                    "questions_answer":values.answer, // 题目答案
-                    "title":values.markdown, // 试题的标题
+                    "questions_type_id": values.questionTypes,// questionTypes
+                    "questions_stem": values.iptvalue,  //
+                    "subject_id": values.courseType,
+                    "exam_id": values.examType,
+                    "user_id": userInfo.user_id,  // 用户id
+                    "questions_answer": values.answer, // 题目答案
+                    "title": values.markdown, // 试题的标题
                 })
-            }else{
-                // message.error(err.types.errors)
+            } else {
+                message.openNotificationWithIcon('error')
             }
         });
     };
 
     const { getFieldDecorator } = props.form;
 
-    // 创建state,控制弹框的显示隐藏 
+    // 创建state,控制弹框的显示隐藏   第一个参数showModal设置默认隐藏    第二个参数updateModal改变显示隐藏
     let [showModal, updateModal] = useState(false);
-    //点击提交
+    //点击提交按钮
     let clickSubmit = () => {
-        updateModal(true);
-        // props.addquestion() // 添加试题接口
+        updateModal(true); //  true 相当于showModal
+
     }
+   
     // 点击弹框的确定
-    let okChange=()=>{
+    let okChange = () => {
         updateModal(false);
-        props.addquestion(addInfor); // 
+        props.addquestion(addInfor); // 点击提交的弹框上确定传到用户信息
+        success()
     }
     // 点击弹框的取消
-    let cancelChange=()=>{
+    let cancelChange = () => {
         updateModal(false)
     }
-
+    // 点击确定 添加试题成功的弹框
+    let success=()=>{
+        Modal.success({
+            title: '试题添加成功'
+        });
+    }
+    const openNotificationWithIcon = type => {
+        notification[type]({
+          message: '请求错误：402',
+          description:'http://127.0.0.1:7001',
+        });
+      };
     console.log(props)
 
     return (
@@ -83,33 +96,33 @@ function Addquestion(props) {
                     <Form.Item className={styles.title}>
                         <h3>题目信息</h3>
                         <p>题干</p>
-                        { getFieldDecorator('iptvalue')(<Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />)
+                        {getFieldDecorator('iptvalue')(<Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />)
                         }
                     </Form.Item>
 
                     <Form.Item className={styles.marked}>
                         <h3>题目主题</h3>
-                        { getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
+                        {getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
                         }
                     </Form.Item>
 
                     <div className={styles.types}>
                         <Form.Item className={styles.select}>
                             <h4>请选择考试类型:</h4>
-                            { getFieldDecorator('examType')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('examType')(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     data && data.map((item, index) => <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
                                     )
                                 }
-                            </Select>) 
-                          }
+                            </Select>)
+                            }
                         </Form.Item>
 
                         <Form.Item className={styles.select}>
                             <h4>请选择课程类型:</h4>
-                            { getFieldDecorator('courseType')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('courseType')(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
-                                    getAllCours && getAllCours.map((item, index) =><Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
+                                    getAllCours && getAllCours.map((item, index) => <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
                                     )
                                 }
                             </Select>)
@@ -118,9 +131,9 @@ function Addquestion(props) {
 
                         <Form.Item>
                             <h4>请选择题目类型:</h4>
-                            { getFieldDecorator('questionTypes')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('questionTypes')(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
-                                    getAllQuestions.map((item, index) =><Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
+                                    getAllQuestions.map((item, index) => <Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
                                     )
                                 }
                             </Select>)
@@ -130,28 +143,32 @@ function Addquestion(props) {
                     </div>
                     <Form.Item className={styles.marked}>
                         <h3>答案信息</h3>
-                        
-                        {getFieldDecorator('answer')(<Editor  style={{ height: "260px", margin: "0 10px" }}></Editor>)
+
+                        {getFieldDecorator('answer')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
                         }
                     </Form.Item>
                     <Form.Item className={styles.submit}>
-                        
-                        <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
+
+                       <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
                             提交
                        </Button>
                     </Form.Item>
                 </Form>
 
                 <Modal
-                    title="你确定要删除这道试题吗"
+                    title="你确定要添加这道试题吗"
                     visible={showModal}
                     onCancel={cancelChange}
                     onOk={okChange}
                     okText="确认"
                     cancelText="取消"
-                 >
+                >
                     <p>真的要添加吗</p>
                 </Modal>
+                (<div>
+                    <Button onClick={success}><span>我知道了</span></Button>
+                    <Button onClick={() => openNotificationWithIcon('error')}>Error</Button>
+                </div>,mountNode)
 
             </div>
         </div>
@@ -181,11 +198,11 @@ const mapDispatch = (dispatch) => ({
         })
     },
     // 获取当前用户信息
-    addUser(payload){
-       dispatch({
-           type:"addQuestion/addUser",
-           payload
-       })
+    addUser(payload) {
+        dispatch({
+            type: "addQuestion/addUser",
+            payload
+        })
     },
     getAllQuest(payload) {
         dispatch({  // 获取所有的考试试题  没用

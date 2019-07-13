@@ -32,9 +32,9 @@ function Question(props) {
   let handlesubmit=()=>{
 
   }
-  let handleBtn =()=>{
+  // let handleBtn =()=>{
 
-  }
+  // }
 
   const { getFieldDecorator } = props.form;
   function handleSubmit() {
@@ -77,15 +77,9 @@ function Question(props) {
         <h1>试题分类</h1>
       </div>
       <div className="sec">
-
-        <p><button onClick={handleBtn}>+添加类型</button></p>
-        <div className="secbox">
-         
-        </div>
-
+        
         <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
         <Table rowKey="questions_type_id" columns={columns} dataSource={props.question.isQuestionclassifiy} />
-
       </div>
     </div>
   )

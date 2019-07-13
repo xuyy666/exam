@@ -24,10 +24,10 @@ function Question(props) {
   // }
   return (
     <div className="lookquestion">
-      <h1> 查看试题</h1>
+      <h2> 查看试题</h2>
       <div className="loopBox">
         <div className="classType">
-          <h1> 课程类型：</h1>
+          <h2> 课程类型：</h2>
           {
             isLookquestion.map((item, index) => (
               <span key={index}>{item.subject_text}</span>
@@ -63,11 +63,11 @@ function Question(props) {
       <div className="loopSec"></div>
 
       <div className="lookquestionAll">
-        <h1> 查看试题</h1>
+        <h2> 查看试题</h2>
 
         <div className="loopBox">
           <div className="classType">
-            <h1> 课程类型：</h1>
+            <h2> 课程类型：</h2>
             {
               isLookquestion.map((item, index) => (
                 <span key={index}>{item.subject_text}</span>
