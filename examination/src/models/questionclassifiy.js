@@ -25,7 +25,7 @@ export default {
       let data = yield call(questionclassifiyAdd, payload);
       console.log('data...', data)
       // 调用同步的reduce的改变登录状态
-      if (data.code == 1) {
+      if (data.code === 1) {
         yield questionclassifiy()
       }
     }
