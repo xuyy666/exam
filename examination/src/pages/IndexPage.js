@@ -19,19 +19,16 @@ import Awaitingapp from '../views/markingmanage/awaitingapp'; // 阅卷管理 �
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 function IndexPage() {
-  // state = {
-  //   collapsed: false,
-  // };
-
-  // onCollapse = collapsed => {
-  //   console.log(collapsed);
-  //   this.setState({ collapsed });
-  // };
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
-        <div>北京八维研修学院</div>
-        <div>头像</div>
+        {/* <div> */}
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" alt="" />
+        {/* </div> */}
+        <div>
+          <span>头像</span>
+          <span>用户名</span>
+        </div>
       </div>
       <div className={styles.content}>
         <div className={styles.left}>
@@ -131,3 +128,5 @@ IndexPage.propTypes = {
 };
 
 export default connect()(IndexPage);
+
+//北京八维研修学院

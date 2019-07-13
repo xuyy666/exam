@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Table, Input, Button, Form, Modal, message, Icon } from 'antd'; //Breadcrumb
+import { Table, Input, Button, Form, Modal, message } from 'antd'; //Breadcrumb
 import './questionclassifiy.scss';
+// import styles from './questionclassifiy.scss'
 function Question(props) {
   const columns = [
     {
@@ -25,8 +26,14 @@ function Question(props) {
     props.questionclassifiy()
 
   }, [])
-  //  console.log(props.question.isQuestionclassifiy)
-  // let {isQuestionclassifiy} = props.question
+
+  let handlesubmit=()=>{
+
+  }
+  // let handleBtn =()=>{
+
+  // }
+
   const { getFieldDecorator } = props.form;
   function handleSubmit() {
     props.form.validateFields((err, values) => {
@@ -50,33 +57,42 @@ function Question(props) {
         title="请填入试题类型"
         onCancel={() => updateModal(false)}
         onOk={() => handleSubmit()}
-      >
+       >
         <Form.Item>
           {getFieldDecorator('type', {
+
             rules: [
               {
                 required: true,
                 message: 'Please input your name',
               },
             ],
-          })(<Input placeholder="请输入类型名称" />)}
-        </Form.Item>
+          })(<Input className="input" placeholder="Please input your name" />)}
+        </Form.Item>   
       </Modal>
+
       <div className="head">
         <h1>试题分类</h1>
       </div>
       <div className="sec">
+        
         <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
         <Table rowKey="questions_type_id" columns={columns} dataSource={props.question.isQuestionclassifiy} />
       </div>
     </div>
   )
 }
+
+
 Question.propTypes = {
 
 };
 const mapState = (state) => {
+
+  // console.log(state.question.isQuestionclassifiy.data)
+
   console.log(state)
+
   return {
     ...state,
     // ...state.isQuestionclassifiy,

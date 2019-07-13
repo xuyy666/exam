@@ -11,21 +11,22 @@ function LoginPage(props) {
   // }, [])
 
   //判断是否登录成功
-   useEffect(() => {
-      if(props.isLogin === 1){
-          message.success('登录成功');
-          let path = '/index';
-          if(props.location.search){ // ?redirect=%2F
-            //  path = decodeURIComponent(props.location.search.split('=')[1]);
-             path = decodeURIComponent(props.location.search.slice(1).split('=')[1]);
-          }
-          console.log('path...',path)
-          props.history.push(path)
-          // props.history.push('/index')
-      }else if(props.isLogin === 0){
-          message.success('用户名或密码错误');
+  useEffect(() => {
+    console.log(props.isLogin); // -1
+    if (props.isLogin === 1) {
+      message.success('登录成功');
+      let path = '/index';
+      if (props.location.search) { // ?redirect=%2F
+        //  path = decodeURIComponent(props.location.search.split('=')[1]);
+        path = decodeURIComponent(props.location.search.slice(1).split('=')[1]);
       }
-   },)
+      console.log('path...', path)
+      props.history.push(path)
+      // props.history.push('/index')
+    } else if (props.isLogin === 0) {
+      message.success('用户名或密码错误');
+    }
+  })
 
   // 点击登录页面
   // let login = () => {
@@ -46,8 +47,8 @@ function LoginPage(props) {
   // 从from的高阶组价中拿到效验组件
   const { getFieldDecorator } = props.form;
   return (
-    <div className="login">
-      <p className={styles.title}>登录页面</p>
+    <div className={styles.login}>
+      {/* <p className={styles.title}>登录页面</p> */}
       <Form onSubmit={handleSubmit} className="login-form">
         <Form.Item>
           {getFieldDecorator('username', {
@@ -68,9 +69,11 @@ function LoginPage(props) {
             validateTrigger: "onBlur",
             rules: [
               { required: true, message: 'Please input your username!' },
-              { pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]*$/
-                , message: 'Please input your correct username!' },
-              ],
+              {
+                pattern: /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]*$/
+                , message: 'Please input your correct username!'
+              },
+            ],
           })(
             <Input
               prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -116,11 +119,4 @@ export default connect(mapState, mapDispatchToProps)(Form.create()(LoginPage));
 // onClick={login}
 //  /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[!#@*&.])[a-zA-Z\d!#@*&.]*$/
 // /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[#@*&.])[a-zA-Z\d#@*&.]*$/
-/* <div className={styles.normal}>
-      <h1 className={styles.title}>Yay! Welcome to dva!</h1>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
-      </ul>
-    </div> */
+

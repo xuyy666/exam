@@ -17,7 +17,6 @@ export default {
         let data1 = yield call(getAllCourses,payload);
         
         // console.log('22data getAllCourse...', data1); // token只是一个字段
-       
         // 调用同步的reduce的
         yield put({
           type: "allCourse",// type是reducers里方法

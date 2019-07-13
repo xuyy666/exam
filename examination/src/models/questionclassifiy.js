@@ -1,3 +1,4 @@
+
 import { questionclassifiy } from '../services/index.js'
 import { questionclassifiyAdd } from '../services/index.js' //考试分类 添加试题
 export default {
@@ -8,12 +9,12 @@ export default {
     isQuestionclassifiy: [],
     isQuestionclassifiyAdd: [],
   },
+  
   // 异步操作
   effects: {  // generator
     *questionclassifiy({ payload }, { call, put }) {
-      console.log(payload)
-      let data = yield call(questionclassifiy);
-      console.log('data...', data)
+      let data = yield call(questionclassifiy,payload);
+      // console.log('data...',data) 
       // 调用同步的reduce的改变登录状态
       yield put({
         type: "updateQuestionclassifiy",// type是reducers里方法

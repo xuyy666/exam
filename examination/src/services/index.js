@@ -1,4 +1,9 @@
 export * from './login.js';
+export * from './questionclassifiy.js';
+export * from './lookquestion.js';
+export * from './lookquestionExam.js';
+
+export * from './addquestion.js'; // 添加试题接口
 
 export * from './questionclassifiy.js';//试题分类
 export * from './questionclassifiyAdd.js';//试题分类
