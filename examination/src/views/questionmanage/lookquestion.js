@@ -24,44 +24,6 @@ function Question(props) {
   // }
   return (
     <div className="lookquestion">
-      <h2> 查看试题</h2>
-      <div className="loopBox">
-        <div className="classType">
-          <h2> 课程类型：</h2>
-          {
-            isLookquestion.map((item, index) => (
-              <span key={index}>{item.subject_text}</span>
-            ))
-          }
-        </div>
-        <div className="examType">
-          <div className="p">考试类型:
-             <Select defaultValue="组件化">
-              {
-                isLookquestionExam.map((item, index) => (
-                  <Option key={index}>
-                    {item.questions_type_text}
-                  </Option>
-                ))
-              }
-            </Select>
-            考试类型:
-               <Select defaultValue="组件化">
-              {
-                isLookquestionExam.map((item, index) => (
-                  <Option key={index}>
-                    {item.questions_type_text}
-                  </Option>
-                ))
-              }
-
-            </Select>
-            <Button className="btn">查询</Button>
-          </div>
-        </div>
-      </div>
-      <div className="loopSec"></div>
-
       <div className="lookquestionAll">
         <h2> 查看试题</h2>
 
@@ -178,4 +140,3 @@ export default connect(mapState, mapDispatchToProps)(Question);
 
 // })
 // export default connect(mapState,mapDispatch)(Question);
-

@@ -29,12 +29,7 @@ function Question(props) {
 
   }, [])
 
-  let handlesubmit=()=>{
-
-  }
-  // let handleBtn =()=>{
-
-  // }
+ 
 
   const { getFieldDecorator } = props.form;
   function handleSubmit() {
@@ -69,7 +64,7 @@ function Question(props) {
               },
             ],
           })(<Input className="input" placeholder="Please input your name" />)}
-          <button onClick={handlesubmit} className="btn">提交</button>
+         
         </Form.Item>   
       </Modal>
 
