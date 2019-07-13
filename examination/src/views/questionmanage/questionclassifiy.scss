@@ -12,7 +12,9 @@ body {
   height: 100%;
 }
 
-:global {
+
+
+:global{
   .questionclassifiyPage {
     position: relative;
     width: 100%;
@@ -126,6 +128,35 @@ body {
           }
         }
       }
+
+      // .secbox{
+      //   width:90%;height:500px;
+      //   border:1px solid #ccc;
+      //   margin-left:10px;
+        // ul{
+        //   width:100%;height:60px;
+        //   background:#ccc;
+        //   li{
+        //     height:65px;
+        //     border-bottom:1px solid #ccc;
+        //     line-height:65px;
+        //     font-size:25px;
+        //     span{
+        //       width:30%;
+        //       display:inline-block;
+        //       padding-left:20px;
+        //     }
+        //   }
+        //   p{
+        //     line-height:60px;
+        //     span{
+        //       width:30%;
+        //       display:inline-block;
+        //     }
+        //   }
+        // }
+      // }
+
     }
   }
 }

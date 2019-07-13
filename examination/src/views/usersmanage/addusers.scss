@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size:14px;
   text-decoration: none;
   box-sizing: border-box;
 }
@@ -22,7 +23,6 @@ body {
     height: 100%;
     background: #f0f2f5;
     p {
-      font-size: 30px;
       padding: 10px 30px;
     }
     .addBox {
@@ -52,7 +52,6 @@ body {
               button {
                 flex: 1;
                 height: 45px;
-                font-size: 20px;
                 background: #fff;
               }
               .ant-input .ant-cascader-input {
@@ -61,7 +60,6 @@ body {
               input {
                 width: 100%;
                 height: 45px;
-                font-size: 20px;
                 color: rgb(126, 102, 102);
                 border: none;
               }
@@ -78,14 +76,12 @@ body {
               button {
                 padding: 0 10px;
                 height: 45px;
-                font-size: 20px;
                 background: #fff;
                 flex: 1;
               }
               input {
                 width: 100%;
                 height: 45px;
-                font-size: 20px;
                 color: rgb(126, 102, 102);
                 border: none;
               }
@@ -102,14 +98,12 @@ body {
               button {
                 padding: 0 10px;
                 height: 45px;
-                font-size: 20px;
                 background: #fff;
                 flex: 1;
               }
               input {
                 width: 100%;
                 height: 45px;
-                font-size: 20px;
                 color: rgb(126, 102, 102);
                 border: none;
               }
@@ -126,14 +120,12 @@ body {
               button {
                 padding: 0 10px;
                 height: 45px;
-                font-size: 20px;
                 background: #fff;
                 flex: 1;
               }
               input {
                 width: 100%;
                 height: 45px;
-                font-size: 20px;
                 color: rgb(126, 102, 102);
                 border: none;
               }
@@ -150,7 +142,6 @@ body {
               button {
                 padding: 0 6px;
                 height: 45px;
-                font-size: 20px;
                 background: #fff;
                 flex: 1;
               }
@@ -167,7 +158,6 @@ body {
               button {
                 padding: 0 6px;
                 height: 45px;
-                font-size: 20px;
                 background: #fff;
                 flex: 1;
               }
