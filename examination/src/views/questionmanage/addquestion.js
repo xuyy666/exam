@@ -4,7 +4,7 @@ import styles from './addquestion.scss';
 import { Form, Input, Select, Button, Modal, message } from 'antd';
 import Editor from 'for-editor'// 实现markdown效果
 function Addquestion(props) {
-    //实现markdown 效果
+    //实现 markdown 效果
     // const [content, setvalue] = useState(undefined);
     // // const [title, setvalue1] = useState(1);// 初始值 为1 当change事件改变的时候变为2
     // const change = (value) => { // 传入什么值写什么值  或者改变后的值
@@ -49,7 +49,7 @@ function Addquestion(props) {
                     "title":values.markdown, // 试题的标题
                 })
             }else{
-                message.error(err.types.errors)
+                // message.error(err.types.errors)
             }
         });
     };
