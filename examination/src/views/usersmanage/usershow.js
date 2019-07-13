@@ -7,63 +7,18 @@ import {
   Tooltip,
   Icon,
   Cascader,
-  // Select,
   Button,
-  // AutoComplete,
 } from 'antd';
-// const { Option } = Select;
-// const AutoCompleteOption = AutoComplete.Option;
-
-// const residences = [
-//   {
-//     value: 'zhejiang',
-//     label: 'Zhejiang',
-//     children: [
-//       {
-//         value: 'hangzhou',
-//         label: 'Hangzhou',
-//         children: [
-//           {
-//             value: 'xihu',
-//             label: 'West Lake',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     value: 'jiangsu',
-//     label: 'Jiangsu',
-//     children: [
-//       {
-//         value: 'nanjing',
-//         label: 'Nanjing',
-//         children: [
-//           {
-//             value: 'zhonghuamen',
-//             label: 'Zhong Hua Men',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
-
 function Usershow(props){
-
  let handleSubmit = e => {
-    // e.preventDefault();
-    // props.form.validateFieldsAndScroll((err, values) => {
-    //   if (!err) {
-    //     console.log('Received values of form: ', values);
-    //   }
-    // });
+    e.preventDefault();
+    props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+      }
+    });
   };
 
-  let handleConfirmBlur = e => {
-    // const { value } = e.target;
-  // setState({ confirmDirty: this.state.confirmDirty || !!value });
-  };
 
  let compareToFirstPassword = (rule, value, callback) => {
     const { form } = props;
@@ -73,51 +28,9 @@ function Usershow(props){
       callback();
     }
   };
-
-  // validateToNextPassword = (rule, value, callback) => {
-  //   const { form } = props;
-  //  // if (value && this.state.confirmDirty) {
-  //  //   form.validateFields(['confirm'], { force: true });
-  //  // }
-  //   callback();
-  // };
-
-//  let handleWebsiteChange = value => {
-//     let autoCompleteResult;
-//     if (!value) {
-//       autoCompleteResult = [];
-//     } else {
-//       autoCompleteResult = ['.com', '.org', '.net'].map(domain => `${value}${domain}`);
-//     }
-//   //  this.setState({ autoCompleteResult });
-//   };
   const { getFieldDecorator } = props.form;
-  // const { autoCompleteResult } = this.state;
-
-  // const formItemLayout = {
-  //   labelCol: {
-  //     xs: { span: 24 },
-  //     sm: { span: 8 },
-  //   },
-  //   wrapperCol: {
-  //     xs: { span: 24 },
-  //     sm: { span: 16 },
-  //   },
-  // };
-  // const tailFormItemLayout = {
-  //   wrapperCol: {
-  //     xs: {
-  //       span: 24,
-  //       offset: 0,
-  //     },
-  //     sm: {
-  //       span: 16,
-  //       offset: 8,
-  //     },
-  //   },
-  // };
   return (
-      <div className="usershow">
+      <div className={styles.usershow}>
          用户展示
        <Form onSubmit={handleSubmit}>
         <Form.Item label="E-mail">
@@ -155,7 +68,7 @@ function Usershow(props){
                 validator: compareToFirstPassword,
               },
             ],
-          })(<Input.Password onBlur={handleConfirmBlur} />)}
+          })(<Input.Password />)}
         </Form.Item>
         <Form.Item
           label={

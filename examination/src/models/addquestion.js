@@ -1,5 +1,5 @@
-import {addQuestion} from '@/services/index.js'
-import {addUser} from '@/services/index.js'
+import {addQuestion} from '@/services/index.js'  // 获取当前用户信息
+import {addUser} from '@/services/index.js'  //  添加试题接口
 export default {
     // 命名空间
     namespace: 'addQuestion',
@@ -7,7 +7,7 @@ export default {
    // 模块的管理
     state: {
       addQu:-1,
-      id:""
+      userInfo:{}
     },
   
   // 异步操作
@@ -15,7 +15,6 @@ export default {
       *addQuestion({ payload }, { call, put }) {  // eslint-disable-line
         // console.log('payload...', payload, type)
         let data = yield call(addQuestion,payload);
-        console.log('addQuestionsdata...', data); // token只是一个字段
        
         // 调用同步的reduce的
         if(data.code){
@@ -26,16 +25,15 @@ export default {
         }else{
 
         }
-       
       },
       *addUser({payload},{ call, put }){
-        let data = yield call(addUser,payload);
+        let data = yield call(addUser);
         console.log('addUser......', data); // token只是一个字段
        
         // 调用同步的reduce的
           yield put({
             type: "addUsers",// type是reducers里方法
-            payload: data
+            payload: data.data
           })
       }
     },
@@ -48,7 +46,7 @@ export default {
       },
       // 获取当前用户信息
       addUsers(state,action){
-        return {...state,id:action.payload}
+        return {...state,userInfo:action.payload}
       }
     },
   };

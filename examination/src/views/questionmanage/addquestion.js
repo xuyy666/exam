@@ -11,27 +11,28 @@ function Addquestion(props) {
     //     setvalue(value)
     //     // setvalue1(2)
     // }
+
     //调用数据
     useEffect(() => {
         props.getAllQuest();//  没用
         props.getexamType(); // 获取所有的考试类型
         props.getAllCourses() // 获取所有的课程
-        props.getAllQuestype() // 获取所有的试题类型
+        props.getAllQuestype(); // 获取所有的试题类型
+        props.addUser();  // 获取当前用户信息
     }, [])
 
+    // console.log('-----------------',props.userInfo)
     function handleChange(value) {
         console.log(`selected ${value}`);
     }
 
-    const { data, getAllCours, getAllQuestions } = props;
+    const { data, getAllCours, getAllQuestions, userInfo } = props;
+    console.log('================',userInfo.user_id)
     //getAllCourses
     const { Option } = Select;
-    console.log('-----------------',props)
-    // const { size } = state;
-    // const clicksubmit =()=>{
-
-    // }
-    let [addInfor, setAddInfor] = useState({});
+ 
+    //  添加用户信息  设置用户信息
+    let [addInfor, setAddInfor] = useState({}); // userInfor
     // form 提交功能
     let handleSubmit = e => {
         e.preventDefault();
@@ -43,32 +44,37 @@ function Addquestion(props) {
                     "questions_stem":values.iptvalue,  //
                     "subject_id":values.courseType,
                     "exam_id":values.examType,
-                    "user_id": "",  // 用户id
+                    "user_id":userInfo.user_id,  // 用户id
                     "questions_answer":values.answer, // 题目答案
                     "title":values.markdown, // 试题的标题
                 })
             }else{
-                // message.error(err.types.errors)
+                message.error(err.types.errors)
             }
         });
     };
 
     const { getFieldDecorator } = props.form;
 
-    // 创建state,控制弹框的显示隐藏
+    // 创建state,控制弹框的显示隐藏 
     let [showModal, updateModal] = useState(false);
     //点击提交
     let clickSubmit = () => {
         updateModal(true);
         // props.addquestion() // 添加试题接口
     }
+    // 点击弹框的确定
     let okChange=()=>{
-        updateModal(false)
-        props.addquestion()
+        updateModal(false);
+        props.addquestion(addInfor); // 
     }
+    // 点击弹框的取消
     let cancelChange=()=>{
         updateModal(false)
     }
+
+    console.log(props)
+
     return (
         <div className={styles.addquestion}>
             <div className={styles.addquestionwrap}>
@@ -133,14 +139,8 @@ function Addquestion(props) {
                         <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
                             提交
                        </Button>
-                       {/* { getFieldDecorator('subcontent')(<Button type="primary" htmlType="submit" className={styles.btn} 
-                         onClick={clickSubmit}>
-                            提交
-                       </Button>)
-                       } */}
                     </Form.Item>
                 </Form>
-
 
                 <Modal
                     title="你确定要删除这道试题吗"
@@ -149,7 +149,7 @@ function Addquestion(props) {
                     onOk={okChange}
                     okText="确认"
                     cancelText="取消"
-                >
+                 >
                     <p>真的要添加吗</p>
                 </Modal>
 
@@ -158,20 +158,18 @@ function Addquestion(props) {
     )
 }
 
-// onOk={handleOk}
-// onCancel={handleCancel}
 
 Addquestion.propTypes = {
 
 };
+
 const mapState = (state) => {
-    // console.log(state)
+    console.log(state)
     return { //  ...state.getAllQuestions,
         ...state,
         ...state.examType.examTypes,
-        ...state.getallcourse,
-        ...state,
-
+        ...state.getallcourse,  // 2
+        ...state.addQuestion, // 拿到用户userInfor  // ...state.addUser
     }
 }
 const mapDispatch = (dispatch) => ({
@@ -183,7 +181,7 @@ const mapDispatch = (dispatch) => ({
         })
     },
     // 获取当前用户信息
-    addUsers(payload){
+    addUser(payload){
        dispatch({
            type:"addQuestion/addUser",
            payload
@@ -215,6 +213,8 @@ const mapDispatch = (dispatch) => ({
     }
 })
 export default connect(mapState, mapDispatch)(Form.create()(Addquestion));
+
+
 
 // onClick={()=>clickSubmit(true)}
  // state ={
