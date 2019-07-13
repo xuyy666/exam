@@ -1,68 +1,63 @@
-import React,{useEffect} from 'react'; // useState
+import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import {Button,Select} from 'antd';
+import { Button, Select } from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
-
-
-function Question(props){
-  useEffect(()=>{
+function Question(props) {
+  useEffect(() => {
     //  console.log(props)
-     props.lookquestion()
-     props.lookquestionExam()
-  },[])
-console.log(props)
-  let {isLookquestion}=props.look
-  let {isLookquestionExam}=props.look
-   console.log(isLookquestionExam)
+    props.lookquestion()
+    props.lookquestionExam()
+  }, [])
+  console.log(props)
+  let { isLookquestion } = props.look
+  let { isLookquestionExam } = props.look
+  //  console.log(isLookquestionExam)
 
   //  function handleChange(value) {
   //   console.log(`selected ${value}`);
   // }
   return (
-      <div className="lookquestion">
-        <h1> 查看试题</h1>
-         <div className="loopBox">
-           <div className="classType">
-             <h1> 课程类型：</h1>
+    <div className="lookquestion">
+      <h1> 查看试题</h1>
+      <div className="loopBox">
+        <div className="classType">
+          <h1> 课程类型：</h1>
+          {
+            isLookquestion.map((item, index) => (
+              <span key={index}>{item.subject_text}</span>
+            ))
+          }
+        </div>
+        <div className="examType">
+          <div className="p">考试类型:
+             <Select defaultValue="组件化">
               {
-                isLookquestion.map((item,index)=>(
-                 <span key={index}>{item.subject_text}</span>
+                isLookquestionExam.map((item, index) => (
+                  <Option key={index}>
+                    {item.questions_type_text}
+                  </Option>
                 ))
               }
-           </div>
-           <div className="examType">
-             <div className="p">考试类型:  
-             <Select defaultValue="组件化">
-                {
-                    isLookquestionExam.map((item,index)=>(
-                      <Option key={index}>
-                         {item.questions_type_text}
-                      </Option>   
-                    ))
-                }
-               
-              </Select>
-              
-           
-               考试类型:
+            </Select>
+            考试类型:
                <Select defaultValue="组件化">
-                {
-                    isLookquestionExam.map((item,index)=>(
-                      <Option key={index}>
-                         {item.questions_type_text}
-                      </Option>   
-                    ))
-                }
-               
-              </Select>
+              {
+                isLookquestionExam.map((item, index) => (
+                  <Option key={index}>
+                    {item.questions_type_text}
+                  </Option>
+                ))
+              }
 
-                <Button className="btn">查询</Button>
-                </div>
-           </div>
-         </div>
-         <div className="loopSec"></div>
+            </Select>
+
+            <Button className="btn">查询</Button>
+          </div>
+        </div>
       </div>
+      <div className="loopSec"></div>
+    </div>
   )
 }
 

@@ -18,30 +18,34 @@
     height: 100%;
     // overflow: auto;
     background: #eee;
-
-    h2 {
-      // margin-left: 10px;
-      padding: 10px;
-    }
-
     .addquestionwrap {
       width: 96%;
       height: 98%;
       // background: pink;
-      background: #fff;
-      margin: 10px auto;
-      padding: 10px 6px;
-      border-radius: 5px;
-
-      .title {
-        width: 97%;
-        height: 130px;
-        margin: 0 auto;
-        padding: 20px;
+      // background: #fff;
+      margin: 20px auto;
+      padding: 10px 10px;
+      h2 {
+        padding: 10px;
+      }
+      .forms{
+        width:99%;
+        height: 98%;
         background: #fff;
-
+        margin: 20px auto;
+        padding: 10px 10px;
+        border-radius: 10px;
+      .title {
+        h3,p{
+          height: 20px;
+        }
+        width: 100%;
+        height: 100px;
+        margin: 0 auto;
+        padding:0 0 0 10px;
+        // background: pink;
         .input {
-          width: 100%;
+          width: 90%;
           // text-align: center;
           // margin:0 auto;
         }
@@ -52,7 +56,7 @@
           padding: 6px 0 0 10px;
         }
         width: 100%;
-        height:310px;
+        height:316px;
         // background: blue;
         // padding: 20px;
         // margin-top: 10px;
@@ -90,10 +94,11 @@
         height: 200px;
         margin: 0 auto;
         .btn{
-          width: 100px;
+          width: 160px;
           height: 40px;
         }
       }
     }
+   }
   }
 }

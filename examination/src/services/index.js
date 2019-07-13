@@ -4,7 +4,7 @@ export * from './questionclassifiy.js';
 export * from './lookquestion.js';
 export * from './lookquestionExam.js';
 
-export * from './addquestion.js';
+export * from './addquestion.js'; // 添加试题接口
 // export * from './getallquestions.js'// get 获取所有的试题
 
 export * from './examalltype.js' // 获取所有的考试类型

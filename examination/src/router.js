@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { Router, Route, Switch ,Redirect} from 'dva/router';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/login/IndexPage'// 登录页
 function RouterConfig({ history }) {
@@ -8,7 +8,7 @@ function RouterConfig({ history }) {
       <Switch>
         <Route path="/index" component={IndexPage} />
         <Route path="/login" component={LoginPage} />
-        {/* <Redirect from="/" to="/index" /> */}
+        <Redirect from="/" to="/index" />
       </Switch>
     </Router>
   );
