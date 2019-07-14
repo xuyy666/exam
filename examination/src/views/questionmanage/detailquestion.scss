@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+  :global {
+      .detailquestion{
+          width:100%;height:1000px;
+          background:#ccc;
+          h2{
+              padding:20px 20px;
+              font-size: 20px;
+          }
+          .detailBox{
+            width: 99%;
+            height: 100%;
+            padding-left:20px;
+            display:flex;
+            .leftDetail{
+              flex:5;
+              background:#fff;
+              border-radius:3%;
+            }
+            .rightDetail{
+               margin-left:15px;
+                flex:5;
+                background:#fff;
+                border-radius:3%;
+            }
+          }
+      }
+  }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Button, Select } from 'antd';
+import { Button, Select} from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
+
 function Question(props) {
   useEffect(() => {
     //  console.log(props)
@@ -17,18 +18,30 @@ function Question(props) {
   let { isLookquestionMenu } = props.look
   let { isLookquestionDetail } = props.look;
 
+
   const click =(index)=>{
       console.log(index)
       setstyle(index)
       // setone([index])
   }
 
+ 
+  //  function classType(id){
+  //    console.log(id)
+  //    if(id){
+       
+  //    }
+  //  }
+  
+
+
   const all=()=>{ //  多选
     setAll(!addAll)
+    setstyle(-1)
     console.log(999)
   }
 
-  const [addstyle,setstyle] = useState(undefined); // -1 undefined  null  tab切换
+  const [addstyle,setstyle] = useState(-1); // -1 undefined  null  tab切换
   const [addAll,setAll] = useState(false);
   // const [one,setone] = useState([]);
 
@@ -41,11 +54,22 @@ function Question(props) {
             <h4>课程类型：</h4>
             <span onClick={all} className={addAll ? 'active' : ""}>All</span>
             {
+              isLookquestion&&isLookquestion.map((item,index)=>{
+                return <span onClick={()=>click(index)}
+                className={addAll || addstyle===index ? "active" :""}
+                key={index}
+                >{item.subject_text}</span>
+              })
+            }
+            {/* {
               isLookquestion.map((item, index) => (
                 <span key={index} onClick={()=>click(index)} 
-                 className={addAll || addstyle===index ? "active" :""}>{item.subject_text}</span>
-              ))
-            }
+                  className={addAll || addstyle===index ? "active" :""}>{item.subject_text}
+                </span>
+
+              )
+            } */}
+            </div>
           </div>
           <div className="examType">
             <div className="p">
@@ -86,8 +110,9 @@ function Question(props) {
                       <Button type="primary" style={{ background: '#f4d17e', color: '#ee862a' }}>{item.exam_name}</Button>
                     </p>
                     <p>
+                 
                       {item.user_name}发布
-                </p>
+                    </p>
                   </div>
                   <div className="bianji">编辑</div>
                 </li>
@@ -96,7 +121,7 @@ function Question(props) {
           </ul>
         </div>
       </div>
-    </div>
+    
   )
 }
 

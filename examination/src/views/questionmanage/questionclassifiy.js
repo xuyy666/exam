@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Table, Input, Button, Form, Modal, message } from 'antd';
-import './questionclassifiy.scss'
+import { Table, Input, Button, Form, Modal, message } from 'antd'; //Breadcrumb
+import './questionclassifiy.scss';
 // import styles from './questionclassifiy.scss'
-
-
 function Question(props) {
   const columns = [
     {
@@ -28,6 +26,7 @@ function Question(props) {
     props.questionclassifiy()
 
   }, [])
+
 
   // let handlesubmit=()=>{
 
@@ -53,6 +52,7 @@ function Question(props) {
   }
   return (
     <div className="questionclassifiyPage">
+      
       <Modal
         visible={showModal}
         title="请填入试题类型"
@@ -68,7 +68,6 @@ function Question(props) {
               },
             ],
           })(<Input className="input" placeholder="Please input your name" />)}
-        
         </Form.Item>   
       </Modal>
 
