@@ -11,63 +11,20 @@ function Question(props) {
     props.lookquestionMenu()
     props.lookquestionDetail()
   }, [])
-  // console.log(props)
   let { isLookquestion } = props.look
   let { isLookquestionExam } = props.look
-  //  console.log(isLookquestionExam)
   let { isLookquestionMenu } = props.look
   let { isLookquestionDetail } = props.look
-  //  console.log(isLookquestionExam)
 
-  //  function handleChange(value) {
-  //   console.log(`selected ${value}`);
-  // }
-   function classType(id){
-     console.log(id)
-     if(id){
-       
-     }
-   }
+  let  classType=(props)=>{
+    console.log(props)
+      }
+  
+  let  detailQuestion=(props)=>{
+     console.log(props)
+  }
   return (
     <div className="lookquestion">
-      <h2> 查看试题</h2>
-      <div className="loopBox">
-        <div className="classType">
-          <h2> 课程类型：</h2>
-          {
-            isLookquestion.map((item, index) => (
-              <span key={index}>{item.subject_text}</span>
-            ))
-          }
-        </div>
-        <div className="examType">
-          <div className="p">考试类型:
-             <Select defaultValue="组件化">
-              {
-                isLookquestionExam.map((item, index) => (
-                  <Option key={index}>
-                    {item.questions_type_text}
-                  </Option>
-                ))
-              }
-            </Select>
-            考试类型:
-               <Select defaultValue="组件化">
-              {
-                isLookquestionExam.map((item, index) => (
-                  <Option key={index}>
-                    {item.questions_type_text}
-                  </Option>
-                ))
-              }
-
-            </Select>
-            <Button className="btn">查询</Button>
-          </div>
-        </div>
-      </div>
-      <div className="loopSec"></div>
-
       <div className="lookquestionAll">
         <h2> 查看试题</h2>
 
@@ -92,7 +49,7 @@ function Question(props) {
                   ))
                 }
               </Select>
-              考试类型:
+              题目类型:
                <Select defaultValue="组件化">
                 {
                   isLookquestionExam.map((item) => (
@@ -111,7 +68,7 @@ function Question(props) {
             {
               isLookquestionDetail.map((item, index) => (
                 <li key={index}>
-                  <div>
+                  <div onClick={detailQuestion}>
                     <h4>{item.title}</h4>
                     <p>
                       <Button type="primary" style={{ background: '#7ecef4', color: '#2aafee' }}>{item.subject_text}</Button>
@@ -119,7 +76,6 @@ function Question(props) {
                       <Button type="primary" style={{ background: '#f4d17e', color: '#ee862a' }}>{item.exam_name}</Button>
                     </p>
                     <p>
-                 
                       {item.user_name}发布
                 </p>
                   </div>
@@ -130,7 +86,6 @@ function Question(props) {
           </ul>
         </div>
       </div>
-
     </div>
   )
 }
