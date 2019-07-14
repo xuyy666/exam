@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Button, Select} from 'antd';
+import { Button, Select, Tag} from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
 
@@ -12,38 +12,45 @@ function Question(props) {
     props.lookquestionMenu()
     props.lookquestionDetail()
   }, [])
+
   console.log('=================',props)
   let { isLookquestion } = props.look
   let { isLookquestionExam } = props.look
   let { isLookquestionMenu } = props.look
   let { isLookquestionDetail } = props.look;
 
-
+  const [addstyle,setstyle] = useState(-1); // -1 undefined  null  tab切换
+  const [addAll,setAll] = useState(false); // 点击All
+  const [one,setone] = useState([]); // 点击自个的时候 取反
   const click =(index)=>{
       console.log(index)
       setstyle(index)
-      // setone([index])
+      setone(one);
+      // setstyle(-1)
   }
-
- 
-  //  function classType(id){
-  //    console.log(id)
-  //    if(id){
-       
-  //    }
-  //  }
-  
-
-
   const all=()=>{ //  多选
     setAll(!addAll)
-    setstyle(-1)
-    console.log(999)
+    setstyle(-1)   // 消除点击谁的样式
+    console.log(999);
+  }
+  // const [selectedTags]  = useState();
+  const handleChange=(item,checked)=>{
+    const nextSelectedTags = checked ? [{...one, item}] : one.filter(t => t !== item);
+    console.log('You are interested in: ', nextSelectedTags);
+    setone({ one: nextSelectedTags });
   }
 
-  const [addstyle,setstyle] = useState(-1); // -1 undefined  null  tab切换
-  const [addAll,setAll] = useState(false);
-  // const [one,setone] = useState([]);
+  // 点击查询
+  const search =()=>{
+      alert(9)
+  }
+
+  //  进入试题详情
+  const QuestionsDetail=(item)=>{
+     console.log('==========',props)
+     console.log(item);
+     props.history.push({pathname:`/index/itemdetails/${item.questions_id}`,state:{data:item}})
+  }
 
   return (
     <div className="lookquestion">
@@ -52,29 +59,21 @@ function Question(props) {
         <div className="loopBox">
           <div className="classType">
             <h4>课程类型：</h4>
-            <span onClick={all} className={addAll ? 'active' : ""}>All</span>
-            {
-              isLookquestion&&isLookquestion.map((item,index)=>{
-                return <span onClick={()=>click(index)}
-                className={addAll || addstyle===index ? "active" :""}
-                key={index}
-                >{item.subject_text}</span>
-              })
-            }
-            {/* {
-              isLookquestion.map((item, index) => (
-                <span key={index} onClick={()=>click(index)} 
-                  className={addAll || addstyle===index ? "active" :""}>{item.subject_text}
-                </span>
-
-              )
-            } */}
+              <Tag onClick={all} className={addAll ? 'active' : ""}>All</Tag>
+              {
+                isLookquestion && isLookquestion.map((item,index)=>{
+                  return <Tag onClick={()=>click(index)}
+                  className={addAll || addstyle===index ? "active" :""}
+                  key={index} checked={one.indexOf(item) > -1}
+                  onChange={checked =>handleChange(item, checked)}
+                  >{item.subject_text}</Tag>
+                })
+              }
             </div>
-          </div>
-          <div className="examType">
+            <div className="examType">
             <div className="p">
               考试类型:
-             <Select defaultValue="简答题">
+             <Select defaultValue="简答题" >
                 {
                   isLookquestionMenu.map((item) => (
                     <Option key={item.exam_id}>
@@ -93,24 +92,26 @@ function Question(props) {
                   ))
                 }
               </Select>
-              <Button className="btn">查询</Button>
+              <Button className="btn" onClick={()=>search()}>查询</Button>
             </div>
           </div>
+          </div>
+          
         </div>
         <div className="loopSec">
           <ul>
             {
               isLookquestionDetail.map((item, index) => (
-                <li key={index}>
+                <li key={item.questions_id}>
                   <div>
                     <h4>{item.title}</h4>
                     <p>
-                      <Button type="primary" style={{ background: '#7ecef4', color: '#2aafee' }}>{item.subject_text}</Button>
+                      <Button type="primary" style={{ background: '#7ecef4', color: '#2aafee' }} 
+                      onClick={()=>QuestionsDetail(item)}>{item.subject_text}</Button>
                       <Button type="primary" style={{ background: '#b57ef4', color: '#612aee' }}>{item.questions_type_text}</Button>
                       <Button type="primary" style={{ background: '#f4d17e', color: '#ee862a' }}>{item.exam_name}</Button>
                     </p>
                     <p>
-                 
                       {item.user_name}发布
                     </p>
                   </div>
@@ -121,7 +122,6 @@ function Question(props) {
           </ul>
         </div>
       </div>
-    
   )
 }
 
@@ -150,17 +150,17 @@ const mapDispatchToProps = (dispatch) => {
     },
     lookquestionExam: payload => {
       dispatch({
-        type: "look/lookquestionExam",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+        type: "look/lookquestionExam",
       })
     },
     lookquestionMenu: payload => {
       dispatch({
-        type: "look/lookquestionMenu",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+        type: "look/lookquestionMenu",
       })
     },
     lookquestionDetail: payload => {
       dispatch({
-        type: "look/lookquestionDetail",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+        type: "look/lookquestionDetail",
       })
     }
   }
