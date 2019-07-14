@@ -29,9 +29,9 @@ function Question(props) {
 
   }, [])
 
-  let handlesubmit=()=>{
+  // let handlesubmit=()=>{
 
-  }
+  // }
   // let handleBtn =()=>{
 
   // }
@@ -61,7 +61,6 @@ function Question(props) {
        >
         <Form.Item>
           {getFieldDecorator('type', {
-
             rules: [
               {
                 required: true,
@@ -69,7 +68,7 @@ function Question(props) {
               },
             ],
           })(<Input className="input" placeholder="Please input your name" />)}
-          <button onClick={handlesubmit} className="btn">提交</button>
+        
         </Form.Item>   
       </Modal>
 

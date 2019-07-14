@@ -11,7 +11,7 @@ export default {
   },
 
   // 异步操作
-  effects: {//generator
+  effects: { //generator
     *addQuestion({ payload }, { call, put }) {  // eslint-disable-line
       // console.log('payload...', payload, type)
       let data = yield call(addQuestion, payload);

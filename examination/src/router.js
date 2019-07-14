@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, Switch ,Redirect} from 'dva/router';
 import IndexPage from './pages/IndexPage';
 import LoginPage from './pages/login/IndexPage'// 登录页
+
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
