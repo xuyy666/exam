@@ -178,11 +178,5 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapState, mapDispatchToProps)(Question);
 
-// const mapState = (state)=>{
-//   return {}
-// }
-// const mapDispatch=(dispatch)=>({
 
-// })
-// export default connect(mapState,mapDispatch)(Question);
 
