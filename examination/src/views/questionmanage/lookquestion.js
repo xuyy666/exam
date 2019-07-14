@@ -82,7 +82,7 @@ function Question(props) {
                   ))
                 }
               </Select>
-              考试类型:
+              题目类型:
                <Select defaultValue="组件化">
                 {
                   isLookquestionExam.map((item) => (
