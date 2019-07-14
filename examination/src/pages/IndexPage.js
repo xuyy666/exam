@@ -14,7 +14,10 @@ import Grademanage from '../views/grademanage/grademanage'; // 班级管理 班�
 import Classroomanage from '../views/grademanage/classroomanage'; // 班级管理 教室管理
 import Studentmanage from '../views/grademanage/studentmanage'; // 班级管理 学生管理
 import Awaitingapp from '../views/markingmanage/awaitingapp'; // 阅卷管理 待批班级
-// import Detailquestion from '../views/questionmanage/detailquestion'//试题详情
+import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
+import Edititem from '../views/lookquedetail/edititem' //编辑详情
+
+
 // const { Header, Content, Footer, Sider } = Layout;
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -115,7 +118,9 @@ function IndexPage() {
             <Route path="/index/classroomanage" component={Classroomanage} />
             <Route path="/index/studentmanage" component={Studentmanage} />
             <Route path="/index/awaitingapp" component={Awaitingapp} />
-            {/* <Route path="/index/detailquestion" component={Detailquestion} /> */}
+            <Route path="/index/itemdetails/:id" component={Itemdetails} />
+            <Route path="/index/edititem/:id" component={Edititem} />
+            {/* <Route path="/questiondetail/:id" component={QuestionDetail} /> */}
           </div>
         </div>
       </div>

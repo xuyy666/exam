@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Button, Select } from 'antd';
+import { Button, Select} from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
 function Question(props) {
@@ -11,17 +11,18 @@ function Question(props) {
     props.lookquestionMenu()
     props.lookquestionDetail()
   }, [])
-  // console.log(props)
   let { isLookquestion } = props.look
   let { isLookquestionExam } = props.look
-  //  console.log(isLookquestionExam)
   let { isLookquestionMenu } = props.look
   let { isLookquestionDetail } = props.look
-  //  console.log(isLookquestionExam)
 
-  //  function handleChange(value) {
-  //   console.log(`selected ${value}`);
-  // }
+  let  classType=(props)=>{
+    console.log(props)
+      }
+  
+  let  detailQuestion=(props)=>{
+     console.log(props)
+  }
   return (
     <div className="lookquestion">
       <div className="lookquestionAll">
@@ -31,8 +32,8 @@ function Question(props) {
           <div className="classType">
             <h2> 课程类型：</h2>
             {
-              isLookquestion.map((item, index) => (
-                <span key={index}>{item.subject_text}</span>
+              isLookquestion.map((item) => (
+                <span key={item.subject_id} onClick={classType(item.subject_id)}>{item.subject_text}</span>
               ))
             }
           </div>
@@ -48,7 +49,7 @@ function Question(props) {
                   ))
                 }
               </Select>
-              考试类型:
+              课程类型:
                <Select defaultValue="组件化">
                 {
                   isLookquestionExam.map((item) => (
@@ -67,7 +68,7 @@ function Question(props) {
             {
               isLookquestionDetail.map((item, index) => (
                 <li key={index}>
-                  <div>
+                  <div onClick={detailQuestion}>
                     <h4>{item.title}</h4>
                     <p>
                       <Button type="primary" style={{ background: '#7ecef4', color: '#2aafee' }}>{item.subject_text}</Button>
@@ -85,7 +86,6 @@ function Question(props) {
           </ul>
         </div>
       </div>
-
     </div>
   )
 }
@@ -140,3 +140,4 @@ export default connect(mapState, mapDispatchToProps)(Question);
 
 // })
 // export default connect(mapState,mapDispatch)(Question);
+
