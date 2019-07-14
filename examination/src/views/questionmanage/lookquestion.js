@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'; // useState
+import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import { Button, Select} from 'antd';
 import './lookquestion.scss'
 const { Option } = Select;
+
 function Question(props) {
   useEffect(() => {
     //  console.log(props)
@@ -16,26 +17,42 @@ function Question(props) {
   let { isLookquestionMenu } = props.look
   let { isLookquestionDetail } = props.look
 
-  let  classType=(props)=>{
-    console.log(props)
-      }
   
   let  detailQuestion=(props)=>{
      console.log(props)
   }
+  const click =(index)=>{
+      console.log(index)
+      setstyle(index)
+      // setone([index])
+  }
+  
+  const all=()=>{ //  多选
+    setAll(!addAll)
+    setstyle(-1)
+    console.log(999)
+  }
+
+  const [addstyle,setstyle] = useState(-1); // -1 undefined  null  tab切换
+  const [addAll,setAll] = useState(false);
+  // const [one,setone] = useState([]);
   return (
     <div className="lookquestion">
       <div className="lookquestionAll">
         <h2> 查看试题</h2>
-
         <div className="loopBox">
           <div className="classType">
-            <h2> 课程类型：</h2>
+            <h4>课程类型：</h4>
+            <span onClick={all} className={addAll ? 'active' : ""}>All</span>
             {
-              isLookquestion.map((item) => (
-                <span key={item.subject_id} onClick={classType(item.subject_id)}>{item.subject_text}</span>
-              ))
+              isLookquestion&&isLookquestion.map((item,index)=>{
+                return <span onClick={()=>click(index)}
+                className={addAll || addstyle===index ? "active" :""}
+                key={index}
+                >{item.subject_text}</span>
+              })
             }
+            </div>
           </div>
           <div className="examType">
             <div className="p">
@@ -77,7 +94,7 @@ function Question(props) {
                     </p>
                     <p>
                       {item.user_name}发布
-                </p>
+                    </p>
                   </div>
                   <div className="bianji">编辑</div>
                 </li>
@@ -86,7 +103,6 @@ function Question(props) {
           </ul>
         </div>
       </div>
-    </div>
   )
 }
 
@@ -133,11 +149,4 @@ const mapDispatchToProps = (dispatch) => {
 
 export default connect(mapState, mapDispatchToProps)(Question);
 
-// const mapState = (state)=>{
-//   return {}
-// }
-// const mapDispatch=(dispatch)=>({
-
-// })
-// export default connect(mapState,mapDispatch)(Question);
 

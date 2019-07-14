@@ -37,8 +37,13 @@ function Addquestion(props) {
     let handleSubmit = e => {
         e.preventDefault();
         props.form.validateFieldsAndScroll((err, values) => {
-            if (!err) {
+            if (!err) { // 没有错误的时候传参
                 console.log('Received values of form: ', values);
+                // if(){ // 如果有参数 传参
+
+                // }else{ // 没有参数的话，报错误弹框
+
+                // }
                 setAddInfor({
                     "questions_type_id": values.questionTypes,// questionTypes
                     "questions_stem": values.iptvalue,  //
@@ -86,30 +91,49 @@ function Addquestion(props) {
           description:'http://127.0.0.1:7001',
         });
       };
-    console.log(props)
+    console.log(props);
 
+    // 受控组件
+    // const [val,setval] = useState('');
+    // let change=(e)=>{
+    //     setval(e.target.value)
+    // }
+
+    //   受控组件2
+    //   const [val,setval] = useState('');
+    //   <input type="text" value={val} onChange={(e)=>{setval(e.target.value) />
     return (
         <div className={styles.addquestion}>
             <div className={styles.addquestionwrap}>
                 <h2>添加试题</h2>
+                {/* <input type="text" value={val} onChange={(e)=>change(e)} /> */}
                 <Form className={styles.forms} onSubmit={handleSubmit} >
                     <Form.Item className={styles.title}>
                         <h3>题目信息</h3>
                         <p>题干</p>
-                        {getFieldDecorator('iptvalue')(<Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />)
+                        { getFieldDecorator('iptvalue',{
+                            rules: [
+                                {
+                                  required: true,
+                                  message: 'Please input your E-mail!',
+                                },
+                              ],
+                        })(<Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />)
                         }
                     </Form.Item>
 
                     <Form.Item className={styles.marked}>
                         <h3>题目主题</h3>
-                        {getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
+                        { getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
                         }
                     </Form.Item>
 
                     <div className={styles.types}>
                         <Form.Item className={styles.select}>
                             <h4>请选择考试类型:</h4>
-                            {getFieldDecorator('examType')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('examType',{
+
+                            })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     data && data.map((item, index) => <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
                                     )
