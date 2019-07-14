@@ -26,6 +26,15 @@ function Question(props) {
     props.questionclassifiy()
 
   }, [])
+
+
+  // let handlesubmit=()=>{
+
+  // }
+  // let handleBtn =()=>{
+
+  // }
+
   const { getFieldDecorator } = props.form;
   function handleSubmit() {
     props.form.validateFields((err, values) => {
@@ -52,7 +61,6 @@ function Question(props) {
        >
         <Form.Item>
           {getFieldDecorator('type', {
-
             rules: [
               {
                 required: true,
