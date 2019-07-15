@@ -17,6 +17,6 @@ export * from './addquestion.js';
 export * from './examalltype.js' // 获取所有的考试类型
 export * from './getallcourses.js' // 获取所有的课程
 export * from './getallquestype.js' // 获取所有的试题类型
-
+export * from './questiondetail.js' // 获取试题详情的id
 
 // console.log('*')

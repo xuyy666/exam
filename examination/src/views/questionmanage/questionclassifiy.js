@@ -27,14 +27,6 @@ function Question(props) {
 
   }, [])
 
-
-  // let handlesubmit=()=>{
-
-  // }
-  // let handleBtn =()=>{
-
-  // }
-
   const { getFieldDecorator } = props.form;
   function handleSubmit() {
     props.form.validateFields((err, values) => {
@@ -72,7 +64,7 @@ function Question(props) {
       </Modal>
 
       <div className="head">
-        <h1>试题分类</h1>
+        <h2>试题分类</h2>
       </div>
       <div className="sec">
         
