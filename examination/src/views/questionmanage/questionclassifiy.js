@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Table, Input, Button, Form, Modal, message } from 'antd'; //Breadcrumb
+import { Table, Input, Button, Form, Modal, message,Spin } from 'antd'; //Breadcrumb
 import './questionclassifiy.scss';
 // import styles from './questionclassifiy.scss'
 function Question(props) {
@@ -22,9 +22,7 @@ function Question(props) {
   ]
   let [showModal, updateModal] = useState(false)
   useEffect(() => {
-    console.log(props)
     props.questionclassifiy()
-
   }, [])
 
 
@@ -70,13 +68,13 @@ function Question(props) {
           })(<Input className="input" placeholder="Please input your name" />)}
         </Form.Item>   
       </Modal>
-
+      {props.global?<div><Spin /></div>:null}
       <div className="head">
         <h1>试题分类</h1>
       </div>
       <div className="sec">
         
-        <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
+        <p><Button onClick={() => {updateModal(true) }}>+添加类型</Button></p>
         <Table rowKey="questions_type_id" columns={columns} dataSource={props.question.isQuestionclassifiy} />
       </div>
     </div>
@@ -88,13 +86,12 @@ Question.propTypes = {
 
 };
 const mapState = (state) => {
-
   // console.log(state.question.isQuestionclassifiy.data)
-
-  console.log(state)
+  // console.log(state)
 
   return {
     ...state,
+     global:state.loading.global
     // ...state.isQuestionclassifiy,
     // ...state.isQuestionclassifiyAdd
   }
@@ -108,7 +105,7 @@ const mapDispatchToProps = (dispatch) => {
       })
     },
     questionclassifiyAdd: payload => {
-      console.log(payload)
+      // console.log(payload)
       dispatch({
         type: "question/questionclassifiyAdd",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
         payload

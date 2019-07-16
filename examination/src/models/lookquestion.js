@@ -13,9 +13,6 @@ export default {
     isLookquestionMenu: [],
     isLookquestionDetail: []
   },
-
-
-
   // 异步操作
   //课程类型
   effects: {  // generator
@@ -28,6 +25,7 @@ export default {
         payload: data.data // 相当于里面的执行
       })
     },
+
     //考试类型
     *lookquestionExam({ payload }, { call, put }) {
       let data = yield call(lookquestionExam);
@@ -61,16 +59,7 @@ export default {
     },
   },
 
-  //考试类型
-  *lookquestionExam({ payload }, { call, put }) {
-    let data = yield call(lookquestionExam);
-    console.log('data...', data)
-    // 调用同步的reduce的改变登录状态
-    yield put({
-      type: "updateLookquestionExam",// type是reducers里方法
-      payload: data.data // 相当于里面的执行
-    })
-  },
+  
 
   // 同步操作
   reducers: { // 相当于派发

@@ -5,6 +5,7 @@ export * from './lookquestionExam.js';
 
 export * from './addquestion.js'; // 添加试题接口
 
+export * from './edititem.js';//编辑详情
 export * from './questionclassifiy.js';//试题分类
 export * from './questionclassifiyAdd.js';//试题分类
 export * from './lookquestion.js';//查看试卷 课程类型
@@ -18,5 +19,7 @@ export * from './examalltype.js' // 获取所有的考试类型
 export * from './getallcourses.js' // 获取所有的课程
 export * from './getallquestype.js' // 获取所有的试题类型
 
+
+export * from './AddUser.js';//添加用户
 
 // console.log('*')
