@@ -1,3 +1,11 @@
+*{
+  margin:0;padding:0;
+  list-style:none;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
 :global {
   font-size: 14px;
   .lookquestion {
@@ -16,7 +24,7 @@
       }
       .loopBox {
         width: 90%;
-        height: 160px;
+        height: 280px;
         background: #fff;
         margin-left: 20px;
         display: flex;
@@ -60,57 +68,32 @@
           }
         }
       }
-
-      .loopSec {
-        font-size: 14px;
-        margin-top: 50px;
-        flex: 1;
-        // overflow: auto;
-        width: 90%;
-        height: 100%;
-        background: #fff;
-        margin-left: 20px;
-        ul {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          // background:#ccc;
-          li {
-            width: 90%;
-            height: 170px;
-            background: #fff;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-top: 10px;
-            display: flex;
-            div {
-              width: 600px;
-              display: flex;
-              flex-direction: column;
-              p {
-                width: 70%;
-                // background:#f00;
-                display: flex;
-                button {
-                  padding-left: 20px;
-                  margin-left: 5px;
-                }
-              }
-            }
-            .bianji {
-              flex: 1;
-              line-height: 160px;
-              color: #00f;
-            }
+ 
+    }
+    .loopSec{
+        // display:flex;
+        width:900px;
+        height:100%;
+        // background:#f00;
+        margin-top:20px;
+      ul{
+        width:900px;
+        height:100%;
+        margin-left:20px;
+        li{
+          width:900px;height:170px;
+         
+          display:flex;
+          .secLi{
+            width:700px;
+            height:100%;
+          }
+          .bianji{
+           width:200px;
+           line-height:170px;
           }
         }
       }
     }
-  }
-  .active{
-    // background:#00f;
-    color:#fff;
-    display:inline-block;
   }
 }
