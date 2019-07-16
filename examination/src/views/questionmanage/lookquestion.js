@@ -12,6 +12,7 @@ function Question(props) {
     props.lookquestionMenu()
     props.lookquestionDetail()
   }, [])
+
   //111111111111111
   console.log('=================', props)
   let { isLookquestion } = props.look
@@ -29,7 +30,7 @@ function Question(props) {
   //   setone(one);
   //   // setstyle(-1)
   // }
-
+  // 点击All
   // const all = () => { //  多选
   //   setAll(!addAll)
   //   setstyle(-1)   // 消除点击谁的样式
@@ -62,7 +63,7 @@ function Question(props) {
     if (tag === "All") {
       isLookquestion()//获取所有试题
     } else {
-      let subID = props.subjectType.find(item => item.subject_text === tag.subject_text).subject_id
+      let subID = props.look.isLookquestion.find(item => item.subject_text === tag.subject_text).subject_id
       changeselectedTags([tag])
       changeSubjectID(subID)
     }
@@ -86,7 +87,7 @@ let handleSubmit = () => {
           delete obj[i]
         }
       }
-      props.isLookquestion(obj)
+      props.look.isLookquestion(obj)
     }
   });
 };

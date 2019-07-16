@@ -25,14 +25,15 @@ function IndexPage() {
   return (
     <div className={styles.wrap}>
       <div className={styles.header}>
-        {/* <div> */}
-        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" alt="" />
-        {/* </div> */}
-        <div>
-          <span>头像</span>
-          <span>用户名</span>
+        <div className={styles.leftheader}>
+           <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" alt="" />
+        </div>
+        <div className={styles.rightheader}>
+            <img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" alt="" />
+            <span>chenmanjie</span>
         </div>
       </div>
+
       <div className={styles.content}>
         <div className={styles.left}>
           <Layout style={{ minHeight: '100vh' }}>

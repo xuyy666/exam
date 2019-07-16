@@ -5,8 +5,8 @@ import styles from './questionsdetail.scss'
 function QuestionsDetail(props) {
     useEffect(()=>{// get 方式对接口传参
         // props.questionsdetail({questinos_id:props.match.params.id});
-        props.questionsdetail({questinos_id:props.match.params.id.slice(1).split('=')[1]})//获取试题信息
-        console.log(props.questionsdetail({questinos_id:props.match.params.id.slice(1).split('=')[1]}))
+        props.questionsdetail({questions_id:props.match.params.id.slice(1).split('=')[1]})//获取试题信息
+      
     },[]);
     
     const questionsDetail = props;

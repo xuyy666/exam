@@ -1,8 +1,8 @@
 import request from '../utils/request';
 //services 后台的get请求
 export function questionDetail(params){
-    console.log(params,"45645645611111")
-    return request.get('/exam/questions/condition',params);  
+    console.log(params,"45645645611111详情")
+    return request.get('/exam/questions/condition',{params:params});  
 }
 
 
