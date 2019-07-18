@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'; // useState
+import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import styles from './examlist.scss'
-import { Button, Select, Form, Tabs, Radio, Table } from 'antd';
+import { Button, Select, Form, Radio, Table } from 'antd'; // Tabs
 import moment from 'moment'
 function Examlist(props) {
-  const { TabPane } = Tabs;
+  // const { TabPane } = Tabs;
   // tab
   // const [addstyle,setstyle] = useState(false);
 
@@ -102,7 +102,7 @@ function Examlist(props) {
       }
     }
   ];
-  
+
   // <a
   //     href="javascript:;"
   //     onClick={() => this.save(form, record.key)}
