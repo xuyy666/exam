@@ -4,7 +4,7 @@ export * from './lookquestion.js';
 export * from './lookquestionExam.js';
 
 export * from './addquestion.js'; // 添加试题接口
-
+export * from './edititem.js';//编辑详情
 export * from './questionclassifiy.js';//试题分类
 export * from './questionclassifiyAdd.js';//试题分类
 export * from './lookquestion.js';//查看试卷 课程类型
@@ -20,4 +20,10 @@ export * from './getallquestype.js' // 获取所有的试题类型
 export * from './questiondetail.js' // 获取试题详情的id
 export * from './listuser.js' // 用户展示的接口
 export * from './getpaperlist.js' // 获取试卷列表接口
+
+
+export * from './AddUser.js';//添加用户
+export * from './grademenage.js';//班级管理
+
+// export * from './addexam.js';//添加考试
 // console.log('*')

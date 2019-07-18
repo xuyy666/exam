@@ -1,160 +1,56 @@
-
 :global {
-  .IndexPage__right___13kb4 {
+  .wrap {
     width: 100%;
-    height: 100%;
-  }
-  .addPage {
-    width: 100%;
-    height: 100%;
-    background: #f0f2f5;
-    p {
-      padding: 10px 30px;
-    }
-    .addBox {
-      width: 90%;
-      height: 700px;
-      padding: 10px 50px;
-      margin-left: 10px;
-      border: 1px solid #ccc;
-      ul {
-        width: 100%;
-        height: 100%;
-        li {
-          width: 33%;
-          height: 342px;
-          float: left;
-          border: 1px solid #ccc;
-          .fristLi {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            p {
-              width: 100%;
-              height: 40px;
-              display: flex;
-              flex: 1;
-              button {
-                flex: 1;
-                height: 45px;
-                background: #fff;
-              }
-              .ant-input .ant-cascader-input {
-                height: 45px;
-              }
-              input {
-                width: 100%;
-                height: 45px;
-                color: rgb(126, 102, 102);
-                border: none;
-              }
-            }
-          }
-          .secLi {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            p {
-              width: 100%;
-              height: 40px;
-              button {
-                padding: 0 10px;
-                height: 45px;
-                background: #fff;
-                flex: 1;
-              }
-              input {
-                width: 100%;
-                height: 45px;
-                color: rgb(126, 102, 102);
-                border: none;
-              }
-            }
-          }
-          .thirdLi {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            p {
-              width: 100%;
-              height: 40px;
-              button {
-                padding: 0 10px;
-                height: 45px;
-                background: #fff;
-                flex: 1;
-              }
-              input {
-                width: 100%;
-                height: 45px;
-                color: rgb(126, 102, 102);
-                border: none;
-              }
-            }
-          }
-          .foreLi {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            p {
-              width: 100%;
-              height: 40px;
-              button {
-                padding: 0 10px;
-                height: 45px;
-                background: #fff;
-                flex: 1;
-              }
-              input {
-                width: 100%;
-                height: 45px;
-                color: rgb(126, 102, 102);
-                border: none;
-              }
-            }
-          }
-          .fiveLi {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            p {
-              width: 100%;
-              height: 40px;
-              button {
-                padding: 0 6px;
-                height: 45px;
-                background: #fff;
-                flex: 1;
-              }
-            }
-          }
-          .sixLi {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            p {
-              width: 100%;
-              height: 40px;
-              button {
-                padding: 0 6px;
-                height: 45px;
-                background: #fff;
-                flex: 1;
-              }
-            }
-          }
-        }
-      }
+    height: 900px;
+    background: #ccc;
+
+    h2 {
+      font-size: 16px;
+      padding: 20px 20px;
     }
   }
-}
-.active {
-  color: #00f;
-  border-color: #00f;
+
+  .user {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 60px 40px;
+    background: #fff;
+    border-radius: 3%;
+  }
+
+  .addUser {
+    width: 30%;
+    height: 350px;
+    margin: 20px 10px;
+  }
+
+  .addRank {
+    width: 30%;
+    height: 350px;
+    margin: 20px 10px;
+  }
+
+  .addApi {
+    width: 30%;
+    height: 350px;
+    margin: 20px 10px;
+  }
+
+  .Attempt {
+    width: 30%;
+    height: 350px;
+    margin: 20px 10px;
+  }
+
+  .RankSetApi {
+    width: 30%;
+    height: 350px;
+    margin: 20px 10px;
+  }
+
+  .RankSetView {
+    width: 30%;
+    height: 350px;
+    margin: 20px 10px;
+  }
 }

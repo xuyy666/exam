@@ -26,6 +26,7 @@ export default {
         payload: data.data // 相当于里面的执行
       })
     },
+
     //考试类型
     *lookquestionExam({ payload }, { call, put }) {
       let data = yield call(lookquestionExam);
@@ -65,7 +66,6 @@ export default {
          payload:data.data
        }) 
      }
-
   },
 
   // 同步操作

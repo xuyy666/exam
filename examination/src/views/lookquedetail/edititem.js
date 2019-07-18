@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
+import styles from './edititem.scss';
 import { Form, Input, Select, Button, Modal, message, notification } from 'antd';
 import Editor from 'for-editor'// 实现markdown效果
-function Addquestion(props) {
+function edititem(props) {
+    let editData=props.location.state.data
+    console.log(editData)
     //实现 markdown 效果
     // const [content, setvalue] = useState(undefined);
     // // const [title, setvalue1] = useState(1);// 初始值 为1 当change事件改变的时候变为2
@@ -26,7 +29,7 @@ function Addquestion(props) {
     }
 
     const { data, getAllCours, getAllQuestions, userInfo } = props;
-    console.log('================', userInfo.user_id)
+    // console.log('================', userInfo.user_id)
     //getAllCourses
     const { Option } = Select;
 
@@ -78,11 +81,18 @@ function Addquestion(props) {
     let cancelChange = () => {
         updateModal(false)
     }
-    // 点击确定 添加试题成功的弹框
+    // 点击确定 删除试题成功的弹框
     let success=()=>{
-        Modal.success({
-            title: '试题添加成功'
-        });
+        if(editData){
+            Modal.success({
+                title: '试题更新失败'
+            });
+        }else{
+            Modal.success({
+                title: '试题更新成功'
+            });
+        }
+       
     }
     const openNotificationWithIcon = type => {
         notification[type]({
@@ -90,7 +100,7 @@ function Addquestion(props) {
           description:'http://127.0.0.1:7001',
         });
       };
-    console.log(props);
+    
 
     // 受控组件
     // const [val,setval] = useState('');
@@ -102,37 +112,44 @@ function Addquestion(props) {
     //   const [val,setval] = useState('');
     //   <input type="text" value={val} onChange={(e)=>{setval(e.target.value) />
     return (
-        <div className="addquestion">
-            <div className="addquestion">
-                <h2>添加试题</h2>
+        <div className={styles.addquestion}>
+            <div className={styles.addquestionwrap}>
+                <h2>编辑试题</h2>
                 {/* <input type="text" value={val} onChange={(e)=>change(e)} /> */}
-                <Form className="forms" onSubmit={handleSubmit} >
-                    <Form.Item className="title">
+                <Form className={styles.forms} onSubmit={handleSubmit} >
+                    <Form.Item className={styles.title}>
                         <h3>题目信息</h3>
                         <p>题干</p>
                         { getFieldDecorator('iptvalue',{
+                              initialValue:`${editData.title}`,
                             rules: [
                                 {
                                   required: true,
                                   message: 'Please input your E-mail!',
                                 },
                               ],
-                        })(<Input placeholder="请输入题目标题,不超过20个字" className="input" />)
+                        })(<Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />)
                         }
                     </Form.Item>
 
-                    <Form.Item className="marked">
+                    <Form.Item className={styles.marked}>
                         <h3>题目主题</h3>
-                        { getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
+                        { getFieldDecorator('item',{
+                            initialValue:`${editData.questions_stem}`
                         }
+                        )(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
+                           
+                      }
+                    
+                  
                     </Form.Item>
 
-                    <div className="types">
-                        <Form.Item className="select">
+                    <div className={styles.types}>
+                        <Form.Item className={styles.select}>
                             <h4>请选择考试类型:</h4>
                             {getFieldDecorator('examType',{
-
-                            })(<Select style={{ width: 200 }} onChange={handleChange}>
+                            initialValue:`${editData.exam_name}`
+                        })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     data && data.map((item, index) => <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
                                     )
@@ -141,9 +158,11 @@ function Addquestion(props) {
                             }
                         </Form.Item>
 
-                        <Form.Item className="select">
+                        <Form.Item className={styles.select}>
                             <h4>请选择课程类型:</h4>
-                            {getFieldDecorator('courseType')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('courseType',{
+                            initialValue:`${editData.subject_text}`
+                        })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllCours && getAllCours.map((item, index) => <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
                                     )
@@ -154,7 +173,9 @@ function Addquestion(props) {
 
                         <Form.Item>
                             <h4>请选择题目类型:</h4>
-                            {getFieldDecorator('questionTypes')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('questionTypes',{
+                            initialValue:`${editData.questions_type_text}`
+                        })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllQuestions.map((item, index) => <Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
                                     )
@@ -164,32 +185,34 @@ function Addquestion(props) {
                         </Form.Item>
 
                     </div>
-                    <Form.Item className="marked">
+                    <Form.Item className={styles.marked}>
                         <h3>答案信息</h3>
 
-                        {getFieldDecorator('answer')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
+                        {getFieldDecorator('answer',{
+                            initialValue:`${editData.questions_answer}`
+                        })(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
                         }
                     </Form.Item>
-                    <Form.Item className="submit">
+                    <Form.Item className={styles.submit}>
 
-                       <Button type="primary" htmlType="submit" className="btn" onClick={clickSubmit}>
+                       <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
                             提交
                        </Button>
                     </Form.Item>
                 </Form>
 
-                <Modal
-                    title="你确定要添加这道试题吗"
+                <Modal className={styles.modal}
+                    title="您要修改吗"
                     visible={showModal}
                     onCancel={cancelChange}
                     onOk={okChange}
                     okText="确认"
                     cancelText="取消"
                 >
-                    <p>真的要添加吗</p>
+                    <p>确定要修改这道题吗</p>
                 </Modal>
                 (<div>
-                    <Button onClick={success}><span>我知道了</span></Button>
+                    <Button onClick={success}><span>确定</span></Button>
                     <Button onClick={() => openNotificationWithIcon('error')}>Error</Button>
                 </div>)
 
@@ -199,7 +222,7 @@ function Addquestion(props) {
 }
 
 
-Addquestion.propTypes = {
+edititem.propTypes = {
 
 };
 
@@ -252,7 +275,7 @@ const mapDispatch = (dispatch) => ({
         })
     }
 })
-export default connect(mapState, mapDispatch)(Form.create()(Addquestion));
+export default connect(mapState, mapDispatch)(Form.create()(edititem));
 
 
 

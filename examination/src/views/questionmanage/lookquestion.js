@@ -108,6 +108,10 @@ function Question(props) {
     props.history.push({ pathname:`/index/edititem/?id=${item.user_id}`, state: { data: item } })
   }
 
+  // const Edit=(item,index)=>{
+  //   props.history.push({pathname:`/index/edititem/?id=${item.user_id}`,state:{data:item}})
+  // }
+ 
   return (
     <div className="lookquestion">
       <div className="lookquestionAll">
