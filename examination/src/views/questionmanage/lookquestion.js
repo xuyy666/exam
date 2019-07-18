@@ -23,7 +23,7 @@ function Question(props) {
   const { getFieldDecorator } = props.form;
 
   //  进入试题详情
-  const QuestionsDetail = (questions_id) => {
+  // const QuestionsDetail = (questions_id) => {
 
 
     // query
@@ -130,9 +130,6 @@ function Question(props) {
                 </div>
               </div>
             </Form>
-
-
-
           </div>
         </div>
 
@@ -164,47 +161,47 @@ function Question(props) {
       </div>
     )
   }
+// }
+
+Question.propTypes = {
+
+};
+
+const mapState = (state) => {
+  console.log(state)
+  return {
+    ...state,
+    ...state.isLookquestion,
+    ...state.isLookquestionExam,
+    ...state.isLookquestionMenu,
+    ...state.isLookquestionDetail,
+    // ...state.isQuestionclassifiy
+  }
 }
 
-  Question.propTypes = {
-
-  };
-
-  const mapState = (state) => {
-    console.log(state)
-    return {
-      ...state,
-      ...state.isLookquestion,
-      ...state.isLookquestionExam,
-      ...state.isLookquestionMenu,
-      ...state.isLookquestionDetail,
-      // ...state.isQuestionclassifiy
+const mapDispatchToProps = (dispatch) => {
+  return {
+    lookquestion: payload => {
+      dispatch({
+        type: "look/lookquestion",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+      })
+    },
+    lookquestionExam: payload => {
+      dispatch({
+        type: "look/lookquestionExam",
+      })
+    },
+    lookquestionMenu: payload => {
+      dispatch({
+        type: "look/lookquestionMenu",
+      })
+    },
+    lookquestionDetail: payload => {
+      dispatch({
+        type: "look/lookquestionDetail",
+      })
     }
   }
+}
 
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      lookquestion: payload => {
-        dispatch({
-          type: "look/lookquestion",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
-        })
-      },
-      lookquestionExam: payload => {
-        dispatch({
-          type: "look/lookquestionExam",
-        })
-      },
-      lookquestionMenu: payload => {
-        dispatch({
-          type: "look/lookquestionMenu",
-        })
-      },
-      lookquestionDetail: payload => {
-        dispatch({
-          type: "look/lookquestionDetail",
-        })
-      }
-    }
-  }
-
-  export default connect(mapState, mapDispatchToProps)(Form.create()(Question));
+export default connect(mapState, mapDispatchToProps)(Form.create()(Question));
