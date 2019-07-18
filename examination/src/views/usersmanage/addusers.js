@@ -1,6 +1,7 @@
-import React  from 'react';
-import { connect } from 'dva';
 
+import React  from 'react';
+import React from 'react';
+import { connect } from 'dva';
 import { Form } from 'antd';
 import Adduser from './adduser'
 import AddRank from './addRank'

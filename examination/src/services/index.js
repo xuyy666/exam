@@ -22,4 +22,9 @@ export * from './getallquestype.js' // 获取所有的试题类型
 
 export * from './AddUser.js';//添加用户
 
+
+
+export * from './grademenage.js';//班级管理
+
+// export * from './addexam.js';//添加考试
 // console.log('*')
