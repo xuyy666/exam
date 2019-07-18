@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'dva';
 import './addusers.scss'
-import { Form, Icon, Input, Button, Checkbox, message, Select, Radio } from 'antd';
+import { Form, Button, message, Select, Radio } from 'antd';
 function addAttempt(props) {
     if (props.setIdentityApiInfo.code === 1) {
         message.success(props.setIdentityApiInfo.code.msg)
     }
     useEffect(() => {
         props.getApi_authority()
-        props.SelectRankId()
+        props.SelectRankId() 
     }, [])
     //表单验证
     const { getFieldDecorator } = props.form;
