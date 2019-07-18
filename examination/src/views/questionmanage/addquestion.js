@@ -132,7 +132,7 @@ function Addquestion(props) {
                         <Form.Item className={styles.select}>
                             <h4>请选择考试类型:</h4>
                             {getFieldDecorator('examType',{
-
+                                initialValue:"周考1"
                             })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     data && data.map((item, index) => <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
@@ -144,7 +144,9 @@ function Addquestion(props) {
 
                         <Form.Item className={styles.select}>
                             <h4>请选择课程类型:</h4>
-                            {getFieldDecorator('courseType')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('courseType',{
+                                initialValue:"javaScript上"
+                            })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllCours && getAllCours.map((item, index) => <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
                                     )
@@ -155,7 +157,9 @@ function Addquestion(props) {
 
                         <Form.Item>
                             <h4>请选择题目类型:</h4>
-                            {getFieldDecorator('questionTypes')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('questionTypes',{
+                                initialValue:"简答题"
+                            })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllQuestions.map((item, index) => <Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
                                     )

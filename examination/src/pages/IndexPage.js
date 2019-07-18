@@ -16,7 +16,7 @@ import Studentmanage from '../views/grademanage/studentmanage'; // 班级管理 
 import Awaitingapp from '../views/markingmanage/awaitingapp'; // 阅卷管理 待批班级
 import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
 import Edititem from '../views/lookquedetail/edititem' //编辑详情
-
+import PaperDetail from '../views/paperdetail/paperdetail.js'
 
 // const { Header, Content, Footer, Sider } = Layout;
 const { Sider } = Layout;
@@ -87,9 +87,9 @@ function IndexPage() {
                     </span>
                   }
                 >
-                  <Menu.Item key="9"><NavLink to="/index/grademanage">班级管理</NavLink></Menu.Item>
-                  <Menu.Item key="10"><NavLink to="/index/classroomanage">教室管理</NavLink></Menu.Item>
-                  <Menu.Item key="11"><NavLink to="/index/studentmanage">学生管理</NavLink></Menu.Item>
+                  <Menu.Item key="11"><NavLink to="/index/grademanage">班级管理</NavLink></Menu.Item>
+                  <Menu.Item key="12"><NavLink to="/index/classroomanage">教室管理</NavLink></Menu.Item>
+                  <Menu.Item key="13"><NavLink to="/index/studentmanage">学生管理</NavLink></Menu.Item>
                 </SubMenu>
                 <SubMenu
                   key="sub5"
@@ -100,7 +100,7 @@ function IndexPage() {
                     </span>
                   }
                 >
-                  <Menu.Item key="12"><NavLink to="/index/awaitingapp">待批班级</NavLink></Menu.Item>
+                  <Menu.Item key="14"><NavLink to="/index/awaitingapp">待批班级</NavLink></Menu.Item>
                 </SubMenu>
               </Menu>
             </Sider>
@@ -121,7 +121,7 @@ function IndexPage() {
             <Route path="/index/awaitingapp" component={Awaitingapp} />
             <Route path="/index/itemdetails/:id" component={Itemdetails} />
             <Route path="/index/edititem/:id" component={Edititem} />
-            {/* <Route path="/questiondetail/:id" component={QuestionDetail} /> */}
+            <Route path="/index/paperdetail/:id" component={PaperDetail} />
           </div>
         </div>
       </div>

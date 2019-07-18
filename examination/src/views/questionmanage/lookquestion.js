@@ -13,7 +13,7 @@ function Question(props) {
     props.lookquestionDetail()
   }, [])
 
-  //111111111111111
+
   console.log('=================', props)
   let { isLookquestion } = props.look
   let { isLookquestionExam } = props.look
@@ -115,11 +115,10 @@ let handleSubmit = () => {
               </div>
 
             <div className="warp">
-  
                 <Form.Item className={styles.select}> 
                    <span> 考试类型:</span>
                   {getFieldDecorator('examtype', {
-                    initialValue: "周考一"
+                     initialValue: "周考一"
                   })( <Select>
                       {
                         isLookquestionMenu.map((item) => (
@@ -132,7 +131,7 @@ let handleSubmit = () => {
                 </Form.Item>
                 <Form.Item className={styles.select}>
                     <span> 题目类型:</span>
-                  {getFieldDecorator('questionType', {
+                  { getFieldDecorator('questionType', {
                       initialValue: "简答题"
                   })(<Select>
                     {

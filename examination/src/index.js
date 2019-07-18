@@ -15,12 +15,12 @@ const app = dva();
 app.model(require('./models/login').default);
 app.model(require('./models/questionclassifiy').default);//试题分类
 app.model(require('./models/lookquestion').default);// 试题分类 添加试题类型
-// app.model(require('./models/lookquestion').default);
 
 app.model(require('./models/addquestion').default)  // 添加试题接口
 app.model(require('./models/getexamtype').default)  // 获取所有的考试类型
 app.model(require('./models/getallcourses').default) // 获取所有的课程
-
+app.model(require('./models/listuser.js').default) // 获取用户的接口
+app.model(require('./models/getpaperlist.js').default) //获取试卷列表接口
 
 // 4. Router
 app.router(require('./router').default);

@@ -44,7 +44,6 @@ function Question(props) {
   }
   return (
     <div className="questionclassifiyPage">
-      
       <Modal
         visible={showModal}
         title="请填入试题类型"
@@ -67,9 +66,9 @@ function Question(props) {
         <h2>试题分类</h2>
       </div>
       <div className="sec">
-        
         <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
-        <Table rowKey="questions_type_id" columns={columns} dataSource={props.question.isQuestionclassifiy} />
+        <Table rowKey="questions_type_id" columns={columns} 
+           dataSource={props.question.isQuestionclassifiy} />
       </div>
     </div>
   )
