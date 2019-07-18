@@ -24,8 +24,8 @@ export function gradeMenage(params) {
   }
 
   //删除班级接口
-  export function deletegrade() {
-    return request.delete('/manger/grade/delete');
+  export function deletegrade(params) {
+    return request.delete('/manger/grade/delete',{params});
   }
 //更新班级信息
 export function newgrade(params) {

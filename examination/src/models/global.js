@@ -5,7 +5,7 @@ export default {
 
   // 模块的状态
   state: {
-    locale:'en',
+    locale:navigator.language.indexOf('zh')!==-1?'zh':'en'
   },
 
   

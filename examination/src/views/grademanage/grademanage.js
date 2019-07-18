@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Table, Button, Form, Modal, Input, Divider } from 'antd'; //Breadcrumb
+import { Table, Button, Form, Modal, Input, Divider,Select } from 'antd'; //Breadcrumb
 import styles from './grademanage.scss';
+const { Option } = Select;
 // import styles from './questionclassifiy.scss'
 function Grademanage(props) {
   const columns = [
@@ -37,29 +38,45 @@ function Grademanage(props) {
   useEffect(() => {
     console.log(props)
     props.gradeMenage()
-    // props.graderoom()
-    // props.examSubject(), 
-    // props.Addgrade(), 
-     //props.deletegrade()
+     props.graderoom()//教室号
+     props.examSubject()//科目类型
+      // props.Addgrade() //添加班级
+    //  props.deletegrade()
      //props.newgrade()
   }, [])
 
-  console.log(props)
 
+  let {isgraderoom}=props.grade
+  let {isexamSubject}=props.grade
+  //  let {isAddgrade}=props.grade
+  // let {isdeletegrade}=props.grade
+  
+
+
+
+  console.log(props)
+//表单提交
   const { getFieldDecorator } = props.form;
   const handleSubmit = () => {
     props.form.validateFields((err, values) => {
+      console.log(values)
       if (!err) {
+      //   isAddgrade=({})
+      //  props.Addgrade(values)
         console.log('Received values of form: ', values);
       }
     });
   }
-  const edit = (text) => {
-    console.log(text)
+  const edit = () => {
+  
   }
   const deletes = (text) => {
-    console.log(text)
+  
   }
+  const show=()=>{
+    console.log(2)
+  }
+ 
   return (
     <div className={styles.gradePage}>
       <Modal
@@ -88,7 +105,15 @@ function Grademanage(props) {
                 message: 'Please input your class',
               },
             ],
-          })(<Input className="input" placeholder="Please input your class" />)}
+          })}
+              <Select defaultValue="教室号"
+              style={{width:300}} >
+                {
+              isgraderoom.map((item)=>(     
+                <Option key={item.room_id}>{item.room_text}</Option>
+              ))
+                }
+              </Select>
         </Form.Item>
         {/* 课程名 */}
         <Form.Item label="课程名">
@@ -99,7 +124,15 @@ function Grademanage(props) {
                 message: 'Please input your menu',
               },
             ],
-          })(<Input className="input" placeholder="Please input your menu" />)}
+          })}
+               <Select defaultValue="课程名"
+              style={{width:300}} >
+                {
+              isexamSubject.map((item)=>(     
+                <Option key={item.subject_id}>{item.subject_text}</Option>
+              ))
+                }
+              </Select>
         </Form.Item>
       </Modal>
 
@@ -108,7 +141,7 @@ function Grademanage(props) {
       </div>
       <div className={styles.sec}>
 
-        <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
+        <p onClick={()=>show()}><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
         <Table rowKey="grade_id" columns={columns} dataSource={props.grade.isgradeMenage} />
       </div>
     </div>
@@ -124,7 +157,10 @@ const mapState = (state) => {
   return {
     ...state,
     ...state.grade,
-    // ...state.isdeletegrade
+     ...state.isgraderoom,
+     ...state.isexamSubject,
+     ...state.isAddgrade,
+     ...state.isdeletegrade
   }
 }
 
@@ -136,29 +172,29 @@ const mapDispatchToProps = (dispatch) => {
         payload
       })
     },
-    //   graderoom: payload => {
-    //     dispatch({
-    //         type: 'grade/graderoom',
-    //     })
-    //  },
-    // examSubject: payload => {
-    //   dispatch({
-    //       type: 'grade/examSubject',
+      graderoom: payload => {
+        dispatch({
+            type: 'grade/graderoom',
+        })
+     },
+    examSubject: payload => {
+      dispatch({
+          type: 'grade/examSubject',
 
-    //   })
-    // },
-    // Addgrade: payload => {
-    //   dispatch({
-    //       type: 'grade/Addgrade',
-    //       payload
-    //   })
-    // },
-    // deletegrade: payload => {
-    //   dispatch({
-    //       type: 'grade/deletegrade',
-    //       payload
-    //   })
-    // },
+      })
+    },
+    Addgrade: payload => {
+      dispatch({
+          type: 'grade/Addgrade',
+          payload
+      })
+    },
+    deletegrade: payload => {
+      dispatch({
+          type: 'grade/deletegrade',
+          payload
+      })
+    },
     // newgrade: payload => {
     //   dispatch({
     //       type: 'grade/newgrade',

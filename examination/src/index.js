@@ -5,11 +5,11 @@ import './index.css';
 // 引入andt样式
 import 'antd/dist/antd.css';
 import createLoading from 'dva-loading';
-import {createLogger} from 'redux-logger'
+// import {createLogger} from 'redux-logger'
 // 1. Initialize
 const app = dva(createLoading());
 app.use({
-    onAction:createLogger(),
+    // onAction:createLogger(),
     // onError:(e)=>{
     //     massage.error(e.message)
     // }
