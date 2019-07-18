@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <input type="file">
+    <script>
+        let inpt = document.querySelector('input');
+        //
+        inpt.onchange = function(e){
+          console.log(e)
+          let form = new FormData();
+          form.append(e.target.files[0].name,e.target.files[0]);
+          console.log('fporm');
+          axios.post('http://123.206.55.50:11000/upload',form)
+       }
+    </script>
+</body>
+</html>

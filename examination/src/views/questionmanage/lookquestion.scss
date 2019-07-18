@@ -1,32 +1,40 @@
+// :local{
 :global {
-  font-size: 14px;
-
   .lookquestion {
     width: 100%;
-    height: 100%;
+    // height: 100%;
     display: flex;
     flex-direction: column;
     background: #f0f2f5;
-    overflow: auto;
 
     .lookquestionAll {
       width: 100%;
-      height: 100%;
-      overflow: auto;
+      // height: 100%;
+
+      h2 {
+        padding: 20px;
+      }
+
       .loopBox {
-        width: 90%;
-        height: 106px;
+        width: 96%;
+        // height: 106px;
         background: #fff;
-        margin-left: 20px;
+        // margin-left: 20px;
         display: flex;
         flex-direction: column;
-        overflow-x: hidden;
+        border-radius: 10px;
+        padding:20px 10px 0 20px;
+        margin:0 auto;
+        // overflow-x: hidden; //   出现纵向滚动条
+        // .forms{
 
         .warp {
           display: flex;
         }
- 
+
         .classType {
+          padding: 20px 10px;
+
           span {
             display: inline-block;
             padding: 20px 20px;
@@ -84,47 +92,45 @@
             height: 50px;
             line-height: 100px;
             padding: 10px 20px;
-
-            // .btn {
-            //   background: #00f;
-            //   width: 100px;
-            //   height: 45px;
-            //   border: none;
-            //   color: #fff;
-            //   margin-left: 20px;
-            //   padding: 10px 20px;
-            // }
           }
         }
-
       }
+    }
+  // }
 
-      .loopSec {
-        font-size: 14px;
-        margin-top: 50px;
-        flex: 1;
-        // overflow: auto;
-        width: 90%;
+    .loopSec {
+      flex: 1;
+      // width: 90%;
+      height: 100%;
+      // font-size: 14px;
+      margin: 16px 20px 0 26px;
+      padding: 16px;
+      background: #fff;
+      border-radius: 10px;
+      // margin-left: 20px;
+      // padding-right:10px;
+
+      ul {
+        width: 100%;
         height: 100%;
-        background: #fff;
-        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        
+        .items {
+          // width: 89%;
+           display: flex;
+           align-items: center;
+          //  justify-content: space-between;
+           border-bottom:1px solid #ccc;
 
-        ul {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-
-          // background:#ccc;
           li {
-            width: 90%;
-            height: 170px;
-            background: #fff;
+            width: 86%;
+            // background: #fff;
             margin: 0 auto;
-            padding-left: 20px;
+            // padding-left: 20px;
             padding-top: 10px;
             display: flex;
-
+         
             div {
               width: 600px;
               display: flex;
@@ -132,7 +138,6 @@
 
               p {
                 width: 70%;
-                // background:#f00;
                 display: flex;
 
                 button {
@@ -141,12 +146,13 @@
                 }
               }
             }
+          }
 
-            .bianji {
-              flex: 1;
-              line-height: 160px;
-              color: #00f;
-            }
+          .bianji {
+            flex: 1;
+            text-align: right;
+            padding-right:10px;
+            color: #00f;
           }
         }
       }
