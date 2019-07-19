@@ -11,10 +11,12 @@ import en from 'react-intl/locale-data/en';
 import zh from 'react-intl/locale-data/zh';
 import zhCN from '@/lang/zh-CN.js';
 import enUS from '@/lang/en-US.js';
+
 const localMap = {
   en: enUS,
   zh: zhCN
 }
+
 addLocaleData([...en, ...zh]);
 
 const mapStateToProps = state=>{

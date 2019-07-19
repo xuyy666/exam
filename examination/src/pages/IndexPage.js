@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
 import { Layout, Menu, Icon,Redirect } from 'antd'; //Breadcrumb
 import { Route, NavLink } from 'dva/router';
@@ -124,3 +124,4 @@ const mapStateToProps = state=>{
 export default injectIntl(connect(mapStateToProps,mapDispatchToProps)(IndexPage));
 
 //北京八维研修学院
+

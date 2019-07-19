@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import { Table, Button, Form, Modal, Input, Divider,Select } from 'antd'; //Breadcrumb
 import styles from './grademanage.scss';
-const { Option } = Select;
+const {Option}=Select
 // import styles from './questionclassifiy.scss'
 function Grademanage(props) {
   const columns = [
@@ -38,10 +37,13 @@ function Grademanage(props) {
   useEffect(() => {
     console.log(props)
     props.gradeMenage()
-     props.graderoom()//教室号
-     props.examSubject()//科目类型
-     //props.Addgrade()//添加班级
+    props.graderoom()
+    props.examSubject()
+    // props.Addgrade(), 
+    //props.deletegrade()
+    //props.newgrade()
   }, [])
+
 
   let {isgradeMenage}=props.grade
   let {isgraderoom}=props.grade
@@ -127,23 +129,25 @@ function Grademanage(props) {
         </Modal>
      
       
-
-      <div className={styles.head}>
+        <div className={styles.head}>
         <h1>班级管理</h1>
       </div>
       <div className={styles.sec}>
 
+
         <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
         <Table rowKey="grade_id" columns={columns} dataSource={props.grade.isgradeMenage} />
       </div>
-    </div>
-  )
-}
+
+     </div>
+       )
+ }
 
 
 Grademanage.propTypes = {
 
 };
+
 const mapState = (state) => {
   console.log(state)
   return {
@@ -210,4 +214,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatchToProps)(Form.create()(Grademanage));
+export default connect(mapState,mapDispatchToProps)(Grademanage);
