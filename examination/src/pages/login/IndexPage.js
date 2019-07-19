@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import { Form, Icon, Input, Button, Checkbox, message } from 'antd';
 import styles from './IndexPage.scss';
+//  登录页面 
 function LoginPage(props) {
   console.log('props...', props)
   // 模拟componentDidMount
@@ -14,11 +15,11 @@ function LoginPage(props) {
   useEffect(() => {
     console.log(props.isLogin); // -1
     if (props.isLogin === 1) {
-      message.success('登录成功');
+       message.success('登录成功');
       let path = '/index';
       if (props.location.search) { // ?redirect=%2F
-        //  path = decodeURIComponent(props.location.search.split('=')[1]);
-        path = decodeURIComponent(props.location.search.slice(1).split('=')[1]);
+         path = decodeURIComponent(props.location.search.split('=')[1]);
+        // path = decodeURIComponent(props.location.search.slice(1).split('=')[1]);
       }
       console.log('path...', path)
       props.history.push(path)
@@ -26,7 +27,9 @@ function LoginPage(props) {
     } else if (props.isLogin === 0) {
       message.success('用户名或密码错误');
     }
-  })
+
+    // props.info()  //  },)  //   },[props.isLogin]) 正确的
+  },[props.isLogin])
 
   // 点击登录页面
   // let login = () => {
@@ -34,7 +37,7 @@ function LoginPage(props) {
   //   props.history.push('/index')
   // }
 
-  // 处理表单提交
+  // 处理表单提交    // 相当于点击登录页面
   let handleSubmit = () => {
     props.form.validateFields((err, values) => {
       console.log(values)
@@ -90,8 +93,8 @@ function LoginPage(props) {
           <Button type="primary" htmlType="submit" className="login-form-button">
             登录
           </Button>
-
         </Form.Item>
+
       </Form>
     </div>
   );
@@ -107,11 +110,18 @@ const mapState = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: payload => {
+      console.log(11111111111111111)
       dispatch({
         type: "login/login",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
         payload
       })
-    }
+    },
+    // 20:05 注释的
+    // info: payload => {
+    //   dispatch({
+    //     type: "login/getUserInfo",
+    //   })
+    // }
   }
 }
 

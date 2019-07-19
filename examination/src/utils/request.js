@@ -6,7 +6,7 @@ import {getToken} from '../utils/index.js'
 const service = axios.create({  // 前端的接口
   // baseURL:'http://169.254.12.254:7001/',
   baseURL:'http://169.254.12.22:7001/',
-  // baseURL:'http://192.168.43.175:7001/',
+  // baseURL:'http://192.168.43.175:7001/', // 192.168.43.175
   // withCredentials: true, // 跨域请求时发送 cookies
   timeout: 5000 // request timeout
 })

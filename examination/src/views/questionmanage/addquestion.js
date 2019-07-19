@@ -85,13 +85,16 @@ function Addquestion(props) {
             title: '试题添加成功'
         });
     }
-    const openNotificationWithIcon = type => {
-        notification[type]({
-          message: '请求错误：402',
-          description:'http://127.0.0.1:7001',
-        });
-      };
+
+    // const openNotificationWithIcon = type => {
+    //     notification[type]({
+    //       message: '请求错误：402',
+    //       description:'http://127.0.0.1:7001',
+    //     });
+    //   };
     console.log(props);
+
+
 
     // 受控组件
     // const [val,setval] = useState('');
@@ -144,7 +147,7 @@ function Addquestion(props) {
 
                         <Form.Item className={styles.select}>
                             <h4>请选择课程类型:</h4>
-                            {getFieldDecorator('courseType',{
+                            { getFieldDecorator('courseType',{
                                 initialValue:"javaScript上"
                             })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
@@ -176,7 +179,6 @@ function Addquestion(props) {
                         }
                     </Form.Item>
                     <Form.Item className={styles.submit}>
-
                        <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
                             提交
                        </Button>
@@ -194,8 +196,8 @@ function Addquestion(props) {
                     <p>真的要添加吗</p>
                 </Modal>
                 (<div>
-                    <Button onClick={success}><span>我知道了</span></Button>
-                    <Button onClick={() => openNotificationWithIcon('error')}>Error</Button>
+                    {/* <Button onClick={success}><span>我知道了</span></Button> */}
+                    {/* <Button onClick={() => openNotificationWithIcon('error')}>Error</Button> */}
                 </div>,mountNode)
 
             </div>

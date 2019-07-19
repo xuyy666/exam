@@ -15,9 +15,9 @@ export default {
 
 
     "router.class":"班级管理",
-    "router.class.classi":"添加用户",
-    "router.class.room":"教室展示",
-    "router.class.study":"学生展示",
+    "router.class.classi":"班级管理",
+    "router.class.room":"教室管理",
+    "router.class.study":"学生管理",
 
     "router.juan":"阅卷管理",
     "router.juan.not":"待批班级",
