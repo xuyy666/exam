@@ -142,7 +142,7 @@ function IndexPage(props) {
         {/* <div > */}
 
         <Dropdown overlay={menu} className={styles.rightheader}>
-          <a href="#" className='ant-dropdown-link'>
+          <a href="javascript" className='ant-dropdown-link'>
             <img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" alt="" />
             <span>chenmanjie</span>
           </a>
