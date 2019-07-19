@@ -83,7 +83,7 @@ function Addexam(props){
                 >
                    {
                     isLookquestionExam.map((item,index)=>(
-                      <Option key={index} key={item.questions_type_id}>{item.questions_type_text}</Option>
+                      <Option key={item.questions_type_id}>{item.questions_type_text}</Option>
                     ))
                   }
                 </Select>
