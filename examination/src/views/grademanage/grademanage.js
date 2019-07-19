@@ -26,9 +26,9 @@ function Grademanage(props) {
       dataIndex: '',
       render: text =>
         <div>
-          {/* <a href="javascript:;" onClick={() => edit(text)}>修改</a> */}
+          {/* <a href="javascript:void();" onClick={() => edit(text)}>修改</a> */}
           <Divider type="vertical" />
-          {/* <a href="javascript:;" onClick={() => deletes(text)}>删除</a> */}
+          {/* <a href="javascript:void();" onClick={() => deletes(text)}>删除</a> */}
         </div>,
       key: "action"
     }
@@ -54,12 +54,12 @@ function Grademanage(props) {
       }
     });
   }
-  const edit = (text) => {
-    console.log(text)
-  }
-  const deletes = (text) => {
-    console.log(text)
-  }
+  // const edit = (text) => {
+  //   console.log(text)
+  // }
+  // const deletes = (text) => {
+  //   console.log(text)
+  // }
   return (
     <div className={styles.gradePage}>
       <Modal
