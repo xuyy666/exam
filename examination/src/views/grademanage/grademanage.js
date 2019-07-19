@@ -26,9 +26,9 @@ function Grademanage(props) {
       dataIndex: '',
       render: text =>
         <div>
-          <a href="javascript:;" onClick={() => edit(text)}>修改</a>
+          {/* <a href="javascript:;" onClick={() => edit(text)}>修改</a> */}
           <Divider type="vertical" />
-          <a href="javascript:;" onClick={() => deletes(text)}>删除</a>
+          {/* <a href="javascript:;" onClick={() => deletes(text)}>删除</a> */}
         </div>,
       key: "action"
     }
