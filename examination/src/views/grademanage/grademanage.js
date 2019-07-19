@@ -40,108 +40,100 @@ function Grademanage(props) {
     props.gradeMenage()
      props.graderoom()//教室号
      props.examSubject()//科目类型
-      // props.Addgrade() //添加班级
-    //  props.deletegrade()
-     //props.newgrade()
+     //props.Addgrade()//添加班级
   }, [])
 
-
+  let {isgradeMenage}=props.grade
   let {isgraderoom}=props.grade
   let {isexamSubject}=props.grade
-  //  let {isAddgrade}=props.grade
-  // let {isdeletegrade}=props.grade
-  
-
-
 
   console.log(props)
 //表单提交
+
   const { getFieldDecorator } = props.form;
-  const handleSubmit = () => {
+  const handleOk =e => {
     props.form.validateFields((err, values) => {
-      console.log(values)
-      if (!err) {
-      //   isAddgrade=({})
-      //  props.Addgrade(values)
-        console.log('Received values of form: ', values);
-      }
+        console.log(values)
+        let obj={
+            grade_name:values.grade_name,
+            room_text:values.room_text,
+            subject_text:values.subject_text
+        }
+        props.Addgrade(obj)
+        updateModal(false)
     });
   }
   const edit = () => {
-  
+    
   }
-  const deletes = (text) => {
-  
+  const deletes = () => {
+    console.log(this)
+    
   }
-  const show=()=>{
-    console.log(2)
-  }
+ 
  
   return (
     <div className={styles.gradePage}>
+         
       <Modal
         visible={showModal}
         title="添加班级"
         onCancel={() => updateModal(false)}
-        onOk={() => handleSubmit()}
+        onOk={handleOk}
       >
-        {/* 班级名 */}
-        <Form.Item label="班级名">
-          {getFieldDecorator('grade', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your grade',
-              },
-            ],
-          })(<Input className="input" placeholder="Please input your grade" />)}
+            
+      <Form> 
+      <Form.Item>
+          <p>班级名</p>
+          {getFieldDecorator('grade_name', {
+            rules: [{ required: true, message: 'Please input your Password!' }],
+          })(
+            <Input
+             placeholder="Password"
+            />,
+          )}
         </Form.Item>
-        {/* 教室号 */}
-        <Form.Item label="教室号">
-          {getFieldDecorator('class', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your class',
-              },
-            ],
-          })}
-              <Select defaultValue="教室号"
-              style={{width:300}} >
-                {
-              isgraderoom.map((item)=>(     
-                <Option key={item.room_id}>{item.room_text}</Option>
-              ))
-                }
-              </Select>
+        <Form.Item>
+        <p>教师号</p>
+          {getFieldDecorator('room_text',{
+            rules: [{ required: true, message: 'Please input your Password!' }],
+          })(
+             <Select>
+                 {
+                     isgraderoom&&isgraderoom.map((item)=>(
+                        <Option key={item.room_id} value={item.room_text}>{item.room_text}</Option>
+                     ))
+                 }
+             </Select>
+          )}
         </Form.Item>
-        {/* 课程名 */}
-        <Form.Item label="课程名">
-          {getFieldDecorator('menu', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your menu',
-              },
-            ],
-          })}
-               <Select defaultValue="课程名"
-              style={{width:300}} >
-                {
-              isexamSubject.map((item)=>(     
-                <Option key={item.subject_id}>{item.subject_text}</Option>
-              ))
-                }
-              </Select>
+        <Form.Item>
+        <p>课程名</p>
+          {getFieldDecorator('subject_text', {
+            rules: [{ required: true, message: 'Please input your Password!' }],
+          })(
+             <Select>
+                 {
+                     isexamSubject&&isexamSubject.map((item)=>(
+                        <Option key={item.subject_id} value={item.subject_text}>{item.subject_text}</Option>
+                     ))
+                 }
+             </Select>
+          )}
         </Form.Item>
-      </Modal>
+      </Form>
+      
+    
+        </Modal>
+     
+      
 
       <div className={styles.head}>
         <h1>班级管理</h1>
       </div>
       <div className={styles.sec}>
 
-        <p onClick={()=>show()}><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
+        <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
         <Table rowKey="grade_id" columns={columns} dataSource={props.grade.isgradeMenage} />
       </div>
     </div>
@@ -160,7 +152,8 @@ const mapState = (state) => {
      ...state.isgraderoom,
      ...state.isexamSubject,
      ...state.isAddgrade,
-     ...state.isdeletegrade
+    //  ...state.isdeletegrade,
+   
   }
 }
 
@@ -169,7 +162,7 @@ const mapDispatchToProps = (dispatch) => {
     gradeMenage: payload => {
       dispatch({
         type: 'grade/gradeMenage',
-        payload
+        
       })
     },
       graderoom: payload => {
@@ -201,6 +194,19 @@ const mapDispatchToProps = (dispatch) => {
     //       payload
     //   })
     // },
+  
+        addRoom: payload => {
+            dispatch({
+                type: 'grade/addRoom',
+                payload
+            })
+          },
+          delRoom: payload => {
+            dispatch({
+                type: 'grade/delRoom',
+                payload
+            })
+          },
   }
 }
 

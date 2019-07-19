@@ -35,6 +35,9 @@ app.model(require('./models/AddUser').default);//添加用户
 
 
 app.model(require('./models/grademenage').default);//班级管理
+
+
+// app.model(require('./models/getAuthority').default);//添加用户权限
 // 4. Router
 app.router(require('./router').default);
 
