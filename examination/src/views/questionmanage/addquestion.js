@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import styles from './addquestion.scss';
-import { Form, Input, Select, Button, Modal, message, notification } from 'antd';
+import { Form, Input, Select, Button, Modal, message } from 'antd';//notification
 import Editor from 'for-editor'// 实现markdown效果
 function Addquestion(props) {
     //实现 markdown 效果
