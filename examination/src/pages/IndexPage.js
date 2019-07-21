@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
 import { Layout, Menu, Icon,Redirect } from 'antd'; //Breadcrumb
 import { Route, NavLink } from 'dva/router';
@@ -18,87 +18,86 @@ import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
 import Edititem from '../views/lookquedetail/edititem' //编辑详情
 import {injectIntl} from 'react-intl';
 // const { Header, Content, Footer, Sider } = Layout;
-// const { Sider } = Layout;
-// const { SubMenu } = Menu;
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 function IndexPage(props) {
   console.log(props)
 
  
   return (
-    // <div className={styles.wrap}>
-    //   <div className={styles.header}>
-    //     {/* <div> */}
-    //     <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" alt="" />
-    //     {/* </div> */}
-    //     <div>
-    //       <button onClick={()=>changeLocale(props.intl.locale='en'?'英文':'中文')}>{props.intl.locale='en'?'英文':'中文'}</button>
-    //       <span>头像</span>
-    //       <span>用户名</span>
-    //     </div>
-    //   </div>
-    //    <div className={styles.content}>
-    //     <div className={styles.left}>
-    //       <Layout style={{ minHeight: '100vh' }}>
-    //         <Sider>
-    //           <div className="logo" />
-    //           <Menu theme="dark"  
-    //           defaultOpenKeys={['1']}
-    //             defaultSelectedKeys={['1']} 
-    //             mode="inline">
-    //             {
-    //               props.myView.map(item=>(
-    //                 <SubMenu
-    //               key={item.path}
-    //               title={
-    //                 <span>
-    //                   <Icon type="laptop" />
-    //                   <span>{props.intl.formatMessage({id:item.name})}</span>
-    //                 </span>
-    //               }
-    //             >
-    //               {
-    //                 item.children.map(value=>(
-    //                   <Menu.Item key={value.path}><NavLink to={value.path}>{props.intl.formatMessage({id:value.name})}</NavLink></Menu.Item>
-    //                 ))
-    //               }
+    <div className={styles.wrap}>
+      <div className={styles.header}>
+        {/* <div> */}
+        <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" alt="" />
+        {/* </div> */}
+        <div>
+          <button>{props.intl.locale='en'?'英文':'中文'}</button>
+          <span>头像</span>
+          <span>用户名</span>
+        </div>
+      </div>
+       <div className={styles.content}>
+        <div className={styles.left}>
+          <Layout style={{ minHeight: '100vh' }}>
+            <Sider>
+              <div className="logo" />
+              <Menu theme="dark"  
+              defaultOpenKeys={['1']}
+                defaultSelectedKeys={['1']} 
+                mode="inline">
+                {
+                  props.myView.map(item=>(
+                    <SubMenu
+                  key={item.path}
+                  title={
+                    <span>
+                      <Icon type="laptop" />
+                      <span>{props.intl.formatMessage({id:item.name})}</span>
+                    </span>
+                  }
+                >
+                  {
+                    item.children.map(value=>(
+                      <Menu.Item key={value.path}><NavLink to={value.path}>{props.intl.formatMessage({id:value.name})}</NavLink></Menu.Item>
+                    ))
+                  }
                   
-    //             </SubMenu>
-    //               ))
-    //             }
+                </SubMenu>
+                  ))
+                }
             
-    //           </Menu>
-    //         </Sider>
-    //       </Layout>
-    //     </div>
-    //     <div className={styles.right}>
-    //       <div>
-    //         <Redirect from="/" exact to="/index" />
-    //         <Route path="/index/addquestion" component={Addquestion} />
-    //         <Route path="/index/questionclassifiy" component={Questionclassifiy} />
-    //         <Route path="/index/lookquestion" component={Lookquestion} />
-    //         <Route path="/index/addusers" component={Addusers} />
-    //         <Route path="/index/usershow" component={Usershow} />
-    //         <Route path="/index/addexam" component={Addexam} />
-    //         <Route path="/index/examlist" component={Examlist} />
-    //         <Route path="/index/grademanage" component={Grademanage} />
-    //         <Route path="/index/classroomanage" component={Classroomanage} />
-    //         <Route path="/index/studentmanage" component={Studentmanage} />
-    //         <Route path="/index/awaitingapp" component={Awaitingapp} />
-    //         <Route path="/index/itemdetails/:id" component={Itemdetails} />
-    //         <Route path="/index/edititem/:id" component={Edititem} />
+              </Menu>
+            </Sider>
+          </Layout>
+        </div>
+        <div className={styles.right}>
+          <div>
+            <Redirect from="/" exact to="/index" />
+            <Route path="/index/addquestion" component={Addquestion} />
+            <Route path="/index/questionclassifiy" component={Questionclassifiy} />
+            <Route path="/index/lookquestion" component={Lookquestion} />
+            <Route path="/index/addusers" component={Addusers} />
+            <Route path="/index/usershow" component={Usershow} />
+            <Route path="/index/addexam" component={Addexam} />
+            <Route path="/index/examlist" component={Examlist} />
+            <Route path="/index/grademanage" component={Grademanage} />
+            <Route path="/index/classroomanage" component={Classroomanage} />
+            <Route path="/index/studentmanage" component={Studentmanage} />
+            <Route path="/index/awaitingapp" component={Awaitingapp} />
+            <Route path="/index/itemdetails/:id" component={Itemdetails} />
+            <Route path="/index/edititem/:id" component={Edititem} />
 
 
-    //         <Route path="/403" render={props=>{
-    //           return <p>你无权访问当前页面</p>
-    //         }}></Route>
-    //         <Route path="/404" render={props=>{
-    //           return <p>当前页面不存在</p>
-    //         }}></Route>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
-  <div></div>
+            <Route path="/403" render={props=>{
+              return <p>你无权访问当前页面</p>
+            }}></Route>
+            <Route path="/404" render={props=>{
+              return <p>当前页面不存在</p>
+            }}></Route>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -124,3 +123,39 @@ const mapStateToProps = state=>{
 export default injectIntl(connect(mapStateToProps,mapDispatchToProps)(IndexPage));
 
 //北京八维研修学院
+
+/* <div className={styles.modal}>
+    <Modal
+      className="modals"
+      visible={adddialog}
+      onOk={()=>hideModal('a')}
+      onCancel={()=>hideModal('b')}
+      okText="确认"
+      cancelText="取消"
+    >
+      <span onClick={clickimg}>
+          <img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" alt="" />
+      </span>
+      <span>chenmanjie</span>
+    </Modal>
+ </div>
+  const [adddialog,visitydialog] = useState(false)
+  const click =()=>{
+     visitydialog(true)
+  }
+
+ */
+
+
+// {adddialog && <div className={styles.mask}>
+// <div className={styles.content}>
+//  <span onClick={clickimg}>
+//      <img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" alt="" />
+//   </span>
+//   <span>chenmanjie</span>
+// </div> 
+
+// </div>}
+
+// { avatar ? <img src={avatar} alt="" /> :<img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" alt="" />}
+// <span>chenmanjie</span>
