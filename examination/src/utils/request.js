@@ -7,8 +7,6 @@ const service = axios.create({  // 前端的接口
   baseURL:'http://169.254.12.254:7001/',
   timeout: 5000 // request timeout
 })
-
-// request interceptor
 service.interceptors.request.use(
   config => {
     // 判断是否有登陆态
@@ -30,5 +28,4 @@ service.interceptors.response.use(
     return Promise.reject(error)
   }
 )
-
 export default service

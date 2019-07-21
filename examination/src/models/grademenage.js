@@ -1,4 +1,4 @@
-import {gradeMenage,graderoom, examSubject, Addgrade, deletegrade} from '@/services/grademenage'
+import {gradeMenage,graderoom, examSubject, Addgrade, deletegrade,newgrade,addRoom,delRoom} from '@/services/grademenage'
 
 export default {
     // 命名空间
@@ -43,29 +43,50 @@ export default {
         },
 
         //添加班级接口
-        *Addgrade({ payload }, { call, put }) {  // eslint-disable-line
+        *Addgrade({ payload }, { call, put }) {
             let data = yield call(Addgrade, payload);
             yield put({
                 type: "updataAddgrade",// type是reducers里方法
                 payload: data.data
             })
-        },
-        // 删除班级接口
-        *deletegrade({ payload }, { call, put }) {  // eslint-disable-line
-            let data = yield call(deletegrade, payload);
+            // 传参
             yield put({
-                type: "updatadeletegrade",// type是reducers里方法
+                type: "updataGraderoom",// type是reducers里方法
                 payload: data.data
             })
         },
-        //更新班级信息
-        // *newgrade({ payload }, { call, put }) {  // eslint-disable-line
-        //     let data = yield call(newgrade, payload);
-        //     yield put({
-        //         type: "updatanewgrade",// type是reducers里方法
-        //         payload: data.data
-        //     })
-       // }
+        // 删除班级接口
+        *deletegrade({ payload }, { call, put }) {
+            let data = yield call(deletegrade, payload);
+            if (data.code == 0) {
+                return
+            }
+        },
+        // 更新班级信息
+        *newgrade({ payload }, { call, put }) {
+            let data = yield call(newgrade, payload);
+            yield put({
+                type: "updatanewgrade",// type是reducers里方法
+                payload: data.data
+            })
+        },
+        //添加教室
+        *addRoom({ payload }, { call, put }) {
+            let data = yield call(addRoom, payload);
+            yield put({
+                type: "updataaddRoom",// type是reducers里方法
+                payload: data.data
+            })
+        },
+        //删除教室
+        *delRoom({ payload }, { call, put }) { 
+            let data = yield call(delRoom, payload);
+            yield put({
+                type: "updatadelRoom",// type是reducers里方法
+                payload: data.data
+            })
+        }
+
     },
 
 
@@ -81,15 +102,18 @@ export default {
         updataexamSubject(state, action) {
             return { ...state, isexamSubject: action.payload };
         },
+
         updataAddgrade(state, action) {
             return { ...state, isAddgrade: action.payload };
         },
-        // updatadeletegrade(state, action) {
-        //     return { ...state, isdeletegrade: action.payload };
-        // },
-        // updatanewgrade(state, action) {
-        //     return { ...state, isnewgrade: action.payload };
-        // },
+        updataaddRoom(state, action) {
+            return { ...state, isAdd: action.payload };
+        },
+        updatadelRoom(state, action) {
+            return { ...state, isDel: action.payload };
+        },
+
+
     },
 
 };

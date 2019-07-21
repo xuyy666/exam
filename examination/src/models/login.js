@@ -1,6 +1,7 @@
 import { login, getUserInfo, uploadPictures ,getAuth} from '@/services/index.js'
 import { setToken, getToken } from '@/utils/index'
 import { routerRedux } from 'dva/router';
+//import {getAuthority} from './getAuthority'
 export default {
   // 命名空间
   namespace: 'login',
@@ -8,8 +9,6 @@ export default {
   // 模块的状态
   state: {
     isLogin: -1,
-    userInfo: {}, // 设置用户信息为空对象
-    uploadPicture:""
   },
 
   // 订阅
@@ -52,9 +51,7 @@ export default {
   // 异步操作
   effects: {  // generator
     *login({ payload, type }, { call, put }) {
-      console.log('payload...', payload, type)
       let data = yield call(login, payload);
-      console.log('22data...11111', data);// token只是一个字段
       if (data.code === 1) {
         //设置cookie值
          setToken(data.token)
@@ -65,6 +62,8 @@ export default {
         payload: data.code  // 相当于里面的执行  payload: data.code === 1 
       })
     },
+
+
     // 获取用户信息
     *getUserInfo({ payload }, { call, put, select }) {
       console.log("hdjsdhjdskhfsjkhfkjs")
@@ -92,10 +91,15 @@ export default {
 
     },
 
+
     // *fetch({ payload }, { call, put }) {  // eslint-disable-line
     //   // let data = yield xhr();
     //   yield put({ type: 'save' });
     // },
+      //  getAuthority()
+
+
+
   },
   // {
   //   type:"fetch",

@@ -23,6 +23,7 @@ function Question(props) {
   let [showModal, updateModal] = useState(false)
   useEffect(() => {
     props.questionclassifiy()
+    props.getAuthority()
   }, [])
 
   const { getFieldDecorator } = props.form;
@@ -77,8 +78,10 @@ Question.propTypes = {
 
 };
 const mapState = (state) => {
+  console.log(state)
   return {
     ...state,
+    ...state.authority,
     global: state.loading.global
     // ...state.isQuestionclassifiy,
     // ...state.isQuestionclassifiyAdd
@@ -95,6 +98,12 @@ const mapDispatchToProps = (dispatch) => {
     questionclassifiyAdd: payload => {
       dispatch({
         type: "question/questionclassifiyAdd",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
+        payload
+      })
+    },
+    getAuthority: payload => {
+      dispatch({
+        type: "authority/getAuthority",//  前面的是login//命名空间 namespace: 'login',   后面的login的方法// 异步操作 effects:{ *login({ payload , type },{call,put}){}
         payload
       })
     }

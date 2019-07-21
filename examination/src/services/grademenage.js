@@ -3,9 +3,9 @@ import request from '../utils/request';
 
 //班级管理
 
-//获取已经分配教室的班级
-export function gradeMenage(params) {
-  return request.get('/manger/grade', params);
+   //获取已经分配教室的班级
+export function gradeMenage() {
+  return request.get('/manger/grade');
 }
 
  //获取全部教室
@@ -29,14 +29,14 @@ export function gradeMenage(params) {
   }
 //更新班级信息
 export function newgrade(params) {
-  return request.put('/manger/grade/update', params);
+    return request.put('/manger/grade/update',params);
+  }
+  
+//添加教室
+export function addRoom(params){
+  return request.post('/manger/room',params)
 }
-
-
-// //添加教室接口  /manger/room  
-export function addClassroom(params){
-  return request.post('/manger/room',params);
+//删除教室
+export function delRoom(data){
+  return request.delete('/manger/room/delete',{data})
 }
-
-
-

@@ -24,6 +24,9 @@ export * from './getpaperlist.js' // 获取试卷列表接口
 
 export * from './AddUser.js';//添加用户
 export * from './grademenage.js';//班级管理
-export * from './user.js'  // 获取当前用户信息
+
+
+export * from './getAuthority.js'//添加权限
+
 // export * from './addexam.js';//添加考试
 // console.log('*')
