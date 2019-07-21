@@ -1,0 +1,66 @@
+// :global{}
+:local {
+  .paperdetail {
+    width: 100%;
+    // height: 100%;
+    background: #eee;
+    margin-bottom: 20px;
+    // display: flex;  // 1
+    // flex-direction: column;  // 2
+    padding: 20px 0;
+
+    h2 {
+      padding: 0 0 20px 20px;
+    }
+
+    .pdetailwrap {
+      width: 96%;
+      height: 100%;
+      margin: 0 auto;
+      // background: skyblue;
+      // flex: 1; // 相当于高 3
+      display: flex;
+
+      .left {
+        width: 60%;
+        height: 100%;
+        background: #fff;
+        margin-right: 10px;
+        border-radius: 6px;
+        padding-top: 30px;
+
+        .top {
+          width: 96%;
+          height: 100%;
+          margin: 0 auto;
+
+          .questionitem {
+            text-align: left;
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+
+            h4 {
+              margin-top: 0;
+              margin-bottom: 0.5em;
+              color: rgba(0, 0, 0, 0.85);
+              font-weight: 500;
+            }
+
+            .markdown {
+              line-height: 1.6;
+              word-wrap: break-word;
+            }
+          }
+        }
+      }
+
+      .right {
+        flex: 1;
+        background: #fff;
+        border-radius: 6px;
+      }
+    }
+  }
+}

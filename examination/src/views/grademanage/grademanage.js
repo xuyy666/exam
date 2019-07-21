@@ -46,7 +46,7 @@ function Grademanage(props) {
   }, [])
 
 
-  let {isgraderoom}=props.grade
+   let {isgraderoom}=props.grade
   let {isexamSubject}=props.grade
   //  let {isAddgrade}=props.grade
   // let {isdeletegrade}=props.grade
@@ -109,7 +109,7 @@ function Grademanage(props) {
               <Select defaultValue="教室号"
               style={{width:300}} >
                 {
-              isgraderoom.map((item)=>(     
+              isgraderoom&&isgraderoom.map((item)=>(     
                 <Option key={item.room_id}>{item.room_text}</Option>
               ))
                 }
@@ -128,7 +128,7 @@ function Grademanage(props) {
                <Select defaultValue="课程名"
               style={{width:300}} >
                 {
-              isexamSubject.map((item)=>(     
+              isexamSubject&&isexamSubject.map((item)=>(     
                 <Option key={item.subject_id}>{item.subject_text}</Option>
               ))
                 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
 import styles from './addquestion.scss';
-import { Form, Input, Select, Button, Modal, message, notification } from 'antd';
+import { Form, Input, Select, Button, Modal, message } from 'antd';//notification
 import Editor from 'for-editor'// 实现markdown效果
 function Addquestion(props) {
     //实现 markdown 效果
@@ -85,13 +85,16 @@ function Addquestion(props) {
             title: '试题添加成功'
         });
     }
-    const openNotificationWithIcon = type => {
-        notification[type]({
-          message: '请求错误：402',
-          description:'http://127.0.0.1:7001',
-        });
-      };
+
+    // const openNotificationWithIcon = type => {
+    //     notification[type]({
+    //       message: '请求错误：402',
+    //       description:'http://127.0.0.1:7001',
+    //     });
+    //   };
     console.log(props);
+
+
 
     // 受控组件
     // const [val,setval] = useState('');
@@ -132,7 +135,7 @@ function Addquestion(props) {
                         <Form.Item className={styles.select}>
                             <h4>请选择考试类型:</h4>
                             {getFieldDecorator('examType',{
-
+                                initialValue:"周考1"
                             })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     data && data.map((item, index) => <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
@@ -144,7 +147,9 @@ function Addquestion(props) {
 
                         <Form.Item className={styles.select}>
                             <h4>请选择课程类型:</h4>
-                            {getFieldDecorator('courseType')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            { getFieldDecorator('courseType',{
+                                initialValue:"javaScript上"
+                            })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllCours && getAllCours.map((item, index) => <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
                                     )
@@ -155,7 +160,9 @@ function Addquestion(props) {
 
                         <Form.Item>
                             <h4>请选择题目类型:</h4>
-                            {getFieldDecorator('questionTypes')(<Select style={{ width: 200 }} onChange={handleChange}>
+                            {getFieldDecorator('questionTypes',{
+                                initialValue:"简答题"
+                            })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllQuestions.map((item, index) => <Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
                                     )
@@ -172,7 +179,6 @@ function Addquestion(props) {
                         }
                     </Form.Item>
                     <Form.Item className={styles.submit}>
-
                        <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
                             提交
                        </Button>
@@ -190,8 +196,8 @@ function Addquestion(props) {
                     <p>真的要添加吗</p>
                 </Modal>
                 (<div>
-                    <Button onClick={success}><span>我知道了</span></Button>
-                    <Button onClick={() => openNotificationWithIcon('error')}>Error</Button>
+                    {/* <Button onClick={success}><span>我知道了</span></Button> */}
+                    {/* <Button onClick={() => openNotificationWithIcon('error')}>Error</Button> */}
                 </div>,mountNode)
 
             </div>

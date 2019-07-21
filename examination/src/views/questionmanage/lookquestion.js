@@ -40,7 +40,9 @@ const onMenu=(index)=>{
   }
 
  // 点击查询
- 
+ const search =(props)=>{
+  // console.log(props)
+}
   const all=()=>{ //  多选
     setAll(!addAll)
     setstyle(-1)   // 消除点击谁的样式
@@ -59,7 +61,7 @@ const onMenu=(index)=>{
   const QuestionsDetail=(item)=>{
      props.history.push({pathname:`/index/itemdetails/${item}`,state:{data:item}})
   }
-
+//条编辑
   const Edit=(item,index)=>{
     props.history.push({pathname:`/index/edititem/?id=${item.user_id}`,state:{data:item}})
   }

@@ -17,7 +17,7 @@ export default {
       let data = yield call(addQuestion, payload);
 
       // 调用同步的reduce的
-      if (data.code===1) {
+      if (data.code === 1) {
         yield put({
           type: "addQuestions",// type是reducers里方法
           payload: data
@@ -28,7 +28,7 @@ export default {
     },
     *addUser({ payload }, { call, put }) {
       let data = yield call(addUser);
-      console.log('addUser......', data); // token只是一个字段
+      // console.log('addUser......', data); // token只是一个字段
 
       // 调用同步的reduce的
       yield put({

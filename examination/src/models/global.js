@@ -20,9 +20,4 @@ export default {
 };
 
 
-// else{
-//   // 1.1.2 有登录态，请求用户信息,请求用户权限
-//   dispatch({
-//     type: 'getUserInfo'
-//   })
-// }
+
