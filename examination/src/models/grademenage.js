@@ -1,4 +1,4 @@
-import {gradeMenage,graderoom, examSubject, Addgrade, deletegrade, newgrade} from '@/services/grademenage'
+import {gradeMenage,graderoom, examSubject, Addgrade, deletegrade} from '@/services/grademenage'
 
 export default {
     // 命名空间
@@ -9,8 +9,8 @@ export default {
          isgradeMenage: [],
          isgraderoom: [],
         isexamSubject:[],
-         isAddgrade:{},
-         isdeletegrade: [],
+        //  isAddgrade:{},
+        //  isdeletegrade: [],
         // isnewgrade:[]
     },
 
