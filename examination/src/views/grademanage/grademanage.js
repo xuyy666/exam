@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Button, Form, Modal, Input, Divider } from 'antd'; //Breadcrumb
+import { Button, Form, Modal, Input } from 'antd'; //Breadcrumb
+//  Divider
 import styles from './grademanage.scss'
 function Grademanage(props) {
   // const columns = [
@@ -31,7 +32,7 @@ function Grademanage(props) {
   //     key: "action"
   //   }
   // ]
-  
+
   let [showModal, updateModal] = useState(false);
 
   useEffect(() => {
@@ -54,12 +55,12 @@ function Grademanage(props) {
       }
     });
   }
-  const edit = (text) => {
-    console.log(text)
-  }
-  const deletes = (text) => {
-    console.log(text)
-  }
+  // const edit = (text) => {
+  //   console.log(text)
+  // }
+  // const deletes = (text) => {
+  //   console.log(text)
+  // }
   return (
     <div className={styles.gradePage}>
       <Modal
