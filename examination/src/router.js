@@ -27,13 +27,12 @@ const mapStateToProps = state=>{
  const RouterView=connect(mapStateToProps)((props)=>{
    return <IntlProvider locale={props.locale} messages={localMap[props.locale]}>
     <Router history={props.history}>
-   <Switch>
-     <Route path="/index" component={IndexPage} />
-     <Route path="/login" component={LoginPage} />
-     {/* <Route path="/questiondetail/:id" component={QuestionDetail} /> */}
-     <Redirect from="/" to="/index" />
-
-   </Switch>
+    <Switch>
+      <Route path="/index" component={IndexPage} />
+      <Route path="/login" component={LoginPage} />
+      {/* <Route path="/questiondetail/:id" component={QuestionDetail} /> */}
+      <Redirect from="/" to="/index" />
+    </Switch>
  </Router>
  </IntlProvider>
  })

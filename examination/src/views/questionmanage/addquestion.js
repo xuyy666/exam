@@ -40,9 +40,7 @@ function Addquestion(props) {
             if (!err) { // 没有错误的时候传参
                 console.log('Received values of form: ', values);
                 // if(){ // 如果有参数 传参
-
                 // }else{ // 没有参数的话，报错误弹框
-
                 // }
                 setAddInfor({
                     "questions_type_id": values.questionTypes,// questionTypes
@@ -195,10 +193,10 @@ function Addquestion(props) {
                 >
                     <p>真的要添加吗</p>
                 </Modal>
-                (<div>
+                <div>
                     {/* <Button onClick={success}><span>我知道了</span></Button> */}
                     {/* <Button onClick={() => openNotificationWithIcon('error')}>Error</Button> */}
-                </div>,mountNode)
+                </div>
 
             </div>
         </div>
