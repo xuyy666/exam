@@ -1,0 +1,51 @@
+import React from 'react';
+import { Menu, Icon } from 'antd';
+import {NavLink} from 'dva/router';
+import {injectIntl} from 'react-intl';
+import {connect} from 'dva';
+
+const { SubMenu } = Menu;
+
+const MenuList = props => {
+  console.log("10------------",props)
+  if (!props.myView.length){
+    return null;
+  }
+  return (
+    <Menu
+    theme="dark"
+    defaultOpenKeys={[props.myView[0].name]}
+    defaultSelectedKeys={[props.myView[0].children[0].name]}
+    mode="inline"
+  >
+    {
+      props.myView&&props.myView.map(item=>{
+        return <SubMenu
+          key={item.name}
+          title={
+            <span>
+              <Icon type="mail" />
+              <span>{item.name}</span>
+            </span>
+          }
+        >{
+          item.children.map(value=>{
+            return <Menu.Item key={value.name}>
+              <NavLink to={value.path}>{props.intl.formatMessage({id: value.name})}</NavLink>
+            </Menu.Item>
+          })
+        }</SubMenu>
+      })
+    }
+  </Menu>
+  );
+};
+
+const mapStateToProps = state=>{
+  console.log(state.login)
+  return {
+    myView: state.login.myView
+  }
+}
+
+export default injectIntl(connect(mapStateToProps)(MenuList));

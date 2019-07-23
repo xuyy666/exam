@@ -4,8 +4,8 @@ import {getToken} from '../utils/index.js'
 
 // create an axios instance
 const service = axios.create({  // 前端的接口
-  baseURL:'http://169.254.12.254:7001/',
-  timeout: 5000 // request timeout
+   baseURL:'http://127.0.0.1:7001/',
+  eout: 5000 // request timeout
 })
 service.interceptors.request.use(
   config => {

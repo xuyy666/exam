@@ -3,15 +3,14 @@ import Questionclassifiy from '../views/questionmanage/questionclassifiy'//试�
 import Lookquestion from '../views/questionmanage/lookquestion'//试题管理 添加试题
 import Addusers from '../views/usersmanage/addusers'; // 用户管理 添加用户
 import Usershow from '../views/usersmanage/usershow'; // 用户管理 用户展示
-
 import Addexam from '../views/exammanage/addexam';  // 考试管理 添加考试
 import Examlist from '../views/exammanage/examlist'; // 考试管理 考试列表
 import Grademanage from '../views/grademanage/grademanage'; // 班级管理 班级管理
 import Classroomanage from '../views/grademanage/classroomanage'; // 班级管理 教室管理
 import Studentmanage from '../views/grademanage/studentmanage'; // 班级管理 学生管理
 import Awaitingapp from '../views/markingmanage/awaitingapp'; // 阅卷管理 待批班级
-import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
-import Edititem from '../views/lookquedetail/edititem' //编辑详情
+// import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
+// import Edititem from '../views/lookquedetail/edititem' //编辑详情
 
 export default {
     routes:[
@@ -21,102 +20,97 @@ export default {
             children:[
                 {
                     name:'router.questions.add',
-                    path:'../views/questionmanage/addquestion',
-                    view_id:'../views/questionmanage/addquestion',
+                    path:'/index/addquestion',
+                    view_id:'main-addQuestions',
                     component:Addquestion,
                 },
                 {
-                    name:'router.questions.type',
-                    path:'../views/questionmanage/questionclassifiy',
-                    view_id:'../views/questionmanage/questionclassifiy',
+                    name:'router.questions.classify',
+                    path:'/index/questionclassifiy',
+                    view_id:'main-watchQuestions',
                     component:Questionclassifiy,
                 },
                 {
-                    name:'router.questions.classi',
-                    path:'../views/questionmanage/lookquestion',
-                    view_id:'../views/questionmanage/lookquestion',
+                    name:'router.questions.type',
+                    path:'/index/lookquestion',
+                    view_id:'main-questionsType',
                     component:Lookquestion,
                 },
              
             ]
         },
-
-
         {
             name:'router.user',
             path:'',
             children:[
                 {
                     name:'router.user.add',
-                    path:'../views/usersmanage/addusers',
-                    view_id:'../views/usersmanage/addusers',
+                    path:'/index/addusers',
+                    view_id:'main-addUser',
                     component:Addusers,
                 },
                 {
                     name:'router.user.show',
-                    path:'../views/usersmanage/usershow',
-                    view_id:'../views/usersmanage/usershow',
+                    path:'/index/usershow',
+                    view_id:'main-showUser',
                     component:Usershow,
                 },
             ]
-        },
-
-
-        {
+        }, 
+         {
             name:'router.exam',
             path:'',
             children:[
                 {
                     name:'router.exam.add',
-                    path:'../views/exammanage/addexam',
-                    view_id:'../views/exammanage/addexam',
+                    path:'/index/addexam',
+                    view_id:'main-addExam',
                     component:Addexam,
                 },
                 {
                     name:'router.exam.list',
-                    path:'../views/exammanage/examlist',
-                    view_id:'../views/exammanage/examlist',
+                    path:'/index/examlist',
+                    view_id:'main-menu',
                     component:Examlist,
                 },
             ]
         },
-
         {
             name:'router.class',
             path:'',
             children:[
                 {
                     name:'router.class.classi',
-                    path:'../views/grademanage/grademanage',
-                    view_id:'../views/grademanage/grademanage',
+                    path:'/index/grademanage',
+                    view_id:'main-grade',
                     component:Grademanage,
                 },
                 {
                     name:'router.class.room',
-                    path:'../views/grademanage/classroomanage',
-                    view_id:'../views/grademanage/classroomanage',
+                    path:'/index/classroomanage',
+                    view_id:'main-room',
                     component:Classroomanage,
                 },
                 {
                     name:'router.class.study',
-                    path:'../views/grademanage/studentmanage',
-                    view_id:'../views/grademanage/studentmanage',
+                    path:'/index/studentmanage',
+                    view_id:'main-student',
                     component:Studentmanage,
                 },
             ]
         },
-
         {
             name:'router.juan',
             path:'',
             children:[
                 {
                     name:'router.juan.not',
-                    path:'../views/lookquedetail/edititem',
-                    view_id:'../views/lookquedetail/edititem',
-                    component:Edititem,
+                    path:'/index/awaitingapp',
+                    view_id:'main-examPaperClassmate',
+                    component:Awaitingapp,
                 },
             ]
-        },
+        }
     ]
 }
+

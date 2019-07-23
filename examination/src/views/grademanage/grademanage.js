@@ -132,18 +132,22 @@ function Grademanage(props) {
                 }
               </Select>
         </Form.Item>
-        </Form>
-      </Modal>
-
-      <div className={styles.head}>
+      </Form>
+      
+    
+        </Modal>
+     
+           <div className={styles.head}>
         <h1>班级管理</h1>
-      </div>
+       </div>
       <div className={styles.sec}>
 
+
         <p><Button onClick={() => { updateModal(true) }}>+添加类型</Button></p>
-        <Table rowKey="grade_id" columns={columns} dataSource={props.grade.isgradeMenage} />
+         <Table rowKey="grade_id" columns={columns} dataSource={props.grade.isgradeMenage} />
       </div>
     </div>
+
   )
 }
 
@@ -151,6 +155,9 @@ function Grademanage(props) {
 Grademanage.propTypes = {
 
 };
+
+
+
 
 const mapState = (state) => {
   console.log(state)
@@ -218,4 +225,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapState, mapDispatchToProps)(Form.create()(Grademanage));
+ export default connect(mapState, mapDispatchToProps)(Form.create()(Grademanage));
+
+

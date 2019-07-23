@@ -1,7 +1,7 @@
 
 import React, { useEffect,useState } from 'react';
 import { connect } from 'dva';
-import style from './classroommanage.scss'
+import style from './classroomanage.scss'
 import { Button, Modal, Form, Input, Radio, Table, Divider, Tag, message, Select } from 'antd';
 import {injectIntl} from 'react-intl';
 

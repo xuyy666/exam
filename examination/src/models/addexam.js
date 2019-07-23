@@ -1,11 +1,11 @@
-import {addexam} from '@/server/index.js';
+import {addexam,upExam} from '@/server/index.js';
 export default {
   // 命名空间
   namespace: 'exam',
 
   // 模块的管理
   state: {
-     addExam:''
+    exam_info:{}
   },
 
   // 异步操作
@@ -13,18 +13,26 @@ export default {
     *addexam({ payload }, { call, put }) {  // eslint-disable-line
       // console.log('payload...', payload, type)
       let data = yield call(addexam, payload);
-      yield put({
-        type: 'upExams',
+      if (data.code === 0) {
+        return
+    }
+    yield put({
+        type: 'upadd_exam_info',
         payload: data.data
     });
-    }
+    },
+    //更新试卷
+    *upExam({ payload }, { call, put }) {  // eslint-disable-line
+      let data = yield call(upExam,payload)
+      console.log(data)
+  },
   },
 
   // 同步操作
   reducers: { // 相当于派发
     // 添加试题接口
-   upExams(state, action) {
-      return { ...state, addexam: action.payload };
-    },
+    upadd_exam_info(state, action) {
+      return { ...state, exam_info:action.payload };
+  },
   },
 };
