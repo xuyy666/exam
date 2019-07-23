@@ -167,7 +167,7 @@ const mapDispatchToProps = (dispatch) => {
         type: "look/lookquestionMenu",
       })
     },
-//添加考试
+    //添加考试
     createExam: payload => {
       dispatch({
         type: "exam/createExam",
