@@ -3,6 +3,7 @@ import { lookquestion } from '../services/index.js'
 import { lookquestionExam } from '../services/index.js'
 import { lookquestionMenu } from '../services/index.js'
 import { lookquestionDetail } from '../services/index.js'
+import { createExam } from '../services/index.js'
 import {questionDetail} from '../services/index.js'; // 试题详情页的异步请求
 export default {
   // 命名空间
@@ -13,7 +14,8 @@ export default {
     isLookquestionExam: [],
     isLookquestionMenu: [],
     isLookquestionDetail: [],
-    questionsDetail:[]
+    questionsDetail:[],
+    iscreateExam:[]
   },
   // 异步操作
   //课程类型
@@ -65,7 +67,15 @@ export default {
          type:"questionDetails",
          payload:data.data
        }) 
-     }
+     },
+     *createExam({ payload }, { call, put }){
+       let data = yield call(createExam,payload);
+       yield put({
+         type:"updataCreateExam",
+         payload:data.data
+       }) 
+     },
+     
   },
 
   // 同步操作
@@ -84,6 +94,10 @@ export default {
 
     updateLookquestionDetail(state, action) {
       return { ...state, isLookquestionDetail: action.payload };
+    },
+    //创建试卷接口
+    updataCreateExam(state, action) {
+      return { ...state, iscreateExam: action.payload };
     },
     // 试题详情页的异步请求
     questionDetails(state,action){

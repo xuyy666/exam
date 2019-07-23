@@ -1,4 +1,4 @@
-export * from './login.js';
+export * from './login.js';//添加权限
 export * from './questionclassifiy.js';
 export * from './lookquestion.js';
 export * from './lookquestionExam.js';
@@ -24,7 +24,13 @@ export * from './getpaperlist.js' // 获取试卷列表接口
 
 export * from './AddUser.js';//添加用户
 export * from './grademenage.js';//班级管理
+
+
 export * from './user.js'  // 获取当前用户信息
 export * from './studentsManage.js' //学生管理
+
+export * from './user.js';//添加权限
+
+export * from './createExam.js';//创建试卷
 // export * from './addexam.js';//添加考试
 // console.log('*')

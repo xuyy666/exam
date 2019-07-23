@@ -28,7 +28,12 @@ export function deletegrade() {
 }
 //更新班级信息
 export function newgrade(params) {
-  return request.put('/manger/grade/update', params);
+    return request.put('/manger/grade/update',params);
+  }
+  
+//添加教室
+export function addRoom(params){
+  return request.post('/manger/room',params)
 }
 
 
@@ -54,3 +59,7 @@ export function removeClass(params){
 
 
 
+//删除教室
+export function delRoom(data){
+  return request.delete('/manger/room/delete',{data})
+}

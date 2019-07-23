@@ -8,9 +8,8 @@ export function getUserInfo() {  // 获取当前用户信息
 export function uploadPictures(form){
   return request.post('http://123.206.55.50:11000/upload',form)
 }
-
-// ???
-export function getAuth(form){
+//获取视图权限
+export function getViewAuthority(){
   return request.get("/user/view_authority")
 }
 

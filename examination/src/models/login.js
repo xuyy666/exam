@@ -1,6 +1,7 @@
-import { login, getUserInfo, uploadPictures ,getAuth} from '@/services/index.js'
+import { login, getUserInfo, uploadPictures,getViewAuthority} from '@/services/index.js'
 import { setToken, getToken } from '@/utils/index'
 import { routerRedux } from 'dva/router';
+import allAuthority from '@/router/config';
 export default {
   // 命名空间
   namespace: 'login',
@@ -9,7 +10,9 @@ export default {
   state: {
     isLogin: -1,
     userInfo: {}, // 设置用户信息为空对象
-    uploadPicture:""
+    uploadPicture:"",
+    myView: [],
+    forbiddenView: []
   },
 
   // 订阅
@@ -51,8 +54,7 @@ export default {
 
   // 异步操作
   effects: {  // generator
-    *login({ payload, type }, { call, put }) {
-      console.log('payload...', payload, type)
+    *login({ payload }, { call, put }) {
       let data = yield call(login, payload);
       console.log('22data...11111', data);// token只是一个字段
       if (data.code === 1) {
@@ -65,14 +67,14 @@ export default {
         payload: data.code  // 相当于里面的执行  payload: data.code === 1 
       })
     },
+
+
     // 获取用户信息
-    *getUserInfo({ payload }, { call, put, select }) {
-      console.log("hdjsdhjdskhfsjkhfkjs")
+    *getUserInfo({ action }, { call, put, select }) {
       let userInfo = yield select(state=>state.login.userInfo);
-      console.log('userInfo.......', userInfo)
-      if(Object.keys(userInfo).length){
-        return 
-      }
+      // if(Object.keys(userInfo).length){
+      //   return 
+      // }
       let data = yield getUserInfo();  // ===
       // let data = yield call(getUserInfo);// ===
       console.log('````````````````````', data);
@@ -80,8 +82,11 @@ export default {
         type: "updateUserInfo",
         payload: data.data
       })
-      let auth= yield call(getAuth);
-      console.log(auth,"111111111111")
+      let authority = yield getViewAuthority();
+      yield put({
+        type: 'updateViewAuthority',
+        payload: authority.data
+      })
     },
     *uploadPictures({ payload }, { call, put }) {
       let data = yield call(uploadPictures,payload);
@@ -90,12 +95,17 @@ export default {
         payload: data
       })
 
+      
     },
 
     // *fetch({ payload }, { call, put }) {  // eslint-disable-line
     //   // let data = yield xhr();
     //   yield put({ type: 'save' });
     // },
+      //  getAuthority()
+
+
+
   },
   // {
   //   type:"fetch",
@@ -113,6 +123,28 @@ export default {
     uploadPic(state, action) {  // 上传图片
       return { ...state, uploadPicture: action.payload };
     },
+    updateViewAuthority(state, action){
+     
+      // 筛选出我拥有的路由
+      let myView = [], forbiddenView = [];
+      allAuthority.routes.forEach(item=>{
+        let obj = {
+          name: item.name,
+          children: []
+        }
+        // console.log('item.children...', item.children, action.payload)
+        item.children.forEach(value=>{
+          if (action.payload.findIndex(item=>item.view_id === value.view_id) !== -1){
+            obj.children.push(value);
+          }else{
+            forbiddenView.push(value);
+          }
+        })
+        myView.push(obj)
+      })
+      console.log(myView,"9888888888")
+      return {...state,myView:myView,forbiddenView:forbiddenView}
+    }
   },
 
 };

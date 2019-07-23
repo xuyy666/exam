@@ -21,7 +21,7 @@ app.use({
 // 3. Model
 app.model(require('./models/login').default);//登录页
 app.model(require('./models/questionclassifiy').default);//试题分类
-app.model(require('./models/lookquestion').default);// 试题分类 添加试题类型
+app.model(require('./models/lookquestion').default);// 试题分类 添加试题类型 创建考试
 
 app.model(require('./models/addquestion').default)  // 添加试题接口
 app.model(require('./models/getexamtype').default)  // 获取所有的考试类型
@@ -34,6 +34,9 @@ app.model(require('./models/global.js').default); // 国际化
 
 app.model(require('./models/grademenage.js').default) // 班级管理
 app.model(require('./models/studentsManage.js').default) // 学生管理                                                    //学生管理
+
+// app.model(require('./models/grademenage').default);//添加班级
+// app.model(require('./models/global.js').default);//国际化
 // 4. Router
 app.router(require('./router').default);
 
