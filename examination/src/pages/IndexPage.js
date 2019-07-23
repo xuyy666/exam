@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
-import { Layout, Menu, Icon, Dropdown, Modal,Spin} from 'antd'; //Breadcrumb
-import { Route, NavLink,Switch,Redirect } from 'dva/router';
+import { Layout, Menu, Dropdown, Modal,Spin} from 'antd'; //Breadcrumb
+import { Route, Switch,Redirect } from 'dva/router';
 import MenuList from '@/components/Menu';
 import styles from './IndexPage.scss';
 import { injectIntl } from 'react-intl';
 import axios from 'axios';
 // const { Header, Content, Footer, Sider } = Layout;
 const { Sider,Content, } = Layout;
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 function IndexPage(props) {
 
   // if (!props.myView.length){
