@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import styles from './addexamT.scss'
 import { Button,Drawer } from 'antd';
 function AddExamTwo(props){
-
+//11111111111111111111111111111111111111111111111111111111111
     useEffect(()=>{
 props.addexam(props.location.params)
     },[props.location.params])
