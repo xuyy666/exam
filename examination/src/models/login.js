@@ -2,6 +2,7 @@ import { login, getUserInfo, uploadPictures,getViewAuthority} from '@/services/i
 import { setToken, getToken } from '@/utils/index'
 import { routerRedux } from 'dva/router';
 import allAuthority from '@/router/config';
+
 export default {
   // 命名空间
   namespace: 'login',
@@ -71,7 +72,7 @@ export default {
 
     // 获取用户信息
     *getUserInfo({ action }, { call, put, select }) {
-      let userInfo = yield select(state=>state.login.userInfo);
+      // let userInfo = yield select(state=>state.login.userInfo);
       // if(Object.keys(userInfo).length){
       //   return 
       // }
@@ -82,7 +83,10 @@ export default {
         type: "updateUserInfo",
         payload: data.data
       })
+
       let authority = yield getViewAuthority();
+      console.log(authority)
+      console.log(allAuthority,"9888888888")
       yield put({
         type: 'updateViewAuthority',
         payload: authority.data
@@ -142,7 +146,7 @@ export default {
         })
         myView.push(obj)
       })
-      console.log(myView,"9888888888")
+     
       return {...state,myView:myView,forbiddenView:forbiddenView}
     }
   },

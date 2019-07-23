@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'dva';
-import { Layout, Menu, Icon, Dropdown, Modal,Spin} from 'antd'; //Breadcrumb
-import { Route, NavLink,Switch,Redirect } from 'dva/router';
+import { Layout, Menu, Dropdown, Modal,Spin} from 'antd'; //Breadcrumb
+import { Route,Switch,Redirect } from 'dva/router';
 import MenuList from '@/components/Menu';
 import styles from './IndexPage.scss';
 import { injectIntl } from 'react-intl';
 import axios from 'axios';
 // const { Header, Content, Footer, Sider } = Layout;
 const { Sider,Content, } = Layout;
-const { SubMenu } = Menu;
 function IndexPage(props) {
 
-  // if (!props.myView.length){
-  //   return null;
-  // }
-
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~', props)
+  
+  console.log('~~~~~~~~~~~~~~~~~~~~~~~~', props.myView)
   // console.log('********************',props.userInfo)
   const [adddialog, visitydialog] = useState(false); // 点击个中心显示弹框
   let { user_name, avatar, user_id } = props.userInfo;
@@ -150,7 +146,11 @@ function IndexPage(props) {
              {/* 侧边栏 */}
             <Sider>
               {/* <div className="logo" /> */}
+              {
+                console.log('147899',props.myView)
+              }
               <MenuList />
+              
              </Sider>
           </Layout>
         </div>

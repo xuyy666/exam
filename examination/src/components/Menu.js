@@ -7,7 +7,7 @@ import {connect} from 'dva';
 const { SubMenu } = Menu;
 
 const MenuList = props => {
-  console.log("10------------",props)
+  console.log("10------------",props.myView)
   if (!props.myView.length){
     return null;
   }
@@ -19,14 +19,36 @@ const MenuList = props => {
     mode="inline"
   >
     {
+      props.myView.map(item=>{
+        if(item.name==='router.look'){
+          <SubMenu style={{display:'none'}}
+          key={item.name}
+          title={
+           ( <span>
+              <Icon type="mail" />
+              <span>{item.name}</span>
+           </span>)
+          }
+        >{
+          item.children.map(value=>{
+            return <Menu.Item key={value.name}>
+              <NavLink to={value.path}>{props.intl.formatMessage({id: value.name})}</NavLink>
+            </Menu.Item>
+          })
+        }</SubMenu>
+            
+        }
+      })
+    }
+    {
       props.myView&&props.myView.map(item=>{
         return <SubMenu
           key={item.name}
           title={
-            <span>
+           ( <span>
               <Icon type="mail" />
               <span>{item.name}</span>
-            </span>
+           </span>)
           }
         >{
           item.children.map(value=>{
@@ -42,7 +64,7 @@ const MenuList = props => {
 };
 
 const mapStateToProps = state=>{
-  console.log(state.login)
+  // console.log(state.login)
   return {
     myView: state.login.myView
   }

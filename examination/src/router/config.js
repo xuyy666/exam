@@ -9,8 +9,10 @@ import Grademanage from '../views/grademanage/grademanage'; // 班级管理 班�
 import Classroomanage from '../views/grademanage/classroomanage'; // 班级管理 教室管理
 import Studentmanage from '../views/grademanage/studentmanage'; // 班级管理 学生管理
 import Awaitingapp from '../views/markingmanage/awaitingapp'; // 阅卷管理 待批班级
-// import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
-// import Edititem from '../views/lookquedetail/edititem' //编辑详情
+import addExamT from '../views/lookquedetail/addexamT'; //添加试卷2
+import Itemdetails from '../views/lookquedetail/questionsdetail'//试题详情
+import Edititem from '../views/lookquedetail/edititem' //编辑详情
+
 
 export default {
     routes:[
@@ -35,6 +37,31 @@ export default {
                     path:'/index/lookquestion',
                     view_id:'main-questionsType',
                     component:Lookquestion,
+                },
+             
+            ]
+        },
+        {
+            name:'router.looks',
+            path:'',
+            children:[
+                {
+                    name:'router.looks.edit',
+                    path:'/index/edititem',
+                    view_id:'main-editQuestions',
+                    component:Edititem,
+                },
+                {
+                    name:'router.looks.detail',
+                    path:'/index/questionsdetail',
+                    view_id:'main-questionsDetail',
+                    component:Itemdetails,
+                },
+                {
+                    name:'router.looks.addexamT',
+                    path:'/index/addexamT',
+                    view_id:'main-examDetail',
+                    component:addExamT,
                 },
              
             ]

@@ -1,7 +1,7 @@
-import {addexam,upExam} from '@/server/index.js';
+import {addexam,upExam} from '@/services/index.js';
 export default {
   // 命名空间
-  namespace: 'exam',
+  namespace: 'AddExam',
 
   // 模块的管理
   state: {

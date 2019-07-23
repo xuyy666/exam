@@ -1,6 +1,6 @@
 import request from '../utils/request';
 //创建试卷接口
-export function createExam(params) {
+export function addexam(params) {
   return request.post('/exam/exam',params);
 }
 

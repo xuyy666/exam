@@ -58,7 +58,7 @@ export default {
         // 删除班级接口
         *deletegrade({ payload }, { call, put }) {
             let data = yield call(deletegrade, payload);
-            if (data.code == 0) {
+            if (data.code === 0) {
                 return
             }
         },

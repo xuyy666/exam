@@ -5,6 +5,12 @@ export default {
     "router.questions.classify":"ClassifyQuestions",
 
 
+    "router.looks":"Look",
+    "router.looks.edit":"EditLook",
+    "router.looks.detail":"DetailLook",
+    "router.looks.addexamT":"AddExamTLook",
+    
+
     "router.user":"User",
     "router.user.add":"AddUser",
     "router.user.show":"ShowUser",

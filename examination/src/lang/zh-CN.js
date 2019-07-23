@@ -4,6 +4,13 @@ export default {
     "router.questions.type":"试题分类",
     "router.questions.classify":"查看试题",
 
+
+    "router.looks":"查看试题",
+    "router.looks.edit":"编辑",
+    "router.looks.detail":"详情",
+    "router.looks.addexamT":"添加考试详情",
+    
+
     "router.user":"用户管理",
     "router.user.add":"添加用户",
     "router.user.show":"用户展示",

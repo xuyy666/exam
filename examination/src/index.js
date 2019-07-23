@@ -31,6 +31,8 @@ app.model(require('./models/getpaperlist.js').default) //获取试卷列表接�
 
 app.model(require('./models/AddUser').default);//添加用户
 
+app.model(require('./models/addexam').default)//创建考试
+
 app.model(require('./models/grademenage').default);//添加班级
 app.model(require('./models/global.js').default);//国际化
 // 4. Router

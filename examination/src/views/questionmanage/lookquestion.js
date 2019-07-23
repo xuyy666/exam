@@ -40,9 +40,7 @@ const onMenu=(index)=>{
   }
 
  // 点击查询
- const search =(props)=>{
-  // console.log(props)
-}
+ 
   const all=()=>{ //  多选
     setAll(!addAll)
     setstyle(-1)   // 消除点击谁的样式
