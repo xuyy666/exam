@@ -1,36 +1,37 @@
 import React, { useState, useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Table, Button, Form, Modal, Input, Divider } from 'antd'; //Breadcrumb
+import { Button, Form, Modal, Input, Divider } from 'antd'; //Breadcrumb
 import styles from './grademanage.scss'
 function Grademanage(props) {
-  const columns = [
-    {
-      title: '班级名',
-      dataIndex: 'grade_name',
-      key: "name"
-    },
-    {
-      title: '课程名',
-      dataIndex: 'subject_text',
-      key: "text"
-    },
-    {
-      title: '教室号',
-      dataIndex: 'room_text',
-      key: "room"
-    },
-    {
-      title: '操作',
-      dataIndex: '',
-      render: text =>
-        <div>
-          <a href="javascript" onClick={() => edit(text)}>修改</a>
-          <Divider type="vertical" />
-          <a href="javascript" onClick={() => deletes(text)}>删除</a>
-        </div>,
-      key: "action"
-    }
-  ]
+  // const columns = [
+  //   {
+  //     title: '班级名',
+  //     dataIndex: 'grade_name',
+  //     key: "name"
+  //   },
+  //   {
+  //     title: '课程名',
+  //     dataIndex: 'subject_text',
+  //     key: "text"
+  //   },
+  //   {
+  //     title: '教室号',
+  //     dataIndex: 'room_text',
+  //     key: "room"
+  //   },
+  //   {
+  //     title: '操作',
+  //     dataIndex: '',
+  //     render: text =>
+  //       <div>
+  //         <a href="javascript" onClick={() => edit(text)}>修改</a>
+  //         <Divider type="vertical" />
+  //         <a href="javascript" onClick={() => deletes(text)}>删除</a>
+  //       </div>,
+  //     key: "action"
+  //   }
+  // ]
+  
   let [showModal, updateModal] = useState(false);
 
   useEffect(() => {

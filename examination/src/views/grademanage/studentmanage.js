@@ -42,7 +42,7 @@ function Studentmanage(props) {
      addClassRoom,
      studentInfo,
      addRoom, 
-     addRooms,
+    //  addRooms,
      allStudent:reduxStudent
      } = props; 
    const [allStudent,updateStudent] = useState([]);
