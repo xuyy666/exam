@@ -1,6 +1,5 @@
 import request from '../utils/request';
 
-
 //班级管理
 //获取已经分配教室的班级
 export function gradeMenage(params) {
@@ -13,7 +12,6 @@ export function gradeMenage(params) {
 // }
 
 //获取课程类型
-
 export function examSubject() {
   return request.get('/exam/subject');
 }
@@ -33,9 +31,8 @@ export function newgrade(params) {
 
 
 
-// 班级管理
-
- // 班级管理-添加全部教室接口  /manger/room  
+// 班级管理  xyy
+// 班级管理-添加全部教室接口  /manger/room  
 export function addClassroom(params){
   return request.get('/manger/room',params);
 }

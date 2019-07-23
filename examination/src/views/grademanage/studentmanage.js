@@ -1,66 +1,54 @@
-import React, { useState, useEffect } from 'react'; // useState
+import React, { useEffect } from 'react'; // useState
 import { connect } from 'dva';
-import { Layout, Form, Input, Select, Button, Table } from 'antd';
+import { Layout, Form, Input, Select, Button, Table, message } from 'antd';
 import styles from './studentmanage.scss'
 const { Content } = Layout;
-const columns = [
-  {
-    title: '姓名',
-    // dataIndex: 'name'
-  },
-  {
-    title: '学号',
-    // dataIndex: 'gender'
-  },
-  {
-    title: '班级',
-    // dataIndex: 'email'
-  },
-  {
-    title: '教室',
-    dataIndex: 'room_text'
-  },
-  {
-    title: '密码',
-    // dataIndex: 'gender'
-  },
-  {
-    title: '操作',
-    // dataIndex: 'email'
-  }
-];
+
 
 function Studentmanage(props) {
-  const { getFieldDecorator } = props.form;
+  const columns = [
+    {
+      title: '姓名',
+      dataIndex: 'student_name'
+    },
+    {
+      title: '学号',
+      dataIndex: 'student_id'
+    },
+    {
+      title: '班级',
+      // dataIndex: 'email'
+    },
+    {
+      title: '教室',
+      dataIndex: 'room_text'
+    },
+    {
+      title: '密码',
+      dataIndex: 'student_pwd'
+    },
+    {
+      title: '操作',
+      render: (text) => {
+        // console.log(text);
+        return <span onClick={() => removeStudent(text.student_id)}>删除</span>
+      }
+    }
+  ];
+
   const { Option } = Select;
-
-
-  // const { addRoom, addRooms } = props;
+  const { addRoom, students } = props;
   // addRoom 教室号 addRooms 获取已经分配教室的班级的接口
-  const { 
-     addAllClass,
-     addClassRoom,
-     studentInfo,
-     addRoom, 
-    //  addRooms,
-     allStudent:reduxStudent
-     } = props; 
-   const [allStudent,updateStudent] = useState([]);
-   console.log('22222222222222222222222222222',allStudent)
-  // console.log(addRoom,addRooms)
   console.log(props);
-
-  useEffect(()=>{
-    updateStudent(reduxStudent)
-  },[reduxStudent])
+  console.log(students)
 
   useEffect(() => {
-    addAllClass();
-    addClassRoom(); // 获取已经分配教室的班级的接口
-    studentInfo(); // 获取所有已经分班的学生的接口
-    // props.removeStudent(); // 删除学生接口
+    props.addAllClass(); // 获取全部的教室
+    props.haveClassroom(); // 获取已经分配教室的班级的接口 
+    props.notHaveClassroom()// 获取所有没有分班的学生接口
   }, [])
 
+  // 提交
   let handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
@@ -71,27 +59,43 @@ function Studentmanage(props) {
     });
   };
 
-  let handleReset = () => {
-    props.from.resetFields()
-    // console.log('9999999999999999999999999999999',props.from)
+  // 删除学生
+  let removeStudent = (id) => {
+    console.log(id)
+    props.removeStudents(id); // 删除学生接口
   }
+  useEffect(() => {
+    if (props.delStudent === 1) {  // if(props.delStudent.code === 1){}
+        message.success('删除成功');
+        props.record(); // 从 -1的状态到1 执行这个状态  之后就不执行  写这个方法让其执行多次
+    }
+    props.haveClassroom(); // 获取已经分配教室的班级的接口 
+    props.notHaveClassroom()// 获取所有没有分班的学生接口
+  },[props.delStudent]) // 没有删除为-1(初始状态为-1)  删除学生状态为 1
+
+  const { getFieldDecorator } = props.form;
+  //  重置
+  const handleReset = () => {
+    props.form.resetFields();
+    // resetFields()
+  }
+
   let pagination = () => {
 
   }
-  // let loading = () => {
+  // let loading = () => {  // loading={loading}
 
   // }
   let handleTableChange = () => {
 
   }
 
-
   return (
     <Layout className={styles.studentman} style={{ padding: '0 24px 24px' }}>
       <h2 style={{ padding: '20px 0' }}>学生管理</h2>
       <Form onSubmit={handleSubmit} className={styles.forms}>
         <Form.Item className={styles.item}>
-          {getFieldDecorator('studentname', {
+          { getFieldDecorator('studentname', {
             rules: [
               {
                 required: true,
@@ -115,23 +119,22 @@ function Studentmanage(props) {
           </Select>)}
         </Form.Item>
         <Form.Item className={styles.item}>
-          {getFieldDecorator('grade_id', {
+          { getFieldDecorator('grade_id', {
 
           })(<Input placeholder="班级名" />)}
         </Form.Item>
         <Form.Item className={styles.item}>
           <Button type="primary" style={{ width: '111px', height: "32px" }}>搜索</Button>
-          <Button type="primary" style={{ width: '111px', height: "32px" }} 
-           onClick={handleReset}>重置</Button>
+          <Button type="primary" style={{ width: '111px', height: "32px" }}
+            onClick={handleReset}>重置</Button>
         </Form.Item>
       </Form>
       <Content>
         <Table
           columns={columns}
           rowKey="student_id"
-          dataSource={allStudent}
+          dataSource={students}
           pagination={pagination}
-          // loading={loading}
           onChange={handleTableChange}
         />
       </Content>
@@ -154,22 +157,27 @@ const mapDispatch = (dispatch) => ({
       type: "grade/addClassroom"
     })
   },
-  addClassRoom(){ // 获取已经分配教室的班级的接口
+  haveClassroom() {  // 获取已经分配教室的班级的接口 
     dispatch({
-      type: "studentsMan/addClassrooms"
+      type: "studentsMan/haveClassroom"
     })
   },
-  // 获取所有已经分班的学生的接口
-  studentInfo(){
+  notHaveClassroom() { // 获取所有没有分班的学生接口
     dispatch({
-      type: "studentsMan/studentInfo"
+      type: "studentsMan/notClassroom"
     })
   },
-  //  删除学生接口
-  removeStudent(payload){
+  // 删除学生接口
+  removeStudents(payload) {
     dispatch({
-      type: "studentsMan/deleteStudent",
+      type: "studentsMan/delete_student",
       payload
+    })
+  },
+  // 同步执行这个状态
+  record(){
+    dispatch({
+      type: "studentsMan/record",
     })
   }
 })
