@@ -6,7 +6,7 @@ import locale from 'antd/lib/date-picker/locale/zh_CN';
 
 
 const { Option } = Select;
-const { RangePicker } = DatePicker;
+// const { RangePicker } = DatePicker;
 
 
 function Addexam(props) {
