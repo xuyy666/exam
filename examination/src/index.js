@@ -30,7 +30,10 @@ app.model(require('./models/listuser.js').default) // 获取用户的接口
 app.model(require('./models/getpaperlist.js').default) //获取试卷列表接口
 
 app.model(require('./models/AddUser').default);//添加用户
-app.model(require('./models/global.js').default);
+app.model(require('./models/global.js').default); // 国际化
+
+app.model(require('./models/grademenage.js').default) // 班级管理
+app.model(require('./models/studentsManage.js').default) // 学生管理                                                    //学生管理
 // 4. Router
 app.router(require('./router').default);
 

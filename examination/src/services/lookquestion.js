@@ -3,3 +3,5 @@ import request from '../utils/request';
 export function lookquestion() {
   return request.get('/exam/subject');
 }
+
+

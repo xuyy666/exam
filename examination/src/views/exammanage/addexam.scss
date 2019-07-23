@@ -1,31 +1,33 @@
+:local {
+  .AddExam {
+    width: 100%;
+    background: #ccc;
 
-:local{
-     .AddExam{
-        width:100%;height:100%;
-        background:#ccc;
-       h2{
-           padding:20px 30px;
-           color:#f00;
-       }
-        .AddBox{
-            width:90%;height:900px;
-            background:#fff;
-            border-radius:5%;
-            margin:0 20px;
-            .Addborder{
-                width:70%;
-                padding:30px 30px;
-                .form{
-                   display:flex;
-                   flex-direction:column;
-                    Form.Item{
-                        height:200px;
-                        flex:1;
-                    }
-                }
-            }
-        }
+    h2 {
+      padding: 20px 30px;
     }
-    
-   
+
+    .AddBox {
+      width: 90%;
+      height: 900px;
+      background: #fff;
+      border-radius: 10px;
+      margin: 0 20px;
+
+      .Addborder {
+        width: 70%;
+        padding: 30px 30px;
+
+        .form {
+          display: flex;
+          flex-direction: column;
+
+          Form.Item {
+            height: 200px;
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,4 +1,4 @@
-import {addexam} from '@/server/index.js';
+import {addexam} from '@/services/index.js';
 export default {
   // 命名空间
   namespace: 'exam',

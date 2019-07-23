@@ -1,17 +1,16 @@
 import request from '../utils/request';
-//services 后台的get请求
+
 
 //班级管理
-
 //获取已经分配教室的班级
 export function gradeMenage(params) {
   return request.get('/manger/grade', params);
 }
 
 //获取全部教室
-export function graderoom() {
-  return request.get('/manger/room');
-}
+// export function graderoom() {
+//   return request.get('/manger/room');
+// }
 
 //获取课程类型
 
@@ -33,10 +32,25 @@ export function newgrade(params) {
 }
 
 
-// //添加教室接口  /manger/room  
+
+// 班级管理
+
+ // 班级管理-添加全部教室接口  /manger/room  
 export function addClassroom(params){
+  return request.get('/manger/room',params);
+}
+// 添加教室接口
+export function addClass(params){
   return request.post('/manger/room',params);
 }
+
+// 删除教室接口
+export function removeClass(params){
+  // console.log('hjhjhjhjhjhj',params)  //  传递id
+  return request.delete('/manger/room/delete',{data:params})
+}
+
+
 
 
 

@@ -48,11 +48,12 @@ function IndexPage(props) {
         break;
     }
   }
+    // let form = new FormData();
+    // form.append(e.target.files[0]);
+
   // 点击头像
   const uploadPhoto = (e) => {
     console.log(e)
-    // let form = new FormData();
-    // form.append(e.target.files[0]);
     let reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
     reader.onload = function () {
@@ -64,7 +65,6 @@ function IndexPage(props) {
         }
       });
     }
-
   }
 
   useEffect(() => {
@@ -139,16 +139,14 @@ function IndexPage(props) {
         <div className={styles.leftheader}>
           <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1551624718911&di=4a7004f8d71bd8da84d4eadf1b59e689&imgtype=0&src=http%3A%2F%2Fimg105.job1001.com%2Fupload%2Falbum%2F2014-10-15%2F1413365052_95IE3msH.jpg" alt="" />
         </div>
-        {/* <div > */}
 
         <Dropdown overlay={menu} className={styles.rightheader}>
           <a href="javascript" className='ant-dropdown-link'>
             <img src="https://cdn.nlark.com/yuque/0/2019/png/anonymous/1547609339813-e4e49227-157c-452d-be7e-408ca8654ffe.png?x-oss-process=image/resize,m_fill,w_48,h_48/format,png" alt="" />
             <span>chenmanjie</span>
           </a>
-          {/* <Button className={styles.btn}></Button> */}
         </Dropdown>
-        {/* </div> */}
+
       </div>
 
       <div className={styles.content}>
