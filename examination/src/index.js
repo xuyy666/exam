@@ -3,7 +3,7 @@ import dva from 'dva';
 import './index.css';
 
 // 引入andt样式
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 import createLoading from 'dva-loading';
 // import {createLogger} from 'redux-logger'
 // 1. Initialize
