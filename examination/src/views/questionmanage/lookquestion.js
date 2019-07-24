@@ -105,13 +105,13 @@ function Question(props) {
 
 
   const Edit = (item, index) => {
-    props.history.push({ pathname:`/index/edititem/?id=${item.user_id}`, state: { data: item } })
+    props.history.push({ pathname: `/index/edititem/?id=${item.user_id}`, state: { data: item } })
   }
 
   // const Edit=(item,index)=>{
   //   props.history.push({pathname:`/index/edititem/?id=${item.user_id}`,state:{data:item}})
   // }
- 
+
   return (
     <div className="lookquestion">
       <div className="lookquestionAll">
@@ -123,7 +123,7 @@ function Question(props) {
             <div className={styles.classType}>
               <h6 style={{ marginRight: 8, display: 'inline' }}> 课程类型: </h6>
               <CheckableTag onChange={checked => handleChange('All', checked)}>All</CheckableTag>
-              { isLookquestion && isLookquestion.map(tag => (
+              {isLookquestion && isLookquestion.map(tag => (
                 <CheckableTag
                   key={tag.subject_id}
                   checked={selectedTags.indexOf(tag) > -1}
@@ -141,7 +141,7 @@ function Question(props) {
                   initialValue: "周考一"
                 })(<Select>
                   {
-                    isLookquestionMenu.map((item) => (
+                    isLookquestionMenu && isLookquestionMenu.map((item) => (
                       <Option key={item.exam_id} value={item.exam_id}>
                         {item.exam_name}
                       </Option>
@@ -152,10 +152,10 @@ function Question(props) {
               <Form.Item className={styles.select}>
                 <span> 题目类型:</span>
                 {getFieldDecorator('questionType', {
-                   initialValue: "简答题"
+                  initialValue: "简答题"
                 })(<Select>
                   {
-                    isLookquestionExam.map((item) => (
+                    isLookquestionExam && isLookquestionExam.map((item) => (
                       <Option key={item.questions_type_id} value={item.questions_type_id}>
                         {item.questions_type_text}
                       </Option>
@@ -168,10 +168,9 @@ function Question(props) {
                 <Button
                   type="primary"
                   icon="search"
-                  htmlType="submit"
-                >
+                  htmlType="submit">
                   查询
-                    </Button>
+                </Button>
               </div>
             </div>
           </Form>
@@ -195,7 +194,7 @@ function Question(props) {
       <div className="loopSec">
         <ul>
           {
-            isLookquestionDetail.map((item, index) => (
+            isLookquestionDetail && isLookquestionDetail.map((item, index) => (
               <div key={item.questions_id} className="items">
                 <li onClick={() => QuestionsDetail(item.questions_id)}>
                   <div className="secLi">
