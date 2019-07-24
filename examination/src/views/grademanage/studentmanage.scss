@@ -1,0 +1,26 @@
+:local {
+  .studentman {
+    width: 100%;
+    // background: #eee;
+    .forms {
+      display: flex;
+    //   background: pink;
+      height: 40px;
+      // background: #fff;
+      .item {
+        // background: pink;
+        margin-right: 10px;
+
+        input {
+          width: 180px;
+          height: 32px;
+          // background: #fff;
+        }
+
+        Button {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}

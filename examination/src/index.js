@@ -6,6 +6,8 @@ import './index.css';
 // import 'antd/dist/antd.css';
 import createLoading from 'dva-loading';
 // import {createLogger} from 'redux-logger'
+
+
 // 1. Initialize
 const app = dva(createLoading());
 app.use({
@@ -30,11 +32,13 @@ app.model(require('./models/listuser.js').default) // 获取用户的接口
 app.model(require('./models/getpaperlist.js').default) //获取试卷列表接口
 
 app.model(require('./models/AddUser').default);//添加用户
+app.model(require('./models/global.js').default); // 国际化
 
-app.model(require('./models/addexam').default)//创建考试
+app.model(require('./models/grademenage.js').default) // 班级管理
+app.model(require('./models/studentsManage.js').default) // 学生管理                                                    //学生管理
 
-app.model(require('./models/grademenage').default);//添加班级
-app.model(require('./models/global.js').default);//国际化
+// app.model(require('./models/grademenage').default);//添加班级
+// app.model(require('./models/global.js').default);//国际化
 // 4. Router
 app.router(require('./router').default);
 

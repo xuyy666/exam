@@ -1,25 +1,30 @@
-import { gradeMenage, graderoom, examSubject, Addgrade, deletegrade, newgrade,addRoom,delRoom } from '@/services/grademenage'
-
+import { gradeMenage, graderoom, examSubject, Addgrade, deletegrade, newgrade, addClassroom, addClass, removeClass } from '@/services/index.js'
 export default {
     // 命名空间
     namespace: 'grade',
 
     // 模块的管理
     state: {
-         isgradeMenage: [],
-         isgraderoom: [],
-        isexamSubject:[],
-        //  isAddgrade:{},
-        //  isdeletegrade: [],
-        // isnewgrade:[]
+        isgradeMenage: [],
+        isgraderoom: [],
+        isexamSubject: '',
+        isAddgrade: '',
+        isdeletegrade: [],
+        isnewgrade: [],
+        // 班级管理-添加全部教室接口 
+        addRoom: [],
+        // 添加教室接口
+        addCla:{},
+        // 删除教室接口
+        remCla:{}
     },
 
     // 异步操作
     effects: { //generator  
-
         //获取已经分配教室的班级
         *gradeMenage({ payload }, { call, put }) {  // eslint-disable-line
             let data = yield call(gradeMenage, payload);
+            // console.log('9999999999999', data)
             yield put({
                 type: "updataGradeMenage",// type是reducers里方法
                 payload: data.data
@@ -43,53 +48,59 @@ export default {
         },
 
         //添加班级接口
-        *Addgrade({ payload }, { call, put }) {
+        *Addgrade({ payload }, { call, put }) {  // eslint-disable-line
             let data = yield call(Addgrade, payload);
             yield put({
                 type: "updataAddgrade",// type是reducers里方法
                 payload: data.data
             })
-            // 传参
+        },
+        // 删除班级接口
+        *deletegrade({ payload }, { call, put }) {  // eslint-disable-line
+            let data = yield call(deletegrade, payload);
             yield put({
-                type: "updataGraderoom",// type是reducers里方法
+                type: "updatadeletegrade",// type是reducers里方法
                 payload: data.data
             })
         },
-        // 删除班级接口
-        *deletegrade({ payload }, { call, put }) {
-            let data = yield call(deletegrade, payload);
-            if (data.code === 0) {
-                return
-            }
-        },
         // 更新班级信息
-        *newgrade({ payload }, { call, put }) {
+        *newgrade({ payload }, { call, put }) {  // eslint-disable-line
             let data = yield call(newgrade, payload);
             yield put({
                 type: "updatanewgrade",// type是reducers里方法
                 payload: data.data
             })
         },
-        //添加教室
-        *addRoom({ payload }, { call, put }) {
-            let data = yield call(addRoom, payload);
+         // 班级管理-添加全部教室接口 
+        *addClassroom({ payload }, { call, put }) {  // eslint-disable-line
+            let data = yield call(addClassroom, payload);
+            // console.log(' 班级管理-添加全部教室接口 ',data)
             yield put({
-                type: "updataaddRoom",// type是reducers里方法
+                type: "addClsroom",// type是reducers里方法
                 payload: data.data
             })
         },
-        //删除教室
-        *delRoom({ payload }, { call, put }) { 
-            let data = yield call(delRoom, payload);
+        // 添加教室接口
+        *addClass({ payload }, { call, put }) {  // eslint-disable-line
+            console.log(payload)
+            let data = yield call(addClass, payload);
+            console.log(' yyyyyyyyyy班级管理-添加教室接口 ',data)
             yield put({
-                type: "updatadelRoom",// type是reducers里方法
-                payload: data.data
+                type: "addCl",// type是reducers里方法
+                payload: data
             })
-        }
+        },
+        // 删除教室接口
+        *removeClass({ payload }, { call, put }) {  // eslint-disable-line
+            let data = yield call(removeClass, payload);
+            console.log(' 班级管理-remove教室接口 ',data)
+            yield put({
+                type: "removeCl", // type是reducers里方法
+                payload: data
+            })
+        },
 
     },
-
-
 
     // 同步操作
     reducers: { // 相当于派发
@@ -102,17 +113,27 @@ export default {
         updataexamSubject(state, action) {
             return { ...state, isexamSubject: action.payload };
         },
-
         updataAddgrade(state, action) {
             return { ...state, isAddgrade: action.payload };
         },
-        updataaddRoom(state, action) {
-            return { ...state, isAdd: action.payload };
+        updatadeletegrade(state, action) {
+            return { ...state, isdeletegrade: action.payload };
         },
-        updatadelRoom(state, action) {
-            return { ...state, isDel: action.payload };
+        updatanewgrade(state, action) {
+            return { ...state, isnewgrade: action.payload };
         },
-
+        // 班级管理-添加全部教室接口 
+        addClsroom(state, action) {
+            return { ...state, addRoom: action.payload };
+        },
+         // 班级管理-添加教室接口 
+        addCl(state, action) {
+            return { ...state, addCla: action.payload };
+        },
+        // 删除教室接口
+        removeCl(state, action) {
+            return { ...state, remCla: action.payload };
+        },
 
     },
 

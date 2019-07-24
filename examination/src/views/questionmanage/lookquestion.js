@@ -28,6 +28,7 @@ function Question(props) {
       setone(one);
       // setstyle(-1)
   }
+  
   //获取考试类型
 const onMenu=(index)=>{
     console.log(props.look.isLookquestionMenu[index].exam_name)
@@ -40,7 +41,9 @@ const onMenu=(index)=>{
   }
 
  // 点击查询
- 
+//  const search =(props)=>{
+//   // console.log(props)
+// }
   const all=()=>{ //  多选
     setAll(!addAll)
     setstyle(-1)   // 消除点击谁的样式

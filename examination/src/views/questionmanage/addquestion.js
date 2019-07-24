@@ -40,9 +40,7 @@ function Addquestion(props) {
             if (!err) { // 没有错误的时候传参
                 console.log('Received values of form: ', values);
                 // if(){ // 如果有参数 传参
-
                 // }else{ // 没有参数的话，报错误弹框
-
                 // }
                 setAddInfor({
                     "questions_type_id": values.questionTypes,// questionTypes
@@ -68,7 +66,7 @@ function Addquestion(props) {
         updateModal(true); //  true 相当于showModal
 
     }
-   
+
     // 点击弹框的确定
     let okChange = () => {
         updateModal(false);
@@ -80,7 +78,7 @@ function Addquestion(props) {
         updateModal(false)
     }
     // 点击确定 添加试题成功的弹框
-    let success=()=>{
+    let success = () => {
         Modal.success({
             title: '试题添加成功'
         });
@@ -114,28 +112,28 @@ function Addquestion(props) {
                     <Form.Item className={styles.title}>
                         <h3>题目信息</h3>
                         <p>题干</p>
-                        { getFieldDecorator('iptvalue',{
+                        {getFieldDecorator('iptvalue', {
                             rules: [
                                 {
-                                  required: true,
-                                  message: 'Please input your E-mail!',
+                                    required: true,
+                                    message: 'Please input your E-mail!',
                                 },
-                              ],
+                            ],
                         })(<Input placeholder="请输入题目标题,不超过20个字" className={styles.input} />)
                         }
                     </Form.Item>
 
                     <Form.Item className={styles.marked}>
                         <h3>题目主题</h3>
-                        { getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
+                        {getFieldDecorator('markdown')(<Editor style={{ height: "260px", margin: "0 10px" }}></Editor>)
                         }
                     </Form.Item>
 
                     <div className={styles.types}>
                         <Form.Item className={styles.select}>
                             <h4>请选择考试类型:</h4>
-                            {getFieldDecorator('examType',{
-                                initialValue:"周考1"
+                            {getFieldDecorator('examType', {
+                                initialValue: "周考1"
                             })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     data && data.map((item, index) => <Option value={item.exam_id} key={item.exam_id}>{item.exam_name}</Option>
@@ -147,8 +145,8 @@ function Addquestion(props) {
 
                         <Form.Item className={styles.select}>
                             <h4>请选择课程类型:</h4>
-                            { getFieldDecorator('courseType',{
-                                initialValue:"javaScript上"
+                            {getFieldDecorator('courseType', {
+                                initialValue: "javaScript上"
                             })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllCours && getAllCours.map((item, index) => <Option value={item.subject_id} key={item.subject_id}>{item.subject_text}</Option>
@@ -160,8 +158,8 @@ function Addquestion(props) {
 
                         <Form.Item>
                             <h4>请选择题目类型:</h4>
-                            {getFieldDecorator('questionTypes',{
-                                initialValue:"简答题"
+                            {getFieldDecorator('questionTypes', {
+                                initialValue: "简答题"
                             })(<Select style={{ width: 200 }} onChange={handleChange}>
                                 {
                                     getAllQuestions.map((item, index) => <Option key={item.questions_type_id} value={item.questions_type_id}>{item.questions_type_text}</Option>
@@ -179,7 +177,7 @@ function Addquestion(props) {
                         }
                     </Form.Item>
                     <Form.Item className={styles.submit}>
-                       <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
+                        <Button type="primary" htmlType="submit" className={styles.btn} onClick={clickSubmit}>
                             提交
                        </Button>
                     </Form.Item>
@@ -195,10 +193,10 @@ function Addquestion(props) {
                 >
                     <p>真的要添加吗</p>
                 </Modal>
-                (<div>
+                <div>
                     {/* <Button onClick={success}><span>我知道了</span></Button> */}
                     {/* <Button onClick={() => openNotificationWithIcon('error')}>Error</Button> */}
-                </div>,mountNode)
+                </div>
 
             </div>
         </div>

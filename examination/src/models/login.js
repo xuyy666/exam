@@ -72,10 +72,11 @@ export default {
 
     // 获取用户信息
     *getUserInfo({ action }, { call, put, select }) {
-      // let userInfo = yield select(state=>state.login.userInfo);
-      // if(Object.keys(userInfo).length){
-      //   return 
-      // }
+      let userInfo = yield select(state=>state.login.userInfo);
+      // 12:17 改的
+      if(Object.keys(userInfo).length){
+        return 
+      }
       let data = yield getUserInfo();  // ===
       // let data = yield call(getUserInfo);// ===
       console.log('````````````````````', data);
@@ -98,8 +99,6 @@ export default {
         type: "uploadPic",
         payload: data
       })
-
-      
     },
 
     // *fetch({ payload }, { call, put }) {  // eslint-disable-line
@@ -107,8 +106,6 @@ export default {
     //   yield put({ type: 'save' });
     // },
       //  getAuthority()
-
-
 
   },
   // {

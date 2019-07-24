@@ -4,8 +4,13 @@ import {getToken} from '../utils/index.js'
 
 // create an axios instance
 const service = axios.create({  // 前端的接口
-  //baseURL:/jasonandjay.com/.test(window.location.host)?'https://exam.jasonandjay.com':/jasonandjay.test.com/.test(window.location.host)?'http://169.254.12.254:7001/'
-  baseURL: 'https://exam.jasonandjay.com',
+  // baseURL:'http://169.254.12.254:7001/',
+  baseURL:'http://169.254.12.254:7001/',
+  // baseURL:'https://exam.jasonandjay.com',sss
+  // baseURL:/https:\/\/jasonandjay.com/.test(window.location.origin) ? 'https://exam.jasonandjay.com/':'http://169.254.12.22:7001/',
+
+  // baseURL:'http://192.168.43.175:7001/',
+  // withCredentials: true, // 跨域请求时发送 cookies
   timeout: 5000 // request timeout
 })
 service.interceptors.request.use(
