@@ -28,6 +28,7 @@ function Question(props) {
       setone(one);
       // setstyle(-1)
   }
+  
   //获取考试类型
 const onMenu=(index)=>{
     console.log(props.look.isLookquestionMenu[index].exam_name)

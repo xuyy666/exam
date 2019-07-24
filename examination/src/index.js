@@ -6,6 +6,8 @@ import './index.css';
 import 'antd/dist/antd.css';
 import createLoading from 'dva-loading';
 // import {createLogger} from 'redux-logger'
+
+
 // 1. Initialize
 const app = dva(createLoading());
 app.use({

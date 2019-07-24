@@ -33,4 +33,4 @@ export * from './user.js';//添加权限
 
 export * from './createExam.js';//创建试卷
 // export * from './addexam.js';//添加考试
-// console.log('*')
+

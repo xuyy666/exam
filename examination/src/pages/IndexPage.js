@@ -14,8 +14,7 @@ function IndexPage(props) {
   // if (!props.myView.length){
   //   return null;
   // }
-
-  console.log('~~~~~~~~~~~~~~~~~~~~~~~~', props)
+  // console.log('~~~~~~~~~~~~~~~~~~~~~~~~', props)
   // console.log('********************',props.userInfo)
   const [adddialog, visitydialog] = useState(false); // 点击个中心显示弹框
   let { user_name, avatar, user_id } = props.userInfo;
@@ -52,7 +51,7 @@ function IndexPage(props) {
       axios.post('http://123.206.55.50:11000/upload_base64', { base64: this.result }).then(res => {
         console.log(res)
         if (res.data.code === 1) {
-          console.log('///////////////', res.data.data.path)
+          // console.log('///////////////', res.data.data.path)
           setavatar(res.data.data.path);
         }
       });
@@ -186,7 +185,7 @@ function IndexPage(props) {
 }
 
 const mapStateToProps = (state) => {
-  console.log("1111",state)
+  // console.log("1111",state)
   return {
     ...state.login,
     myView: state.login.myView,
